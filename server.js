@@ -2,10 +2,19 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const cors = require('cors'); // Added for handling cross-origin requests
-const rateLimit = require('express-rate-limit'); // Added for security to prevent spam
+const cors = require('cors'); // Only imported once
+const rateLimit = require('express-rate-limit');
 
 const app = express();
+
+// ✅ CORS setup to allow requests only from your Netlify site
+app.use(cors({
+  origin: 'https://abhiprotfolio.netlify.app'
+}));
+
+// Body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // --- Middleware Setup ---
 
