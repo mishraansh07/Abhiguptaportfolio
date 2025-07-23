@@ -1685,202 +1685,196 @@
     </footer>
 
     <script>
-        // Initialize Lenis for smooth scrolling
-        const lenis = new Lenis({
-            lerp: 0.1,
-            wheelMultiplier: 1.1,
-            infinite: false,
-            gestureOrientation: 'vertical',
-            normalizeWheel: true,
-            smoothTouch: false
-        });
+    // --- Smooth Scrolling using Lenis ---
+    const lenis = new Lenis({
+        lerp: 0.1,
+        wheelMultiplier: 1.1,
+        infinite: false,
+        gestureOrientation: 'vertical',
+        normalizeWheel: true,
+        smoothTouch: false
+    });
 
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // --- Mobile Menu Logic ---
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+    const openMobileMenu = () => {
+        mobileNav.classList.add('active');
+        mobileNavOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeMobileMenu = () => {
+        mobileNav.classList.remove('active');
+        mobileNavOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    closeMenu.addEventListener('click', closeMobileMenu);
+    mobileNavOverlay.addEventListener('click', closeMobileMenu);
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    // --- Typing Animation ---
+    const typingAnimation = () => {
+        const typedTextEl = document.querySelector(".typed-text-container");
+        if (!typedTextEl) return;
+
+        const textArray = ["Decoding the Timeless.", "Journey Through the Vedas."];
+        const typingDelay = 120;
+        const erasingDelay = 80;
+        const newTextDelay = 2000;
+        let textArrayIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+            if (charIndex < textArray[textArrayIndex].length) {
+                typedTextEl.textContent += textArray[textArrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } else {
+                setTimeout(erase, newTextDelay);
+            }
         }
 
-        requestAnimationFrame(raf);
-
-        // --- Mobile Menu Logic ---
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        const closeMenu = document.getElementById('closeMenu');
-        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-
-        const openMobileMenu = () => {
-            mobileNav.classList.add('active');
-            mobileNavOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        };
-
-        const closeMobileMenu = () => {
-            mobileNav.classList.remove('active');
-            mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        };
-
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        closeMenu.addEventListener('click', closeMobileMenu);
-        mobileNavOverlay.addEventListener('click', closeMobileMenu);
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
-        // --- Typing Animation Logic ---
-        const typingAnimation = () => {
-            const typedTextEl = document.querySelector(".typed-text-container");
-            if (!typedTextEl) return;
-            const textArray = ["Decoding the Timeless.", "Journey Through the Vedas."];
-            const typingDelay = 120;
-            const erasingDelay = 80;
-            const newTextDelay = 2000; // Delay between words
-            let textArrayIndex = 0;
-            let charIndex = 0;
-
-            function type() {
-                if (charIndex < textArray[textArrayIndex].length) {
-                    typedTextEl.textContent += textArray[textArrayIndex].charAt(charIndex);
-                    charIndex++;
-                    setTimeout(type, typingDelay);
-                } else {
-                    setTimeout(erase, newTextDelay);
-                }
+        function erase() {
+            if (charIndex > 0) {
+                typedTextEl.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } else {
+                textArrayIndex = (textArrayIndex + 1) % textArray.length;
+                setTimeout(type, typingDelay + 300);
             }
+        }
 
-            function erase() {
-                if (charIndex > 0) {
-                    typedTextEl.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-                    charIndex--;
-                    setTimeout(erase, erasingDelay);
-                } else {
-                    textArrayIndex = (textArrayIndex + 1) % textArray.length;
-                    setTimeout(type, typingDelay + 300);
-                }
-            }
+        setTimeout(type, newTextDelay - 500);
+    };
 
-            if (textArray.length) {
-                setTimeout(type, newTextDelay - 500);
-            }
-        };
+    // --- Page Load Effects ---
+    window.addEventListener('load', function () {
+        const loader = document.getElementById('loader');
+        setTimeout(function () {
+            loader.classList.add('loader-hidden');
+            typingAnimation();
+        }, 1500);
+    });
 
-        // --- Page Load and Scroll Effects ---
-        window.addEventListener('load', function () {
-            const loader = document.getElementById('loader');
-            setTimeout(function () {
-                loader.classList.add('loader-hidden');
-                typingAnimation();
-            }, 1500);
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (!targetId || targetId === '#') return;
-                lenis.scrollTo(targetId, {
-                    offset: -80, // Adjust this value to match your header height
-                    duration: 1.5
-                });
-            });
-        });
-
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', function () {
-            header.classList.toggle('scrolled-header', window.scrollY > 50);
-        });
-
-        // --- Form Submission Logic ---
-        document.getElementById('consultationForm').addEventListener('submit', async function (e) {
+    // --- Anchor Scroll with Lenis ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalButtonContent = submitButton.innerHTML;
-
-            // Disable button and show a loading state
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i>Sending...';
-
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                service: document.getElementById('service').value,
-                birthdate: document.getElementById('birthdate').value,
-                birthplace: document.getElementById('birthplace').value,
-                message: document.getElementById('message').value
-            };
-
-            const response = await fetch('https://abhiguptaportfolio.onrender.com/submit-consultation', {
-              ...
+            const targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+            lenis.scrollTo(targetId, {
+                offset: -80,
+                duration: 1.5
             });
+        });
+    });
+
+    // --- Header Scroll Styling ---
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled-header', window.scrollY > 50);
+    });
+
+    // --- Form Submission ---
+    document.getElementById('consultationForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalButtonContent = submitButton.innerHTML;
+
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i>Sending...';
+
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            service: document.getElementById('service').value,
+            birthdate: document.getElementById('birthdate').value,
+            birthplace: document.getElementById('birthplace').value,
+            message: document.getElementById('message').value
+        };
+
+        try {
+            const response = await fetch('https://abhiguptaportfolio.onrender.com/submit-consultation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
             const result = await response.json();
-            console.log('Server response:', result);
-            try {
-                // The URL should point to your live backend server in production
-                const response = await fetch('https://abhiguptaportfolio.onrender.com/submit-consultation', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
+            console.log('✅ Server response:', result);
+            alert(result.message);
+
+            if (response.ok) {
+                this.reset();
+            }
+        } catch (error) {
+            console.error('❌ Error submitting form:', error);
+            alert('An error occurred while connecting to the server. Please try again.');
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonContent;
+        }
+    });
+
+    // --- Scroll Animations ---
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
                 });
-
-                const result = await response.json();
-                alert(result.message);
-
-                if (response.ok) { // Check for a successful HTTP status (e.g., 200)
-                    this.reset();
-                }
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                alert('An error occurred while connecting to the server. Please try again.');
-            } finally {
-                // Re-enable the button and restore its original content
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonContent;
             }
         });
+    }, { root: null, rootMargin: '0px', threshold: 0.3 });
 
-        // --- Intersection Observers for Animations ---
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
+    sections.forEach(section => {
+        navObserver.observe(section);
+    });
 
-        const navObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, { root: null, rootMargin: '0px', threshold: 0.3 });
-
-        sections.forEach(section => {
-            navObserver.observe(section);
+    const animateObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
         });
+    }, { root: null, rootMargin: '0px', threshold: 0.1 });
 
-        const animateObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { root: null, rootMargin: '0px', threshold: 0.1 });
+    const animateElements = document.querySelectorAll(
+        '.service-card, .value-card, .testimonial-card, .contact-info, .contact-form'
+    );
 
-        const animateElements = document.querySelectorAll(
-            '.service-card, .value-card, .testimonial-card, .contact-info, .contact-form'
-        );
+    animateElements.forEach(el => {
+        animateObserver.observe(el);
+    });
+</script>
 
-        animateElements.forEach(el => {
-            animateObserver.observe(el);
-        });
-    </script>
 </body>
 
 </html>
