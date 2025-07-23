@@ -1811,9 +1811,14 @@
                 message: document.getElementById('message').value
             };
 
+            const response = await fetch('https://abhiguptaportfolio.onrender.com/submit-consultation', {
+              ...
+            });
+            const result = await response.json();
+            console.log('Server response:', result);
             try {
                 // The URL should point to your live backend server in production
-                const response = await fetch('https://abhiguptaportfolio.onrender.com', {
+                const response = await fetch('https://abhiguptaportfolio.onrender.com/submit-consultation', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
