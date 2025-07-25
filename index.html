@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Astronox | Vedic Astrologer</title>
-    <!-- Google Fonts for a distinct typographic style -->
     <link
         href="https://fonts.googleapis.com/css2?family=Samarkan:wght@400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Lenis for smooth scrolling -->
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <style>
         /* CSS Custom Properties for easy theme management */
@@ -528,7 +526,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 300px;
+            min-height: 400px;
         }
 
         .mulank-result-panel::before {
@@ -554,49 +552,6 @@
             }
         }
 
-        .mulank-result-wrapper {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.6s, transform 0.6s;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .mulank-result-wrapper.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .mulank-display-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .mulank-icon {
-            font-size: 3.5rem;
-            color: var(--saffron);
-            text-shadow: 0 0 15px var(--saffron);
-        }
-
-        .mulank-display {
-            font-size: 6rem;
-            font-weight: bold;
-            color: var(--gold);
-            line-height: 1;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
-        }
-
-        .mulank-description {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-top: 1.5rem;
-            font-family: 'Playfair Display', serif;
-            color: rgba(253, 248, 240, 0.9);
-        }
-
         .mulank-placeholder {
             position: absolute;
             z-index: 1;
@@ -614,10 +569,78 @@
             font-family: 'Playfair Display', serif;
             color: rgba(253, 248, 240, 0.4);
         }
-
-        .mulank-result-wrapper.visible+.mulank-placeholder {
-            opacity: 0;
+        
+        .hidden {
+            display: none !important;
         }
+
+        .numerology-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            transition: opacity 0.5s;
+        }
+        .selector-btn {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        .selector-btn:hover, .selector-btn.active {
+            background: var(--gold);
+            color: var(--henna);
+        }
+        
+        .numerology-results-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            transition: opacity 0.5s;
+        }
+
+        .numerology-result-card {
+            background: rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .numerology-result-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        .numerology-result-card .number-display {
+            font-size: 5rem;
+            font-weight: bold;
+            color: var(--saffron);
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(244, 197, 66, 0.5);
+        }
+        .numerology-result-card .description {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(253, 248, 240, 0.9);
+        }
+
 
         /* Sacred Journey Section */
         #about {
@@ -1291,6 +1314,131 @@
             }
         }
 
+        /* ------------------------- */
+        /* NEW SECTIONS */
+        /* ------------------------- */
+
+        /* Blog Section */
+        #blog {
+            background: linear-gradient(to bottom, #f7f0e6 0%, #f1e8da 15%, #f1e8da 85%, #f7f0e6 100%);
+            padding: 6rem 2rem;
+        }
+
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+        }
+
+        .blog-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(123, 44, 44, 0.2);
+        }
+
+        .blog-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--gold);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-date {
+            font-size: 0.9rem;
+            color: var(--henna);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-date i {
+            color: var(--gold);
+        }
+
+        .blog-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--maroon);
+            font-family: 'Playfair Display', serif;
+            transition: color 0.3s;
+        }
+
+        .blog-card:hover .blog-title {
+            color: var(--gold);
+        }
+
+        .blog-excerpt {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .blog-link:hover {
+            gap: 1rem;
+            color: var(--maroon);
+        }
+
+        .blog-link i {
+            transition: transform 0.3s;
+        }
+
+        .blog-link:hover i {
+            transform: translateX(5px);
+        }
+
         /* Responsive Media Queries */
         @media (min-width: 992px) {
             .chart-journey-container {
@@ -1414,12 +1562,10 @@
 </head>
 
 <body>
-    <!-- Preloader -->
     <div class="loader" id="loader">
         <div class="om-symbol">ॐ</div>
     </div>
 
-    <!-- Header -->
     <header id="header">
         <div class="logo">
             <i class="fas fa-om logo-icon"></i>
@@ -1431,6 +1577,8 @@
             <a href="#mulank">Mulank</a>
             <a href="#about">About</a>
             <a href="#testimonials">Testimonials</a>
+            <a href="#blog">Blog</a>
+            <a href="mantras.html">Mantras</a>
             <a href="#contact">Contact</a>
         </nav>
         <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1438,7 +1586,6 @@
         </button>
     </header>
 
-    <!-- Mobile Navigation -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
     <nav class="mobile-nav" id="mobileNav">
         <button class="close-menu" id="closeMenu">
@@ -1449,12 +1596,12 @@
         <a href="#mulank">Mulank</a>
         <a href="#about">About</a>
         <a href="#testimonials">Testimonials</a>
+        <a href="#blog">Blog</a>
+        <a href="mantras.html">Mantras</a>
         <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="hero-text">
                 <div class="profile-pic">
@@ -1475,7 +1622,6 @@
             </div>
         </section>
 
-        <!-- Services Section -->
         <section class="section" id="services">
             <div class="section-header">
                 <h2>The Tapestry of Fate</h2>
@@ -1517,42 +1663,42 @@
             </div>
         </section>
 
-        <!-- Mulank Calculator Section -->
         <section class="section" id="mulank">
             <div class="section-header">
-                <h2>Discover Your Mulank</h2>
-                <p>Your birth date holds a key to your core personality and life path.</p>
+                <h2>Discover Your Cosmic Numbers</h2>
+                <p>Your birth date holds the key to your Mulank (Root Number) and Bhagyank (Life Path Number).</p>
             </div>
             <div class="mulank-container">
                 <div class="mulank-input-panel">
-                    <h3>Your Life Path Number</h3>
-                    <p>Enter your birth date to calculate your Mulank, the primary number that defines your character
-                        and spiritual vibration.</p>
+                    <h3>Calculate Your Numbers</h3>
+                    <p>Enter your birth date to reveal your Mulank and Bhagyank, the core numbers defining your character and destiny.</p>
                     <div class="mulank-input-group">
                         <input type="date" id="birthDateInput" class="form-control">
                         <button id="mulankCalculateBtn">
                             <i class="fas fa-atom"></i>
-                            <span>Reveal My Mulank</span>
+                            <span>Reveal My Numbers</span>
                         </button>
                     </div>
                 </div>
                 <div class="mulank-result-panel">
-                    <div class="mulank-result-wrapper" id="mulankResultWrapper">
-                        <div class="mulank-display-wrapper">
-                            <i class="mulank-icon fas"></i>
-                            <div class="mulank-display"></div>
-                        </div>
-                        <div class="mulank-description"></div>
+                    <div class="numerology-selector hidden" id="numerologySelector">
+                        <button class="selector-btn active" data-type="mulank">Mulank</button>
+                        <button class="selector-btn" data-type="bhagyank">Bhagyank</button>
+                    </div>
+                    <div class="numerology-results-wrapper" id="numerologyResultsWrapper">
+                        <div class="numerology-result-card hidden" id="mulankResultCard">
+                             </div>
+                        <div class="numerology-result-card hidden" id="bhagyankResultCard">
+                            </div>
                     </div>
                     <div class="mulank-placeholder" id="mulankPlaceholder">
                         <i class="fas fa-star-of-life"></i>
-                        <p>Your cosmic number awaits</p>
+                        <p>Your cosmic numbers await</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About/Journey Section -->
         <section class="section" id="about">
             <div class="section-header">
                 <h2>My Sacred Journey</h2>
@@ -1581,12 +1727,10 @@
                     </div>
                 </div>
                 <div class="journey-content-panel" id="journey-content-panel">
-                    <!-- Content will be injected here by JavaScript -->
-                </div>
+                    </div>
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section class="section" id="testimonials">
             <div class="testimonials-bg-pattern"></div>
             <div class="section-header">
@@ -1639,7 +1783,53 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <section class="section" id="blog">
+            <div class="section-header">
+                <h2>Cosmic Insights</h2>
+                <p>Explore the wisdom of the stars through our articles</p>
+            </div>
+            <div class="blog-container">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1194&q=80" alt="Planetary Alignment">
+                        <div class="blog-category">Planetary Movements</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date"><i class="fas fa-calendar-alt"></i> June 15, 2025</div>
+                        <h3 class="blog-title">Understanding the Jupiter-Saturn Conjunction</h3>
+                        <p class="blog-excerpt">Discover how this rare celestial event will impact your zodiac sign and what it means for your spiritual growth...</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1192&q=80" alt="Vedic Astrology">
+                        <div class="blog-category">Vedic Wisdom</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date"><i class="fas fa-calendar-alt"></i> May 28, 2025</div>
+                        <h3 class="blog-title">The 27 Nakshatras: Your Cosmic Address</h3>
+                        <p class="blog-excerpt">Learn how the lunar mansions shape your personality, relationships, and life path according to Vedic astrology...</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1194&q=80" alt="Meditation">
+                        <div class="blog-category">Spiritual Practice</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date"><i class="fas fa-calendar-alt"></i> May 12, 2025</div>
+                        <h3 class="blog-title">Meditation Techniques for Each Zodiac Sign</h3>
+                        <p class="blog-excerpt">Discover personalized meditation practices based on your sun sign to enhance your spiritual connection and inner peace...</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section" id="contact">
             <div class="section-header">
                 <h2>Connect with the Cosmos</h2>
@@ -1657,25 +1847,25 @@
                     <div class="contact-item"><i class="fas fa-envelope"></i>
                         <div class="contact-text">
                             <h4>Email</h4>
-                            <p>abhishek@vedicinsights.com</p>
+                            <p>Theastronox@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item"><i class="fas fa-phone-alt"></i>
                         <div class="contact-text">
                             <h4>Phone</h4>
-                            <p>+91 98765 43210</p>
+                            <p>+91 7607947437 (Wp)</p>
                         </div>
                     </div>
                     <div class="contact-item"><i class="fas fa-clock"></i>
                         <div class="contact-text">
                             <h4>Consultation Hours</h4>
-                            <p>Mon-Sat: 9:00 AM - 6:00 PM IST<br>Sunday: Closed</p>
+                            <p>11AM to 11PM (Mon to Sat)<br>Sunday: Close</p>
                         </div>
                     </div>
                     <div class="social-links">
                         <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/the_astronox?igsh=MWs2MXlqMHhjZDh3dQ%3D%3D" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/abhishek-gupta-astronox/" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -1709,7 +1899,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">theastronox</div>
@@ -1719,6 +1908,8 @@
                 <a href="#mulank">Mulank</a>
                 <a href="#about">About</a>
                 <a href="#testimonials">Testimonials</a>
+                <a href="#blog">Blog</a>
+                <a href="mantras.html">Mantras</a>
                 <a href="#contact">Contact</a>
             </div>
             <div class="copyright">
@@ -1727,7 +1918,6 @@
         </div>
     </footer>
 
-    <!-- Custom Alert Modal -->
     <div id="customAlert" class="custom-alert-overlay">
         <div class="custom-alert-box">
             <p id="customAlertMessage"></p>
@@ -1736,7 +1926,6 @@
         </div>
     </div>
 
-    <!-- JavaScript for Interactivity -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- Smooth Scrolling using Lenis ---
@@ -1772,7 +1961,11 @@
             mobileMenuBtn.addEventListener('click', openMobileMenu);
             closeMenu.addEventListener('click', closeMobileMenu);
             mobileNavOverlay.addEventListener('click', closeMobileMenu);
-            mobileNavLinks.forEach(link => { link.addEventListener('click', closeMobileMenu); });
+            mobileNavLinks.forEach(link => { 
+                if (!link.href.includes('mantras.html')) {
+                    link.addEventListener('click', closeMobileMenu);
+                }
+            });
 
             // --- Page Load Effects ---
             const loader = document.getElementById('loader');
@@ -1832,12 +2025,12 @@
                 });
             }, { root: null, rootMargin: '0px', threshold: 0.15 });
 
-            const animateElements = document.querySelectorAll('.service-tapestry-item, .testimonial-card');
+            const animateElements = document.querySelectorAll('.service-tapestry-item, .testimonial-card, .blog-card');
             animateElements.forEach(el => { animateObserver.observe(el); });
 
             // --- Active Nav Link on Scroll ---
             const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
+            const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
             const navObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1945,11 +2138,21 @@
                 updateJourneyContent(journeyPoints[0].dataset.journey);
             }
 
-            // --- Mulank Calculator Script ---
+            // --- Mulank & Bhagyank Calculator Script ---
+            function reduceToSingleDigit(num) {
+                let sum = num;
+                while (sum > 9) {
+                    sum = String(sum).split('').reduce((acc, digit) => acc + Number(digit), 0);
+                }
+                return sum;
+            }
+
             const mulankCalculateBtn = document.getElementById('mulankCalculateBtn');
             const birthDateInput = document.getElementById('birthDateInput');
-            const mulankResultWrapper = document.getElementById('mulankResultWrapper');
+            const numerologySelector = document.getElementById('numerologySelector');
             const mulankPlaceholder = document.getElementById('mulankPlaceholder');
+            const mulankResultCard = document.getElementById('mulankResultCard');
+            const bhagyankResultCard = document.getElementById('bhagyankResultCard');
 
             const mulankDescriptions = {
                 1: "<strong>The Sun:</strong> A natural leader, you are ambitious, courageous, and independent. You are destined to carve your own path and inspire others.",
@@ -1962,10 +2165,19 @@
                 8: "<strong>Saturn:</strong> Ambitious and powerful, you have strong executive skills and the ability to achieve great material success through discipline and perseverance.",
                 9: "<strong>Mars:</strong> You are a compassionate humanitarian with a strong sense of justice. Your courage and selflessness drive you to fight for the greater good."
             };
-            const mulankIcons = {
-                1: "fa-sun", 2: "fa-moon", 3: "fa-meteor", 4: "fa-dragon", 5: "fa-feather-alt",
-                6: "fa-heart", 7: "fa-yin-yang", 8: "fa-gem", 9: "fa-fist-raised"
+            
+            const bhagyankDescriptions = {
+                1: "<strong>Leadership & Independence:</strong> Your life path is about pioneering, leading with confidence, and embracing your unique identity. You are here to innovate and be a trailblazer.",
+                2: "<strong>Cooperation & Harmony:</strong> Your destiny is to foster harmony, build bridges, and excel in partnerships. Your path is one of diplomacy, intuition, and collaboration.",
+                3: "<strong>Creativity & Expression:</strong> Your life's journey revolves around self-expression, communication, and creativity. You are meant to inspire and bring joy to the world.",
+                4: "<strong>Stability & Discipline:</strong> Your purpose is to build lasting foundations through hard work, discipline, and practicality. You are the master builder, creating order and security.",
+                5: "<strong>Freedom & Adventure:</strong> Your path is one of change, adventure, and freedom. You are here to experience life in all its variety, adapt, and be a catalyst for progress.",
+                6: "<strong>Nurturing & Responsibility:</strong> Your destiny involves nurturing, compassion, and taking on responsibility for others. You are a natural caregiver, bringing love and healing.",
+                7: "<strong>Analysis & Spirituality:</strong> Your life is a quest for knowledge, truth, and spiritual understanding. You are here to look beneath the surface and share your deep wisdom.",
+                8: "<strong>Ambition & Power:</strong> Your path is one of ambition, authority, and material mastery. You are destined to achieve great things and wield power with integrity and balance.",
+                9: "<strong>Humanitarianism & Compassion:</strong> Your journey is about selfless service, compassion, and universal love. You are here to make the world a better place and inspire others with your idealism."
             };
+
 
             if (mulankCalculateBtn) {
                 mulankCalculateBtn.addEventListener('click', () => {
@@ -1974,31 +2186,58 @@
                         showCustomAlert("Please select your birth date.");
                         return;
                     }
-                    // Use getUTCDate() to avoid timezone issues
-                    const day = new Date(dateValue).getUTCDate();
-                    let mulank = day;
-                    // Calculate the single-digit sum
-                    while (mulank > 9) {
-                        mulank = String(mulank).split('').reduce((sum, digit) => sum + Number(digit), 0);
-                    }
-                    const displayDiv = mulankResultWrapper.querySelector('.mulank-display');
-                    const descriptionDiv = mulankResultWrapper.querySelector('.mulank-description');
-                    const iconDiv = mulankResultWrapper.querySelector('.mulank-icon');
 
-                    // Update the content
-                    displayDiv.textContent = mulank;
-                    descriptionDiv.innerHTML = mulankDescriptions[mulank];
-                    iconDiv.className = `mulank-icon fas ${mulankIcons[mulank]}`;
+                    const date = new Date(dateValue);
+                    const day = date.getUTCDate();
+                    const month = date.getUTCMonth() + 1;
+                    const year = date.getUTCFullYear();
 
-                    // Show the result with a transition
-                    mulankResultWrapper.classList.add('visible');
-                    if (mulankPlaceholder) {
-                        mulankPlaceholder.style.opacity = '0';
+                    const mulank = reduceToSingleDigit(day);
+                    const bhagyank = reduceToSingleDigit(reduceToSingleDigit(day) + reduceToSingleDigit(month) + reduceToSingleDigit(year));
+
+                    mulankResultCard.innerHTML = `
+                        <h4>Mulank (Root Number)</h4>
+                        <div class="number-display">${mulank}</div>
+                        <div class="description">${mulankDescriptions[mulank]}</div>
+                    `;
+                    bhagyankResultCard.innerHTML = `
+                        <h4>Bhagyank (Life Path)</h4>
+                        <div class="number-display">${bhagyank}</div>
+                        <div class="description">${bhagyankDescriptions[bhagyank]}</div>
+                    `;
+
+                    mulankPlaceholder.classList.add('hidden');
+                    numerologySelector.classList.remove('hidden');
+                    mulankResultCard.classList.remove('hidden');
+                    bhagyankResultCard.classList.add('hidden');
+                    
+                    document.querySelector('.selector-btn[data-type="mulank"]').classList.add('active');
+                    document.querySelector('.selector-btn[data-type="bhagyank"]').classList.remove('active');
+                });
+            }
+
+            if (numerologySelector) {
+                numerologySelector.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('selector-btn')) {
+                        const type = e.target.dataset.type;
+                        
+                        document.querySelectorAll('.selector-btn').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+
+                        if (type === 'mulank') {
+                            mulankResultCard.classList.remove('hidden');
+                            bhagyankResultCard.classList.add('hidden');
+                        } else {
+                            mulankResultCard.classList.add('hidden');
+                            bhagyankResultCard.classList.remove('hidden');
+                        }
                     }
                 });
             }
+
         });
     </script>
+    <script src="main.js"></script>
 
 </body>
 
