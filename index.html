@@ -4,27 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek Gupta | Vedic Astrologer</title>
+    <title>The Astronox | Vedic Astrologer</title>
+    <!-- Google Fonts for a distinct typographic style -->
     <link
         href="https://fonts.googleapis.com/css2?family=Samarkan:wght@400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lenis for smooth scrolling -->
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <style>
+        /* CSS Custom Properties for easy theme management */
         :root {
             --ivory: #fdf8f0;
             --maroon: #7b2c2c;
             --gold: #d4af37;
             --saffron: #f4c542;
-            --turmeric: #e6b220;
-            --text: #333;
+            --text: #4a2c2a;
             --henna: #6e4226;
-            --ios-card: rgba(255, 255, 255, 0.85);
-            --ios-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --ios-radius: 18px;
-            --ios-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --card-bg: rgba(253, 248, 240, 0.85);
+            --shadow: 0 8px 32px rgba(123, 44, 44, 0.15);
+            --radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --space-bg: #100808;
+            /* SVG background for a unique, lightweight space effect */
+            --space-bg-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="nebula1" cx="20%" cy="20%" r="60%"><stop offset="0%" stop-color="%237b2c2c" stop-opacity="0.2"/><stop offset="100%" stop-color="%23100808" stop-opacity="0"/></radialGradient><radialGradient id="nebula2" cx="85%" cy="75%" r="50%"><stop offset="0%" stop-color="%23d4af37" stop-opacity="0.15"/><stop offset="100%" stop-color="%23100808" stop-opacity="0"/></radialGradient><pattern id="stars" width="100" height="100" patternUnits="userSpaceOnUse"><circle fill="%23fdf8f0" cx="10" cy="10" r="0.8" opacity="0.8"/><circle fill="%23fdf8f0" cx="50" cy="80" r="0.6" opacity="0.6"/><circle fill="%23d4af37" cx="80" cy="30" r="0.7" opacity="0.7"/><circle fill="%23fdf8f0" cx="30" cy="50" r="0.5" opacity="0.5"/></pattern></defs><rect width="100%" height="100%" fill="%23100808"/><rect width="100%" height="100%" fill="url(%23nebula1)"/><rect width="100%" height="100%" fill="url(%23nebula2)"/><rect width="100%" height="100%" fill="url(%23stars)"/><g stroke="%23d4af37" stroke-opacity="0.2" stroke-width="0.5"><path d="M100 150 L 250 200 L 300 100 Z M150 175 L 100 150" fill="none"/><path d="M800 600 L 950 650 L 1000 550 L 900 500 Z M 950 650 L 850 680" fill="none"/><path d="M1100 100 L 1000 200 L 900 150 Z" fill="none"/><path d="M200 700 L 350 650 L 400 750 Z M 350 650 L 280 720" fill="none"/></g></svg>');
         }
 
+        /* General Body Styling */
         * {
             margin: 0;
             padding: 0;
@@ -32,38 +39,41 @@
         }
 
         body {
-            font-family: 'Samarkan', sans-serif;
-            background: var(--ivory);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory);
             color: var(--text);
             background-image:
-                radial-gradient(circle at 10% 20%, rgba(123, 44, 44, 0.03) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 20%);
+                radial-gradient(ellipse at 10% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 70%),
+                radial-gradient(ellipse at 90% 80%, rgba(123, 44, 44, 0.1) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/old-paper.png');
+            background-attachment: fixed;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* Set headings to use Samarkan font */
         @font-face {
             font-family: 'Samarkan';
-            src: url('font/SAMAN___.TTF') format('truetype');
-            font-weight: normal;
+            src: url('./font/SAMAN___.TTF') format('truetype');
+            font-weight: 400;
             font-style: normal;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
+        /* Applying Samarkan font only to headings and specific brand elements */
         h1,
         h2,
         h3,
         h4,
         h5,
-        h6 {
+        h6,
+        .logo,
+        .byline,
+        .footer-logo,
+        .om-symbol {
             font-family: 'Samarkan', sans-serif;
+            font-weight: 400;
         }
 
-        /* Loading animation - Minimalistic OM */
+        /* Preloader Styling */
         .loader {
             position: fixed;
             top: 0;
@@ -75,7 +85,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s, visibility 0.5s;
+            transition: opacity 0.8s, visibility 0.8s;
         }
 
         .loader-hidden {
@@ -84,7 +94,6 @@
         }
 
         .om-symbol {
-            font-family: 'Samarkan', sans-serif;
             font-size: 8rem;
             color: var(--gold);
             animation: pulse 2s infinite;
@@ -94,25 +103,25 @@
 
             0%,
             100% {
-                transform: scale(1);
+                transform: scale(1) rotate(0deg);
                 opacity: 0.9;
             }
 
             50% {
-                transform: scale(1.1);
+                transform: scale(1.1) rotate(5deg);
                 opacity: 1;
             }
         }
 
-        /* iOS-like Header */
+        /* Header and Navigation */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.2rem 2.5rem;
-            background-color: rgba(253, 248, 240, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(253, 248, 240, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -121,28 +130,28 @@
         }
 
         .scrolled-header {
-            padding: 0.8rem 2.5rem;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .logo {
-            font-weight: 400;
             font-size: 2.2rem;
             color: var(--maroon);
             display: flex;
             align-items: center;
-            font-family: 'Samarkan', cursive;
-            font-size: 32px;
-            color: #7b2d2d;
         }
 
         .logo-icon {
             font-size: 1.4rem;
             margin-right: 8px;
             color: var(--gold);
+            transition: transform 0.5s;
         }
 
-        nav {
+        .logo:hover .logo-icon {
+            transform: rotate(360deg);
+        }
+
+        nav.desktop-nav {
             display: flex;
             gap: 2.5rem;
         }
@@ -154,7 +163,7 @@
             font-size: 1rem;
             position: relative;
             padding: 0.5rem 0;
-            transition: var(--ios-transition);
+            transition: var(--transition);
         }
 
         nav a::after {
@@ -168,43 +177,30 @@
             transition: width 0.3s ease;
         }
 
-        nav a:hover::after {
-            width: 100%;
-        }
-
+        nav a:hover,
         nav a.active {
             color: var(--gold);
         }
 
+        nav a:hover::after,
         nav a.active::after {
             width: 100%;
         }
 
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             padding: 0 2rem;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        .hero-text {
-            z-index: 2;
             text-align: center;
         }
 
-        /* Profile picture styling */
         .profile-pic {
             width: 180px;
             height: 180px;
@@ -212,7 +208,7 @@
             overflow: hidden;
             margin: 0 auto 2rem;
             border: 4px solid var(--gold);
-            box-shadow: 0 10px 30px rgba(123, 44, 44, 0.2);
+            box-shadow: 0 10px 40px rgba(123, 44, 44, 0.25);
             animation: float 6s ease-in-out infinite;
         }
 
@@ -223,61 +219,22 @@
         }
 
         .hero-text h1 {
-            font-size: 4.5rem;
-            font-weight: 400;
-            line-height: 1.2;
+            font-size: 3.5rem;
+            line-height: 1.3;
             margin-bottom: 1.5rem;
             color: var(--maroon);
-            min-height: 11rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
         }
 
-        .hero-text h1 .typed-text-container {
-            color: var(--gold);
-            border-right: .1em solid var(--gold);
-            animation: blink-caret 1s step-end infinite;
-            white-space: nowrap;
-            overflow: hidden;
-            height: 5rem;
-        }
-
-        @keyframes blink-caret {
-
-            from,
-            to {
-                border-color: transparent
-            }
-
-            50% {
-                border-color: var(--gold);
-            }
-        }
-
-        .hero-text p {
-            font-size: 1.4rem;
-            line-height: 1.6;
+        .hero-text .byline {
+            font-size: 1.5rem;
+            line-height: 1.7;
             margin-bottom: 2.5rem;
-            max-width: 90%;
+            max-width: 600px;
             color: var(--text);
-            animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-            animation-delay: 0.5s;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        @keyframes fade-in-bottom {
-            0% {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
 
         .ios-button {
@@ -291,107 +248,58 @@
             font-weight: 600;
             font-size: 1.1rem;
             text-decoration: none;
-            transition: var(--ios-transition);
-            box-shadow: var(--ios-shadow);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
             border: none;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-            animation-delay: 0.7s;
         }
 
-        .ios-button::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
+        .ios-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(123, 44, 44, 0.25);
         }
 
-        .ios-button:hover::after {
-            transform: translateX(0);
+        .ios-button .icon {
+            margin-right: 10px;
+            transition: transform 0.3s;
         }
 
-        .hero-image {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .ios-button:hover .icon {
+            transform: rotate(15deg);
         }
 
-        .card-title {
-            font-size: 1.8rem;
-            color: var(--maroon);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .card-title i {
-            margin-right: 12px;
-            color: var(--gold);
-        }
-
-        .card-content {
-            line-height: 1.7;
-            color: var(--text);
-            margin-bottom: 2rem;
-        }
-
-        .signature {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 1.5rem;
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: var(--gold);
-        }
-
-        .pattern-bg {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            opacity: 0.05;
-            z-index: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path d="M50,100 C60,80 80,60 100,50 C120,60 140,80 150,100 C140,120 120,140 100,150 C80,140 60,120 50,100 Z" fill="none" stroke="%237b2c2c" stroke-width="2"/><circle cx="100" cy="100" r="20" fill="none" stroke="%237b2c2c" stroke-width="2"/></svg>');
-            background-repeat: repeat;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
+        /* General Section Styling */
         .section {
             padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 2;
         }
 
         .section-header h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1.2rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
+            color: var(--maroon);
         }
 
         .section-header h2::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
+            content: " ";
+            display: block;
+            width: 100px;
             height: 4px;
             background: var(--gold);
+            margin: 1rem auto 0;
             border-radius: 2px;
         }
 
@@ -403,162 +311,567 @@
             line-height: 1.7;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
+        /* Services Section with Tapestry Layout */
+        #services {
+            background: linear-gradient(to bottom, var(--ivory) 0%, #f7f0e6 15%, #f7f0e6 85%, var(--ivory) 100%);
+            padding-top: 8rem;
+            padding-bottom: 8rem;
         }
 
-        .service-card {
-            background: var(--ios-card);
-            border-radius: var(--ios-radius);
-            overflow: hidden;
-            box-shadow: var(--ios-shadow);
-            transition: var(--ios-transition);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+        .tapestry-container {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            align-items: center;
+            gap: 8rem;
+        }
+
+        .service-tapestry-item {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 3rem;
+            width: 100%;
+            max-width: 700px;
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(50px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .service-card.animate {
+        .service-tapestry-item.animate {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(123, 44, 44, 0.15);
-        }
-
-        .card-icon {
-            height: 150px;
-            background: linear-gradient(45deg, var(--maroon), var(--saffron));
+        .service-tapestry-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -80px;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 4rem;
-            position: relative;
-            overflow: hidden;
+            font-size: 2rem;
+            color: var(--gold);
+            background: white;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
         }
 
-        .card-icon::before {
-            content: "";
+        .service-tapestry-item:nth-child(1)::before {
+            content: '\f77c';
+        }
+
+        /* fas fa-journal-whills */
+        .service-tapestry-item:nth-child(2)::before {
+            content: '\f004';
+        }
+
+        /* fas fa-heart */
+        .service-tapestry-item:nth-child(3)::before {
+            content: '\f133';
+        }
+
+        /* fas fa-calendar-alt */
+        .service-tapestry-item:nth-child(4)::before {
+            content: '\f0b1';
+        }
+
+        /* fas fa-briefcase */
+        .service-tapestry-item::after {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 Q50,10 80,20 Q90,50 80,80 Q50,90 20,80 Q10,50 20,20 Z" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="2"/><circle cx="50" cy="50" r="15" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="2"/></svg>');
-            background-size: 80px;
-            opacity: 0.3;
+            top: -4rem;
+            left: -79px;
+            width: 1px;
+            height: calc(100% + 8rem);
+            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
         }
 
-        .card-content {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        .tapestry-container>div:first-child::after {
+            background: linear-gradient(to bottom, var(--gold), var(--gold), transparent);
         }
 
-        .card-content h3 {
-            font-size: 1.8rem;
+        .tapestry-container>div:last-child::after {
+            height: calc(50% + 4rem);
+            background: linear-gradient(to bottom, transparent, var(--gold));
+        }
+
+        .tapestry-content {
+            text-align: center;
+        }
+
+        .tapestry-content h3 {
+            font-size: 2.5rem;
             color: var(--maroon);
             margin-bottom: 1rem;
         }
 
-        .card-content p {
+        .tapestry-content p {
             color: var(--text);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
         }
 
         .service-button {
-            align-self: flex-start;
-            background: rgba(212, 175, 55, 0.15);
+            display: inline-block;
+            background: transparent;
             color: var(--henna);
-            padding: 0.6rem 1.5rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 100px;
             font-weight: 600;
             text-decoration: none;
-            transition: var(--ios-transition);
-            border: 1px solid rgba(123, 44, 44, 0.2);
+            transition: var(--transition);
+            border: 2px solid var(--gold);
         }
 
         .service-button:hover {
-            background: var(--maroon);
+            background: var(--gold);
             color: white;
+            transform: scale(1.05);
         }
 
-        .about-content {
+        /* Innovated Mulank Calculator Section */
+        #mulank {
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mulank-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1fr;
+            overflow: hidden;
+        }
+
+        .mulank-input-panel {
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .mulank-input-panel h3 {
+            font-size: 2.5rem;
+            color: var(--maroon);
+            margin-bottom: 1rem;
+        }
+
+        .mulank-input-panel p {
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .mulank-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
             align-items: center;
         }
 
-        .about-text h3 {
-            font-size: 2rem;
-            color: var(--maroon);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+        #birthDateInput {
+            padding: 1rem;
+            border: 1px solid rgba(123, 44, 44, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+            width: 100%;
+            max-width: 280px;
             color: var(--text);
         }
 
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+        #mulankCalculateBtn {
+            background: var(--maroon);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 280px;
+            justify-content: center;
         }
 
-        .value-card {
-            background: var(--ios-card);
-            border-radius: var(--ios-radius);
-            padding: 1.8rem;
-            box-shadow: var(--ios-shadow);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            transition: var(--ios-transition);
+        #mulankCalculateBtn:hover {
+            background: var(--gold);
+        }
+
+        .mulank-result-panel {
+            background: var(--henna);
+            color: var(--ivory);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .mulank-result-panel::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            height: 150%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><circle cx="250" cy="250" r="240" stroke="%23d4af37" stroke-opacity="0.2" fill="none"/><circle cx="250" cy="250" r="180" stroke="%23d4af37" stroke-opacity="0.2" fill="none"/><path d="M250,10 L250,490 M10,250 L490,250" stroke="%23d4af37" stroke-opacity="0.2"/><path d="M106,106 L394,394 M106,394 L394,106" stroke="%23d4af37" stroke-opacity="0.2"/></svg>');
+            transform: translate(-50%, -50%);
+            animation: slow-rotate 180s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes slow-rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .mulank-result-wrapper {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: scale(0.8);
+            transition: opacity 0.6s, transform 0.6s;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .value-card.animate {
+        .mulank-result-wrapper.visible {
             opacity: 1;
+            transform: scale(1);
+        }
+
+        .mulank-display-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .mulank-icon {
+            font-size: 3.5rem;
+            color: var(--saffron);
+            text-shadow: 0 0 15px var(--saffron);
+        }
+
+        .mulank-display {
+            font-size: 6rem;
+            font-weight: bold;
+            color: var(--gold);
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+        }
+
+        .mulank-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-top: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            color: rgba(253, 248, 240, 0.9);
+        }
+
+        .mulank-placeholder {
+            position: absolute;
+            z-index: 1;
+            text-align: center;
+            transition: opacity 0.5s;
+        }
+
+        .mulank-placeholder i {
+            font-size: 4rem;
+            color: rgba(212, 175, 55, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .mulank-placeholder p {
+            font-family: 'Playfair Display', serif;
+            color: rgba(253, 248, 240, 0.4);
+        }
+
+        .mulank-result-wrapper.visible+.mulank-placeholder {
+            opacity: 0;
+        }
+
+        /* Sacred Journey Section */
+        #about {
+            padding: 8rem 2rem;
+            position: relative;
+            background-color: var(--space-bg);
+            background-attachment: fixed;
+            overflow: hidden;
+            /* Hide overflow for pseudo-element */
+        }
+
+        /* Animated background pseudo-element */
+        #about::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background-image: var(--space-bg-image);
+            background-size: cover;
+            background-repeat: repeat;
+            animation: pan-background 180s linear infinite;
+            z-index: 0;
+            will-change: transform;
+        }
+
+        @keyframes pan-background {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+
+            50% {
+                transform: translateX(5%) translateY(10%);
+            }
+
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        #about .section-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        #about .section-header h2 {
+            color: var(--ivory);
+        }
+
+        #about .section-header p {
+            color: var(--ivory);
+            opacity: 0.8;
+        }
+
+        #about .section-header h2::after {
+            background: var(--saffron);
+        }
+
+        .chart-journey-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .journey-wheel-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+        }
+
+        .journey-wheel-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><defs><path id="zodiac" d="M250,250 m-215,0 a215,215 0 1,1 430,0 a215,215 0 1,1 -430,0"/></defs><circle cx="250" cy="250" r="248" fill="none" stroke="%23d4af37" stroke-width="0.5" stroke-opacity="0.3"/><circle cx="250" cy="250" r="150" fill="none" stroke="%23d4af37" stroke-width="0.5" stroke-opacity="0.3"/><path d="M250,25 L250,475 M25,250 L475,250 M78,78 L422,422 M78,422 L422,78" stroke="%23d4af37" stroke-width="0.5" stroke-opacity="0.3"/><circle cx="250" cy="250" r="180" fill="rgba(253, 248, 240, 0.05)" stroke="%23d4af37" stroke-width="1" stroke-opacity="0.5"/><text font-family="sans-serif" font-size="20" fill="%23d4af37" opacity="0.4"><textPath xlink:href="%23zodiac" startOffset="5%">&♈; &♉; &♊; &♋; &♌; &♍; &♎; &♏; &♐; &♑; &♒; &♓;</textPath></text><path d="M250 180 L235 250 L250 320 L265 250 Z" fill="%23d4af37" opacity="0.1"/></svg>');
+            transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .journey-wheel-points {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(244, 197, 66, 0.7), 0 0 50px rgba(244, 197, 66, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
+            }
+        }
+
+        .journey-point {
+            position: absolute;
+            width: 20%;
+            height: 20%;
+            max-width: 80px;
+            max-height: 80px;
+            background: var(--card-bg);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.5s, background 0.5s, border-color 0.5s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .journey-point.active {
+            background: var(--gold);
+            border-color: var(--ivory);
+            z-index: 5;
+            animation: pulse-glow 2.5s infinite ease-in-out;
+        }
+
+        .journey-point:not(.active):hover {
+            border-color: var(--saffron);
+        }
+
+        .jp-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            transition: color 0.5s;
+            color: var(--maroon);
+        }
+
+        .jp-label {
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 5px;
+            transition: color 0.5s;
+            color: var(--henna);
+        }
+
+        .journey-point.active .jp-icon,
+        .journey-point.active .jp-label {
+            color: white;
+        }
+
+        .journey-point[data-journey="1"] {
+            top: 2%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .journey-point[data-journey="2"] {
+            top: 50%;
+            right: 2%;
+            transform: translateY(-50%);
+        }
+
+        .journey-point[data-journey="3"] {
+            bottom: 2%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .journey-point[data-journey="4"] {
+            top: 50%;
+            left: 2%;
+            transform: translateY(-50%);
+        }
+
+        .journey-content-panel {
+            background: transparent;
+            text-align: center;
+            position: relative;
+            min-height: 250px;
+        }
+
+        .journey-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out, visibility 0.6s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(20px);
+        }
+
+        .journey-content.active {
+            opacity: 1;
+            visibility: visible;
             transform: translateY(0);
         }
 
-        .value-card:hover {
-            transform: translateY(-5px);
+        /* Apply Samarkan font to all text in the journey content */
+        .journey-content h3,
+        .journey-content p,
+        .journey-content .house-title {
+            font-family: 'Samarkan', sans-serif;
         }
 
-        .value-card i {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 1.2rem;
+        .journey-content h3 {
+            font-size: 3.5rem;
+            color: var(--ivory);
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.5rem;
         }
 
-        .value-card h4 {
-            font-size: 1.4rem;
-            color: var(--maroon);
-            margin-bottom: 0.8rem;
-        }
-
-        .value-card p {
-            color: var(--text);
+        .journey-content p {
+            font-size: 1.8rem;
             line-height: 1.6;
+            color: var(--ivory);
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .journey-content .house-title {
+            font-weight: 400;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            position: relative;
+        }
+
+        .testimonials-bg-pattern {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="p" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23d4af37"/></pattern></defs><rect width="100" height="100%" fill="url(%23p)"/></svg>');
+            opacity: 0.08;
+            z-index: -1;
         }
 
         .testimonials-container {
@@ -568,17 +881,17 @@
         }
 
         .testimonial-card {
-            background: var(--ios-card);
-            border-radius: var(--ios-radius);
+            background: var(--card-bg);
+            border-radius: var(--radius);
             padding: 2.5rem;
-            box-shadow: var(--ios-shadow);
+            box-shadow: var(--shadow);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition);
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(50px);
         }
 
         .testimonial-card.animate {
@@ -586,21 +899,34 @@
             transform: translateY(0);
         }
 
+        .testimonial-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 15px 40px rgba(123, 44, 44, 0.2);
+        }
+
         .testimonial-card::before {
             content: "“";
             position: absolute;
-            top: 20px;
+            top: 10px;
             left: 20px;
-            font-family: Georgia, serif;
-            font-size: 8rem;
-            color: rgba(123, 44, 44, 0.1);
+            font-family: 'Playfair Display', serif;
+            font-size: 9rem;
+            color: rgba(123, 44, 44, 0.08);
             line-height: 1;
             z-index: 0;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover::before {
+            transform: scale(1.1) rotate(-5deg);
         }
 
         .testimonial-content {
             position: relative;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .testimonial-text {
@@ -609,11 +935,14 @@
             color: var(--text);
             margin-bottom: 1.8rem;
             font-style: italic;
+            font-family: 'Playfair Display', serif;
+            flex-grow: 1;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
+            margin-top: auto;
         }
 
         .author-avatar {
@@ -628,10 +957,12 @@
             font-weight: bold;
             font-size: 1.5rem;
             margin-right: 1.2rem;
+            border: 2px solid var(--ivory);
+            flex-shrink: 0;
         }
 
         .author-info h4 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--maroon);
             margin-bottom: 0.3rem;
         }
@@ -642,57 +973,55 @@
             font-size: 0.95rem;
         }
 
+        /* Contact Section */
+        #contact {
+            background: rgba(251, 238, 220, 0.4);
+            border-top: 1px solid rgba(123, 44, 44, 0.1);
+        }
+
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .contact-info {
-            background: var(--ios-card);
-            border-radius: var(--ios-radius);
-            padding: 2.5rem;
-            box-shadow: var(--ios-shadow);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .contact-info.animate {
-            opacity: 1;
-            transform: translateY(0);
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: flex-start;
         }
 
         .contact-info h3 {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             color: var(--maroon);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .contact-item {
             display: flex;
-            margin-bottom: 1.8rem;
+            align-items: center;
+            margin-bottom: 2rem;
         }
 
         .contact-item i {
             font-size: 1.5rem;
             color: var(--gold);
-            width: 50px;
-            height: 50px;
-            background: rgba(212, 175, 55, 0.15);
+            width: 55px;
+            height: 55px;
+            background: var(--card-bg);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 1.2rem;
+            margin-right: 1.5rem;
             flex-shrink: 0;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover i {
+            transform: scale(1.1) rotate(10deg);
+            background: var(--gold);
+            color: white;
         }
 
         .contact-text h4 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--maroon);
             margin-bottom: 0.3rem;
         }
@@ -704,21 +1033,23 @@
 
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.2rem;
+            margin-top: 2.5rem;
         }
 
         .social-link {
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background: rgba(123, 44, 44, 0.1);
+            background: var(--card-bg);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--maroon);
             font-size: 1.2rem;
-            transition: var(--ios-transition);
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
 
         .social-link:hover {
@@ -728,24 +1059,17 @@
         }
 
         .contact-form {
-            background: var(--ios-card);
-            border-radius: var(--ios-radius);
-            padding: 2.5rem;
-            box-shadow: var(--ios-shadow);
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .contact-form.animate {
-            opacity: 1;
-            transform: translateY(0);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .form-group {
             margin-bottom: 1.5rem;
+            position: relative;
         }
 
         .form-group label {
@@ -764,51 +1088,43 @@
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.7);
             font-size: 1rem;
-            transition: var(--ios-transition);
+            transition: var(--transition);
             font-family: 'Inter', sans-serif;
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
         }
 
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            color: var(--text);
-            transition: all 0.3s ease;
         }
 
-        textarea.form-control:hover {
-            font-family: 'Inter', sans-serif;
-            border-color: var(--saffron);
-            box-shadow: 0 0 0 2px rgba(244, 197, 66, 0.2);
-        }
-
+        /* Footer */
         footer {
             background: var(--henna);
             color: var(--ivory);
             padding: 4rem 2rem 2rem;
             text-align: center;
+            position: relative;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @font-face {
-            font-family: 'Samarkan';
-            src: url('fonts/SAMAN___.TTF') format('truetype');
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent);
         }
 
         .footer-logo {
-            font-family: 'Samarkan', cursive;
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             color: var(--gold);
         }
@@ -817,29 +1133,31 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             flex-wrap: wrap;
         }
 
         .footer-links a {
             color: var(--ivory);
             text-decoration: none;
-            transition: var(--ios-transition);
+            transition: var(--transition);
+            opacity: 0.8;
         }
 
         .footer-links a:hover {
             color: var(--gold);
+            opacity: 1;
         }
 
         .copyright {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(253, 248, 240, 0.2);
-            font-size: 0.95rem;
-            opacity: 0.8;
+            margin-top: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(253, 248, 240, 0.15);
+            font-size: 1rem;
+            opacity: 0.7;
         }
 
-        /* Mobile menu */
+        /* Mobile Navigation */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -855,10 +1173,10 @@
             top: 0;
             right: -100%;
             width: 70%;
+            max-width: 320px;
             height: 100vh;
             background: var(--ivory);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -897,7 +1215,6 @@
             cursor: pointer;
         }
 
-        /* Mobile overlay */
         .mobile-nav-overlay {
             display: none;
             position: fixed;
@@ -913,7 +1230,53 @@
             display: block;
         }
 
-        /* Floating animation */
+        /* Custom Alert Modal */
+        .custom-alert-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .custom-alert-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .custom-alert-box {
+            background: var(--ivory);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 400px;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+
+        .custom-alert-overlay.visible .custom-alert-box {
+            transform: scale(1);
+        }
+
+        .custom-alert-box p {
+            font-size: 1.1rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Animation Keyframes */
         @keyframes float {
             0% {
                 transform: translateY(0px);
@@ -928,134 +1291,33 @@
             }
         }
 
-        /* Animation enhancements */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        /* Responsive Media Queries */
+        @media (min-width: 992px) {
+            .chart-journey-container {
+                grid-template-columns: 450px 1fr;
+                gap: 5rem;
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        /* Form field focus animation */
-        .form-control:focus {
-            animation: pulse-border 1.5s infinite;
-        }
-
-        @keyframes pulse-border {
-            0% {
-                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3);
+            .journey-content-panel {
+                text-align: left;
+                min-height: auto;
             }
 
-            70% {
-                box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+            .journey-content p {
+                margin: 0;
             }
         }
 
-        /* Enhanced about section */
-        .about-values {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .about-value-item {
-            background: rgba(251, 238, 220, 0.5);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .about-value-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(123, 44, 44, 0.1);
-        }
-
-        .about-value-item i {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .about-value-item h4 {
-            font-size: 1.3rem;
-            color: var(--maroon);
-            margin-bottom: 0.8rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .about-value-item p {
-            color: var(--text);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        /* New mobile-friendly about section */
-        .mobile-about {
-            display: none;
-        }
-
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
+        @media (min-width: 768px) {
+            .mulank-container {
+                grid-template-columns: 1fr 1fr;
             }
+        }
 
-            .about-content,
+        @media (max-width: 991px) {
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
-            }
-
-            .hero-text h1 {
-                font-size: 3.5rem;
-                min-height: 9rem;
-            }
-
-            .hero-image {
-                order: -1;
-            }
-
-            /* About section mobile layout */
-            .about-content {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .about-image {
-                order: -1;
-                margin-bottom: 2.5rem;
-            }
-
-            .about-text h3 {
-                font-size: 1.8rem;
-                text-align: center;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .value-card {
-                text-align: center;
-            }
-
-            .value-card i {
-                margin-left: auto;
-                margin-right: auto;
             }
         }
 
@@ -1064,7 +1326,7 @@
                 padding: 1rem 1.5rem;
             }
 
-            nav {
+            nav.desktop-nav {
                 display: none;
             }
 
@@ -1073,108 +1335,42 @@
             }
 
             .hero-text h1 {
-                font-size: 2.8rem;
-                min-height: 7rem;
+                font-size: 3rem;
             }
 
             .section-header h2 {
-                font-size: 2.2rem;
-            }
-
-            .om-symbol {
-                font-size: 6rem;
-            }
-
-            /* Adjust card padding on mobile */
-            .hero-card {
-                padding: 1.5rem;
-            }
-
-            .card-title {
-                font-size: 1.5rem;
-            }
-
-            .card-content p {
-                font-size: 1rem;
-            }
-
-            .signature {
-                font-size: 1.5rem;
-            }
-
-            /* Mobile specific adjustments */
-            .services-grid,
-            .testimonials-container {
-                grid-template-columns: 1fr;
+                font-size: 2.5rem;
             }
 
             .section {
                 padding: 4rem 1.5rem;
             }
 
-            .section-header {
-                margin-bottom: 2.5rem;
+            .service-tapestry-item::before,
+            .service-tapestry-item::after {
+                display: none;
             }
 
-            .section-header p {
-                font-size: 1.1rem;
+            #about {
+                background-attachment: scroll;
             }
 
-            .contact-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
+            .chart-journey-container {
+                gap: 2rem;
             }
 
-            .contact-item i {
-                margin-right: 0;
-                margin-bottom: 0.8rem;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .mobile-nav {
-                width: 80%;
-            }
-
-            /* Form adjustments */
-            .contact-form {
-                padding: 1.5rem;
-            }
-
-            .form-group label {
-                font-size: 1rem;
-            }
-
-            textarea.form-control {
-                font-size: 1rem;
-                min-height: 120px;
-            }
-
-            .profile-pic {
-                width: 150px;
-                height: 150px;
+            .journey-wheel-wrapper {
+                margin-bottom: 2rem;
             }
         }
 
         @media (max-width: 480px) {
             .hero-text h1 {
-                font-size: 2.2rem;
-                min-height: 6rem;
+                font-size: 2.5rem;
             }
 
-            .om-symbol {
-                font-size: 4rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-text p {
-                font-size: 1.1rem;
+            .hero-text .byline {
+                font-size: 1.2rem;
             }
 
             .ios-button {
@@ -1182,49 +1378,57 @@
                 font-size: 1rem;
             }
 
-            .mobile-nav {
-                width: 85%;
-                padding: 5rem 1.5rem 2rem;
-            }
-
             .section-header h2 {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
 
-            .section-header h2::after {
-                width: 60px;
-                height: 3px;
+            .contact-form {
+                padding: 2rem;
             }
 
-            .about-text h3 {
-                font-size: 1.6rem;
+            .service-tapestry-item {
+                padding: 2rem;
             }
 
-            .value-card h4 {
-                font-size: 1.2rem;
+            .journey-content-panel {
+                min-height: 280px;
             }
 
-            .profile-pic {
-                width: 130px;
-                height: 130px;
+            .journey-content h3 {
+                font-size: 2.8rem;
+            }
+
+            .journey-content p {
+                font-size: 1.5rem;
+            }
+
+            .jp-icon {
+                font-size: 1.5rem;
+            }
+
+            .jp-label {
+                font-size: 0.6rem;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Preloader -->
     <div class="loader" id="loader">
         <div class="om-symbol">ॐ</div>
     </div>
 
+    <!-- Header -->
     <header id="header">
         <div class="logo">
             <i class="fas fa-om logo-icon"></i>
-            Abhishek Gupta
+            theastronox
         </div>
         <nav class="desktop-nav">
             <a href="#home" class="active">Home</a>
             <a href="#services">Services</a>
+            <a href="#mulank">Mulank</a>
             <a href="#about">About</a>
             <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
@@ -1234,446 +1438,285 @@
         </button>
     </header>
 
+    <!-- Mobile Navigation -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
-
-    <div class="mobile-nav" id="mobileNav">
+    <nav class="mobile-nav" id="mobileNav">
         <button class="close-menu" id="closeMenu">
             <i class="fas fa-times"></i>
         </button>
         <a href="#home" class="active">Home</a>
         <a href="#services">Services</a>
+        <a href="#mulank">Mulank</a>
         <a href="#about">About</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>
-    </div>
+    </nav>
 
-    <section class="hero" id="home">
-        <div class="pattern-bg"></div>
-        <div class="hero-content">
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
             <div class="hero-text">
                 <div class="profile-pic">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                        alt="Abhishek Gupta">
+                        alt="Abhishek Gupta"
+                        onerror="this.onerror=null;this.src='https://placehold.co/180x180/7b2c2c/fdf8f0?text=AG';">
                 </div>
-
                 <h1>
-                    Vedic Wisdom
+                    Unlock the Secrets of Your Karma
                     <br>
-                    <span class="typed-text-container"></span>
+                    – Here & Now with the Astronox –
                 </h1>
-                <p>An experienced Vedic Astrologer blending ancient wisdom with contemporary understanding to guide your
-                    life's journey.</p>
+                <p class="byline">by Abhishek Gupta</p>
                 <a href="#services" class="ios-button">
-                    <i class="fas fa-star-and-crescent" style="margin-right: 10px;"></i>
+                    <i class="fas fa-star-and-crescent icon"></i>
                     Discover Your Path
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="services">
-        <div class="section-header">
-            <h2>My Services</h2>
-            <p>Personalized astrological guidance to illuminate your life path and decisions</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="card-icon">
-                    <i class="fas fa-baby"></i>
+        <!-- Services Section -->
+        <section class="section" id="services">
+            <div class="section-header">
+                <h2>The Tapestry of Fate</h2>
+                <p>Unveiling the sacred services woven into the cosmic design of your life.</p>
+            </div>
+            <div class="tapestry-container">
+                <div class="service-tapestry-item">
+                    <div class="tapestry-content">
+                        <h3>Natal Chart Reading</h3>
+                        <p>A comprehensive analysis of your birth chart to reveal your life's purpose, strengths, and
+                            challenges, as inscribed by the cosmos at your birth.</p>
+                        <a href="#contact" class="service-button">Book Now</a>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h3>Natal Chart Reading</h3>
-                    <p>Comprehensive analysis of your birth chart to understand your personality, strengths, challenges,
-                        and life purpose based on planetary positions at your birth.</p>
-                    <a href="#contact" class="service-button">Book Now</a>
+                <div class="service-tapestry-item">
+                    <div class="tapestry-content">
+                        <h3>Relationship Synastry</h3>
+                        <p>Unveil the karmic threads and cosmic dynamics in your relationships through the sacred art of
+                            synastry and composite chart analysis.</p>
+                        <a href="#contact" class="service-button">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-tapestry-item">
+                    <div class="tapestry-content">
+                        <h3>Varshaphala Forecast</h3>
+                        <p>Receive detailed predictions and divine guidance for the year ahead, based on your personal
+                            transits and planetary cycles (Varshaphala).</p>
+                        <a href="#contact" class="service-button">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-tapestry-item">
+                    <div class="tapestry-content">
+                        <h3>Career & Dharma Path</h3>
+                        <p>Identify your professional strengths, optimal career paths aligned with your Dharma, and
+                            auspicious timing for pivotal decisions.</p>
+                        <a href="#contact" class="service-button">Book Now</a>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="service-card">
-                <div class="card-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <div class="card-content">
-                    <h3>Relationship Analysis</h3>
-                    <p>Explore compatibility and dynamics in relationships through synastry and composite charts for
-                        romantic, family, or business partnerships.</p>
-                    <a href="#contact" class="service-button">Book Now</a>
-                </div>
+        <!-- Mulank Calculator Section -->
+        <section class="section" id="mulank">
+            <div class="section-header">
+                <h2>Discover Your Mulank</h2>
+                <p>Your birth date holds a key to your core personality and life path.</p>
             </div>
-
-            <div class="service-card">
-                <div class="card-icon">
-                    <i class="fas fa-calendar-alt"></i>
+            <div class="mulank-container">
+                <div class="mulank-input-panel">
+                    <h3>Your Life Path Number</h3>
+                    <p>Enter your birth date to calculate your Mulank, the primary number that defines your character
+                        and spiritual vibration.</p>
+                    <div class="mulank-input-group">
+                        <input type="date" id="birthDateInput" class="form-control">
+                        <button id="mulankCalculateBtn">
+                            <i class="fas fa-atom"></i>
+                            <span>Reveal My Mulank</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h3>Yearly Forecast</h3>
-                    <p>Detailed predictions and guidance for the coming year based on your personal transits and
-                        planetary cycles (Varshaphala).</p>
-                    <a href="#contact" class="service-button">Book Now</a>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="card-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="card-content">
-                    <h3>Career Guidance</h3>
-                    <p>Identify your professional strengths, optimal career paths, and timing for important career
-                        decisions based on your astrological chart.</p>
-                    <a href="#contact" class="service-button">Book Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="about" style="background: rgba(251, 238, 220, 0.3);">
-        <div class="section-header">
-            <h2>About Me</h2>
-            <p>My journey from the sacred ghats of Varanasi to the world of Vedic astrology</p>
-        </div>
-
-        <div class="desktop-about">
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Blending Ancient Wisdom with Modern Insight</h3>
-                    <p>Born in the spiritual heart of Varanasi, I grew up surrounded by ancient temples, Vedic chants,
-                        and
-                        the timeless wisdom of the Ganges. These experiences ignited my passion for understanding the
-                        cosmic
-                        patterns that guide our lives.</p>
-                    <p>With over 15 years of dedicated study in Jyotish (Vedic astrology) under renowned gurus, I've
-                        developed a unique approach that honors traditional Vedic principles while addressing
-                        contemporary
-                        life challenges. My readings help clients navigate life's complexities with clarity and purpose.
-                    </p>
-
-                    <div class="about-values">
-                        <div class="about-value-item">
-                            <i class="fas fa-book"></i>
-                            <h4>Wisdom</h4>
-                            <p>Drawing from centuries of Vedic knowledge to provide insights that stand the test of
-                                time.</p>
+                <div class="mulank-result-panel">
+                    <div class="mulank-result-wrapper" id="mulankResultWrapper">
+                        <div class="mulank-display-wrapper">
+                            <i class="mulank-icon fas"></i>
+                            <div class="mulank-display"></div>
                         </div>
-                        <div class="about-value-item">
-                            <i class="fas fa-hands"></i>
-                            <h4>Compassion</h4>
-                            <p>Approaching each consultation with empathy and understanding for your unique journey.</p>
+                        <div class="mulank-description"></div>
+                    </div>
+                    <div class="mulank-placeholder" id="mulankPlaceholder">
+                        <i class="fas fa-star-of-life"></i>
+                        <p>Your cosmic number awaits</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About/Journey Section -->
+        <section class="section" id="about">
+            <div class="section-header">
+                <h2>My Sacred Journey</h2>
+                <p>A life mapped by the stars. Click a house to trace the celestial path.</p>
+            </div>
+            <div class="chart-journey-container">
+                <div class="journey-wheel-wrapper">
+                    <div class="journey-wheel-bg" id="journey-wheel-bg"></div>
+                    <div class="journey-wheel-points" id="journey-wheel-points">
+                        <div class="journey-point" data-journey="1">
+                            <i class="fas fa-child jp-icon"></i>
+                            <span class="jp-label">The Self</span>
                         </div>
-                        <div class="about-value-item">
-                            <i class="fas fa-scale-balanced"></i>
-                            <h4>Integrity</h4>
-                            <p>Providing honest guidance without fear or favor to help you make empowered decisions.</p>
+                        <div class="journey-point" data-journey="2">
+                            <i class="fas fa-book-reader jp-icon"></i>
+                            <span class="jp-label">The Guru</span>
                         </div>
-                        <div class="about-value-item">
-                            <i class="fas fa-eye"></i>
-                            <h4>Insight</h4>
-                            <p>Revealing patterns and possibilities in your chart that illuminate your life path.</p>
+                        <div class="journey-point" data-journey="3">
+                            <i class="fas fa-briefcase jp-icon"></i>
+                            <span class="jp-label">The Work</span>
+                        </div>
+                        <div class="journey-point" data-journey="4">
+                            <i class="fas fa-hands-holding-child jp-icon"></i>
+                            <span class="jp-label">The Service</span>
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <div class="hero-card" style="transform: none;">
-                        <div class="card-title">
-                            <i class="fas fa-award"></i>
-                            Astrological Expertise
+                <div class="journey-content-panel" id="journey-content-panel">
+                    <!-- Content will be injected here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section" id="testimonials">
+            <div class="testimonials-bg-pattern"></div>
+            <div class="section-header">
+                <h2>Echoes of Gratitude</h2>
+                <p>What clients say about their astrological consultations</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-card" style="transition-delay: 0s;">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Abhishek's reading was incredibly insightful. He didn't just tell
+                            me what my chart said, he helped me understand how to work with my planetary energies. His
+                            guidance transformed my career path."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">RK</div>
+                            <div class="author-info">
+                                <h4>Rajesh Kapoor</h4>
+                                <p>Mumbai, India</p>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <div
-                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                                <div>
-                                    <h4 style="font-size: 1.2rem; color: var(--maroon); margin-bottom: 0.8rem;">
-                                        Specializations</h4>
-                                    <ul style="list-style: none; padding-left: 0;">
-                                        <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                            <i class="fas fa-circle"
-                                                style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                            Vedic Astrology
-                                        </li>
-                                        <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                            <i class="fas fa-circle"
-                                                style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                            Muhurta (Electional)
-                                        </li>
-                                        <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                            <i class="fas fa-circle"
-                                                style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                            Prashna (Horary)
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 style="font-size: 1.2rem; color: var(--maroon); margin-bottom: 0.8rem;">
-                                        Qualifications</h4>
-                                    <ul style="list-style: none; padding-left: 0;">
-                                        <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                            <i class="fas fa-circle"
-                                                style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                            Jyotish Visharad (Master)
-                                        </li>
-                                        <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                            <i class="fas fa-circle"
-                                                style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                            15+ Years Experience
-                                        </li>
-                                        <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                            <i class="fas fa-circle"
-                                                style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                            Vedic Research Scholar
-                                        </li>
-                                    </ul>
-                                </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" style="transition-delay: 0.1s;">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"The relationship analysis was spot on. Abhishek explained the
+                            dynamics between me and my partner with such clarity. We've implemented his suggestions and
+                            our relationship has improved dramatically."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">PM</div>
+                            <div class="author-info">
+                                <h4>Priya Mehta</h4>
+                                <p>Delhi, India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" style="transition-delay: 0.2s;">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Abhishek's yearly forecast helped me navigate a challenging period
+                            with confidence. His predictions were accurate and his practical advice was invaluable. I
+                            consult him every year now."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AK</div>
+                            <div class="author-info">
+                                <h4>Anil Kumar</h4>
+                                <p>Bangalore, India</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="mobile-about">
-            <div class="mobile-about-content">
-                <div class="mobile-about-header">
-                    <h3>Blending Ancient Wisdom with Modern Insight</h3>
-                    <p>With over 15 years of dedicated study in Jyotish (Vedic astrology), I help clients navigate
-                        life's complexities with clarity and purpose.</p>
-                </div>
-
-                <div class="mobile-about-values">
-                    <div class="mobile-value-card">
-                        <i class="fas fa-book"></i>
-                        <h4>Wisdom</h4>
-                        <p>Drawing from centuries of Vedic knowledge to provide timeless insights.</p>
-                    </div>
-
-                    <div class="mobile-value-card">
-                        <i class="fas fa-hands"></i>
-                        <h4>Compassion</h4>
-                        <p>Approaching each consultation with empathy for your unique journey.</p>
-                    </div>
-
-                    <div class="mobile-value-card">
-                        <i class="fas fa-scale-balanced"></i>
-                        <h4>Integrity</h4>
-                        <p>Providing honest guidance to help you make empowered decisions.</p>
-                    </div>
-
-                    <div class="mobile-value-card">
-                        <i class="fas fa-eye"></i>
-                        <h4>Insight</h4>
-                        <p>Revealing patterns that illuminate your life path.</p>
-                    </div>
-                </div>
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <div class="section-header">
+                <h2>Connect with the Cosmos</h2>
+                <p>Let's explore your cosmic blueprint together</p>
             </div>
-
-            <div class="mobile-about-content">
-                <div class="card-title">
-                    <i class="fas fa-award"></i>
-                    Astrological Expertise
-                </div>
-                <div class="card-content">
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                        <div>
-                            <h4 style="font-size: 1.2rem; color: var(--maroon); margin-bottom: 0.8rem;">
-                                Specializations</h4>
-                            <ul style="list-style: none; padding-left: 0;">
-                                <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                    <i class="fas fa-circle"
-                                        style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                    Vedic Astrology
-                                </li>
-                                <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                    <i class="fas fa-circle"
-                                        style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                    Muhurta (Electional)
-                                </li>
-                                <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                    <i class="fas fa-circle"
-                                        style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                    Prashna (Horary)
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="font-size: 1.2rem; color: var(--maroon); margin-bottom: 0.8rem;">
-                                Qualifications</h4>
-                            <ul style="list-style: none; padding-left: 0;">
-                                <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                    <i class="fas fa-circle"
-                                        style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                    Jyotish Visharad (Master)
-                                </li>
-                                <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                    <i class="fas fa-circle"
-                                        style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                    15+ Years Experience
-                                </li>
-                                <li style="margin-bottom: 0.7rem; display: flex; align-items: center;">
-                                    <i class="fas fa-circle"
-                                        style="color: var(--gold); font-size: 0.6rem; margin-right: 10px;"></i>
-                                    Vedic Research Scholar
-                                </li>
-                            </ul>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>Varanasi, Uttar Pradesh, India</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="testimonials">
-        <div class="section-header">
-            <h2>Client Testimonials</h2>
-            <p>What clients say about their astrological consultations</p>
-        </div>
-        <div class="testimonials-container">
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <div class="testimonial-text">
-                        "Abhishek's reading was incredibly insightful. He didn't just tell me what my chart said, he
-                        helped me understand how to work with my planetary energies. His guidance transformed my career
-                        path."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">RK</div>
-                        <div class="author-info">
-                            <h4>Rajesh Kapoor</h4>
-                            <p>Mumbai, India</p>
+                    <div class="contact-item"><i class="fas fa-envelope"></i>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>abhishek@vedicinsights.com</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <div class="testimonial-text">
-                        "The relationship analysis was spot on. Abhishek explained the dynamics between me and my
-                        partner with such clarity. We've implemented his suggestions and our relationship has improved
-                        dramatically."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">PM</div>
-                        <div class="author-info">
-                            <h4>Priya Mehta</h4>
-                            <p>Delhi, India</p>
+                    <div class="contact-item"><i class="fas fa-phone-alt"></i>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+91 98765 43210</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <div class="testimonial-text">
-                        "Abhishek's yearly forecast helped me navigate a challenging period with confidence. His
-                        predictions were accurate and his practical advice was invaluable. I consult him every year
-                        now."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AK</div>
-                        <div class="author-info">
-                            <h4>Anil Kumar</h4>
-                            <p>Bangalore, India</p>
+                    <div class="contact-item"><i class="fas fa-clock"></i>
+                        <div class="contact-text">
+                            <h4>Consultation Hours</h4>
+                            <p>Mon-Sat: 9:00 AM - 6:00 PM IST<br>Sunday: Closed</p>
                         </div>
                     </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="consultationForm">
+                        <div class="form-group"><label for="name">Full Name</label><input type="text" id="name"
+                                class="form-control" placeholder="Enter your name" required></div>
+                        <div class="form-group"><label for="email">Email Address</label><input type="email" id="email"
+                                class="form-control" placeholder="Enter your email" required></div>
+                        <div class="form-group"><label for="service">Service Interested In</label><select id="service"
+                                class="form-control" required>
+                                <option value="">Select a service</option>
+                                <option value="natal">Natal Chart Reading</option>
+                                <option value="relationship">Relationship Analysis</option>
+                                <option value="yearly">Yearly Forecast</option>
+                                <option value="career">Career Guidance</option>
+                            </select></div>
+                        <div class="form-group"><label for="birthdate">Birth Date & Time</label><input type="text"
+                                id="birthdate" class="form-control" placeholder="DD/MM/YYYY, HH:MM AM/PM" required>
+                        </div>
+                        <div class="form-group"><label for="birthplace">Birth Place</label><input type="text"
+                                id="birthplace" class="form-control" placeholder="City, Country" required></div>
+                        <div class="form-group"><label for="message">Your Questions</label><textarea id="message"
+                                class="form-control" placeholder="Specific areas you'd like guidance on"
+                                rows="4"></textarea></div>
+                        <button type="submit" class="ios-button" style="width: 100%;"><i class="fas fa-paper-plane"
+                                style="margin-right: 10px;"></i>Request Consultation</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="section" id="contact" style="background: rgba(251, 238, 220, 0.3);">
-        <div class="section-header">
-            <h2>Get In Touch</h2>
-            <p>Let's explore your cosmic blueprint together</p>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Contact Information</h3>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="contact-text">
-                        <h4>Location</h4>
-                        <p>Varanasi, Uttar Pradesh, India</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div class="contact-text">
-                        <h4>Email</h4>
-                        <p>abhishek@vedicinsights.com</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <div class="contact-text">
-                        <h4>Phone</h4>
-                        <p>+91 98765 43210</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <i class="fas fa-clock"></i>
-                    <div class="contact-text">
-                        <h4>Consultation Hours</h4>
-                        <p>Mon-Sat: 9:00 AM - 6:00 PM IST<br>Sunday: Closed</p>
-                    </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-
-            <div class="contact-form">
-                <form id="consultationForm">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Interested In</label>
-                        <select id="service" class="form-control" required>
-                            <option value="">Select a service</option>
-                            <option value="natal">Natal Chart Reading</option>
-                            <option value="relationship">Relationship Analysis</option>
-                            <option value="yearly">Yearly Forecast</option>
-                            <option value="career">Career Guidance</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="birthdate">Birth Date & Time</label>
-                        <input type="text" id="birthdate" class="form-control" placeholder="DD/MM/YYYY, HH:MM AM/PM"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <label for="birthplace">Birth Place</label>
-                        <input type="text" id="birthplace" class="form-control" placeholder="City, Country" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Your Questions</label>
-                        <textarea id="message" class="form-control" placeholder="Specific areas you'd like guidance on"
-                            rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="ios-button" style="width: 100%;">
-                        <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
-                        Request Consultation
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">Abhishek Gupta</div>
+            <div class="footer-logo">theastronox</div>
             <div class="footer-links">
                 <a href="#home">Home</a>
                 <a href="#services">Services</a>
+                <a href="#mulank">Mulank</a>
                 <a href="#about">About</a>
                 <a href="#testimonials">Testimonials</a>
                 <a href="#contact">Contact</a>
@@ -1684,196 +1727,278 @@
         </div>
     </footer>
 
+    <!-- Custom Alert Modal -->
+    <div id="customAlert" class="custom-alert-overlay">
+        <div class="custom-alert-box">
+            <p id="customAlertMessage"></p>
+            <button id="customAlertClose" class="ios-button"
+                style="padding: 0.8rem 1.8rem; font-size: 1rem; margin-top: 1.5rem;">OK</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactivity -->
     <script>
-    // --- Smooth Scrolling using Lenis ---
-    const lenis = new Lenis({
-        lerp: 0.1,
-        wheelMultiplier: 1.1,
-        infinite: false,
-        gestureOrientation: 'vertical',
-        normalizeWheel: true,
-        smoothTouch: false
-    });
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Smooth Scrolling using Lenis ---
+            const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1 });
+            function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+            requestAnimationFrame(raf);
 
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+            // --- Custom Alert Modal ---
+            const customAlert = document.getElementById('customAlert');
+            const customAlertMessage = document.getElementById('customAlertMessage');
+            const customAlertClose = document.getElementById('customAlertClose');
 
-    // --- Mobile Menu Logic ---
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeMenu = document.getElementById('closeMenu');
-    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-
-    const openMobileMenu = () => {
-        mobileNav.classList.add('active');
-        mobileNavOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    };
-
-    const closeMobileMenu = () => {
-        mobileNav.classList.remove('active');
-        mobileNavOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    };
-
-    mobileMenuBtn.addEventListener('click', openMobileMenu);
-    closeMenu.addEventListener('click', closeMobileMenu);
-    mobileNavOverlay.addEventListener('click', closeMobileMenu);
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
-
-    // --- Typing Animation ---
-    const typingAnimation = () => {
-        const typedTextEl = document.querySelector(".typed-text-container");
-        if (!typedTextEl) return;
-
-        const textArray = ["Decoding the Timeless.", "Journey Through the Vedas."];
-        const typingDelay = 120;
-        const erasingDelay = 80;
-        const newTextDelay = 2000;
-        let textArrayIndex = 0;
-        let charIndex = 0;
-
-        function type() {
-            if (charIndex < textArray[textArrayIndex].length) {
-                typedTextEl.textContent += textArray[textArrayIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(type, typingDelay);
-            } else {
-                setTimeout(erase, newTextDelay);
+            function showCustomAlert(message) {
+                if (!customAlert || !customAlertMessage) return;
+                customAlertMessage.textContent = message;
+                customAlert.classList.add('visible');
             }
-        }
 
-        function erase() {
-            if (charIndex > 0) {
-                typedTextEl.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(erase, erasingDelay);
-            } else {
-                textArrayIndex = (textArrayIndex + 1) % textArray.length;
-                setTimeout(type, typingDelay + 300);
+            if (customAlertClose) {
+                customAlertClose.addEventListener('click', () => {
+                    customAlert.classList.remove('visible');
+                });
             }
-        }
 
-        setTimeout(type, newTextDelay - 500);
-    };
+            // --- Mobile Menu Logic ---
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            const closeMenu = document.getElementById('closeMenu');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            const openMobileMenu = () => { mobileNav.classList.add('active'); mobileNavOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; };
+            const closeMobileMenu = () => { mobileNav.classList.remove('active'); mobileNavOverlay.classList.remove('active'); document.body.style.overflow = ''; };
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+            closeMenu.addEventListener('click', closeMobileMenu);
+            mobileNavOverlay.addEventListener('click', closeMobileMenu);
+            mobileNavLinks.forEach(link => { link.addEventListener('click', closeMobileMenu); });
 
-    // --- Page Load Effects ---
-    window.addEventListener('load', function () {
-        const loader = document.getElementById('loader');
-        setTimeout(function () {
-            loader.classList.add('loader-hidden');
-            typingAnimation();
-        }, 1500);
-    });
-
-    // --- Anchor Scroll with Lenis ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (!targetId || targetId === '#') return;
-            lenis.scrollTo(targetId, {
-                offset: -80,
-                duration: 1.5
+            // --- Page Load Effects ---
+            const loader = document.getElementById('loader');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    loader.classList.add('loader-hidden');
+                    document.body.style.overflow = '';
+                }, 500); // Short delay after content loads
             });
-        });
-    });
+            document.body.style.overflow = 'hidden'; // Hide scrollbars until loaded
 
-    // --- Header Scroll Styling ---
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', function () {
-        header.classList.toggle('scrolled-header', window.scrollY > 50);
-    });
 
-    // --- Form Submission ---
-    document.getElementById('consultationForm').addEventListener('submit', async function (e) {
-        e.preventDefault();
+            // --- Anchor Scroll with Lenis ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (!targetId || targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        lenis.scrollTo(targetElement, { offset: -80, duration: 2 });
+                    }
+                });
+            });
 
-        const submitButton = this.querySelector('button[type="submit"]');
-        const originalButtonContent = submitButton.innerHTML;
+            // --- Header Scroll Styling ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => { header.classList.toggle('scrolled-header', window.scrollY > 50); });
 
-        submitButton.disabled = true;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i>Sending...';
+            // --- Form Submission ---
+            const consultationForm = document.getElementById('consultationForm');
+            if (consultationForm) {
+                consultationForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const submitButton = this.querySelector('button[type="submit"]');
+                    const originalButtonContent = submitButton.innerHTML;
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i>Sending...';
 
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            service: document.getElementById('service').value,
-            birthdate: document.getElementById('birthdate').value,
-            birthplace: document.getElementById('birthplace').value,
-            message: document.getElementById('message').value
-        };
+                    // This is a demonstration. In a real application, you would send the form data to a server.
+                    setTimeout(() => {
+                        showCustomAlert('Consultation request sent successfully! This is a demo.');
+                        this.reset();
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonContent;
+                    }, 2000);
+                });
+            }
 
-        try {
-            const response = await fetch('https://abhiguptaportfolio.onrender.com/submit-consultation', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
+            // --- Scroll-triggered Animations ---
+            const animateObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, rootMargin: '0px', threshold: 0.15 });
+
+            const animateElements = document.querySelectorAll('.service-tapestry-item, .testimonial-card');
+            animateElements.forEach(el => { animateObserver.observe(el); });
+
+            // --- Active Nav Link on Scroll ---
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { root: null, rootMargin: '-40% 0px -60% 0px', threshold: 0 });
+            sections.forEach(section => { navObserver.observe(section); });
+
+
+            // --- Sacred Journey Interactive Chart ---
+            const journeyPoints = document.querySelectorAll('.journey-point');
+            const journeyContentPanel = document.getElementById('journey-content-panel');
+            const wheelBG = document.getElementById('journey-wheel-bg');
+            const wheelPointsContainer = document.getElementById('journey-wheel-points');
+
+            const journeyRotations = { 1: 0, 2: -90, 3: -180, 4: 90 };
+
+            const journeyData = {
+                1: {
+                    house: "The Ascendant: A Calling in Kashi",
+                    title: "The Awakening",
+                    text: "My path was illuminated in Varanasi, the eternal city. Amidst ancient chants by the Ganges, the cosmos first whispered its secrets to me, setting my soul's compass towards the science of light, Jyotish."
                 },
-                body: JSON.stringify(formData)
+                2: {
+                    house: "The Ninth House: The Guru's Grace",
+                    title: "The Study",
+                    text: "For fifteen years, I sat at the feet of my Gurus. This was no mere education, but a profound sadhana—an immersion into the ocean of Vedic texts, learning to map the heavens and translate the will of the grahas."
+                },
+                3: {
+                    house: "The Tenth House: The Karma of Counsel",
+                    title: "The Practice",
+                    text: "Knowledge finds its purpose in action. I began my practice to serve as a karmic guide, applying sacred principles to the real-world questions of career, purpose, and destiny that shape our modern lives."
+                },
+                4: {
+                    house: "The Eleventh House: A Service to the Collective",
+                    title: "The Mission",
+                    text: "Today, my work is a humble offering to the collective. To act as a clear channel for cosmic wisdom, helping others see their own light and navigate their life's journey with clarity, empowerment, and grace."
+                }
+            };
+
+            function updateJourneyContent(journeyId) {
+                const data = journeyData[journeyId];
+                if (!data || !wheelBG || !wheelPointsContainer) return;
+
+                const rotation = journeyRotations[journeyId] || 0;
+
+                wheelBG.style.transform = `rotate(${rotation}deg)`;
+                wheelPointsContainer.style.transform = `rotate(${rotation}deg)`;
+
+                journeyPoints.forEach(p => {
+                    const currentTransform = p.dataset.baseTransform || '';
+                    p.style.transform = `${currentTransform} rotate(${-rotation}deg)`;
+                });
+
+                journeyContentPanel.innerHTML = '';
+
+                const newContentHTML = `
+                <div class="journey-content" id="journey-content-${journeyId}">
+                    <div class="house-title">${data.house}</div>
+                    <h3>${data.title}</h3>
+                    <p>${data.text}</p>
+                </div>
+            `;
+
+                journeyContentPanel.innerHTML = newContentHTML;
+
+                setTimeout(() => {
+                    const newContent = document.getElementById(`journey-content-${journeyId}`);
+                    if (newContent) {
+                        newContent.classList.add('active');
+                    }
+                }, 50);
+            }
+
+            journeyPoints.forEach(point => {
+                // Set initial position based on data attribute and store it
+                let baseTransform = '';
+                if (point.dataset.journey === "1" || point.dataset.journey === "3") {
+                    baseTransform = 'translateX(-50%)';
+                } else {
+                    baseTransform = 'translateY(-50%)';
+                }
+                point.style.transform = baseTransform;
+                point.dataset.baseTransform = baseTransform;
+
+
+                point.addEventListener('click', () => {
+                    const journeyId = point.dataset.journey;
+                    journeyPoints.forEach(p => p.classList.remove('active'));
+                    point.classList.add('active');
+                    updateJourneyContent(journeyId);
+                });
             });
 
-            const result = await response.json();
-            console.log('✅ Server response:', result);
-            alert(result.message);
-
-            if (response.ok) {
-                this.reset();
+            // Initialize the journey section
+            if (journeyPoints.length > 0) {
+                journeyPoints[0].classList.add('active');
+                updateJourneyContent(journeyPoints[0].dataset.journey);
             }
-        } catch (error) {
-            console.error('❌ Error submitting form:', error);
-            alert('An error occurred while connecting to the server. Please try again.');
-        } finally {
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalButtonContent;
-        }
-    });
 
-    // --- Scroll Animations ---
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
+            // --- Mulank Calculator Script ---
+            const mulankCalculateBtn = document.getElementById('mulankCalculateBtn');
+            const birthDateInput = document.getElementById('birthDateInput');
+            const mulankResultWrapper = document.getElementById('mulankResultWrapper');
+            const mulankPlaceholder = document.getElementById('mulankPlaceholder');
 
-    const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
+            const mulankDescriptions = {
+                1: "<strong>The Sun:</strong> A natural leader, you are ambitious, courageous, and independent. You are destined to carve your own path and inspire others.",
+                2: "<strong>The Moon:</strong> You are intuitive, diplomatic, and gentle. Your strength lies in cooperation, partnership, and your deep emotional sensitivity.",
+                3: "<strong>Jupiter:</strong> Creative, optimistic, and expressive, you have a gift for communication and a joyful approach to life. You inspire and uplift those around you.",
+                4: "<strong>Rahu:</strong> You are practical, hard-working, and disciplined. Your determination allows you to build lasting structures and achieve stability.",
+                5: "<strong>Mercury:</strong> Adaptable, resourceful, and a lover of freedom. You are a quick-thinker who thrives on change, communication, and new experiences.",
+                6: "<strong>Venus:</strong> You are harmonious, responsible, and a beacon of love and compassion. You find fulfillment in nurturing your family and community.",
+                7: "<strong>Ketu:</strong> A spiritual seeker and analyst, you possess a deep, introspective mind. You are drawn to uncovering the hidden truths of the universe.",
+                8: "<strong>Saturn:</strong> Ambitious and powerful, you have strong executive skills and the ability to achieve great material success through discipline and perseverance.",
+                9: "<strong>Mars:</strong> You are a compassionate humanitarian with a strong sense of justice. Your courage and selflessness drive you to fight for the greater good."
+            };
+            const mulankIcons = {
+                1: "fa-sun", 2: "fa-moon", 3: "fa-meteor", 4: "fa-dragon", 5: "fa-feather-alt",
+                6: "fa-heart", 7: "fa-yin-yang", 8: "fa-gem", 9: "fa-fist-raised"
+            };
+
+            if (mulankCalculateBtn) {
+                mulankCalculateBtn.addEventListener('click', () => {
+                    const dateValue = birthDateInput.value;
+                    if (!dateValue) {
+                        showCustomAlert("Please select your birth date.");
+                        return;
+                    }
+                    // Use getUTCDate() to avoid timezone issues
+                    const day = new Date(dateValue).getUTCDate();
+                    let mulank = day;
+                    // Calculate the single-digit sum
+                    while (mulank > 9) {
+                        mulank = String(mulank).split('').reduce((sum, digit) => sum + Number(digit), 0);
+                    }
+                    const displayDiv = mulankResultWrapper.querySelector('.mulank-display');
+                    const descriptionDiv = mulankResultWrapper.querySelector('.mulank-description');
+                    const iconDiv = mulankResultWrapper.querySelector('.mulank-icon');
+
+                    // Update the content
+                    displayDiv.textContent = mulank;
+                    descriptionDiv.innerHTML = mulankDescriptions[mulank];
+                    iconDiv.className = `mulank-icon fas ${mulankIcons[mulank]}`;
+
+                    // Show the result with a transition
+                    mulankResultWrapper.classList.add('visible');
+                    if (mulankPlaceholder) {
+                        mulankPlaceholder.style.opacity = '0';
                     }
                 });
             }
         });
-    }, { root: null, rootMargin: '0px', threshold: 0.3 });
-
-    sections.forEach(section => {
-        navObserver.observe(section);
-    });
-
-    const animateObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { root: null, rootMargin: '0px', threshold: 0.1 });
-
-    const animateElements = document.querySelectorAll(
-        '.service-card, .value-card, .testimonial-card, .contact-info, .contact-form'
-    );
-
-    animateElements.forEach(el => {
-        animateObserver.observe(el);
-    });
-</script>
+    </script>
 
 </body>
 
