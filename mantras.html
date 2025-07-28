@@ -4,557 +4,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Astronox | Interactive Mantra Section</title>
+    <title>The Astronox | Sacred Mantra Collection</title>
     <link href="https://fonts.googleapis.com/css2?family=Samarkan:wght@400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
-            --ivory: #fdf8f0;
-            --maroon: #7b2c2c;
-            --gold: #d4af37;
-            --gold-light: #e6c567;
-            --text: #4a2c2a;
-            --henna: #6e4226;
-            --henna-light: #8a5a3a;
-            --card-bg: rgba(253, 248, 240, 0.92);
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.2);
+            --ivory: #fdf8f0; --maroon: #7b2c2c; --gold: #d4af37; --gold-light: #e6c567;
+            --text: #4a2c2a; --henna: #6e4226; --henna-light: #8a5a3a;
+            --card-bg: rgba(253, 248, 240, 0.92); --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12); --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.2);
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        @font-face {
+            font-family: 'Samarkan';
+            src: url('./font/SAMAN___.TTF') format('truetype'); /* Local font import */
+            font-weight: 400;
+            font-style: normal;
         }
+        
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #fdf8f0 0%, #f8efe3 100%); color: var(--text); line-height: 1.6; min-height: 100vh; position: relative; overflow-x: hidden; }
+        body::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%237b2c2c' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E"); opacity: 0.1; z-index: -1; }
+        .mantra-page-header { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2.5rem; background-color: var(--card-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(123, 44, 44, 0.1); box-shadow: var(--shadow); }
+        .logo { font-family: 'Samarkan', sans-serif; font-size: 2rem; color: var(--maroon); display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon { font-size: 1.8rem; color: var(--gold); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        .nav-button { background: linear-gradient(135deg, var(--maroon), var(--henna)); color: white; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(123, 44, 44, 0.2); text-decoration: none; border: none; font-size: 1rem; cursor: pointer; }
+        .nav-button .button-text { display: inline; }
+        .nav-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(123, 44, 44, 0.3); }
+        main { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--maroon); margin-bottom: 1rem; position: relative; display: inline-block; }
+        .section-header h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--gold); border-radius: 2px; }
+        .section-header p { font-size: 1.1rem; max-width: 700px; margin: 0 auto; color: var(--henna); }
+        .mantra-of-the-day { background: linear-gradient(135deg, var(--maroon), var(--henna)); color: var(--ivory); padding: 3rem 2rem; margin: 2rem auto 3rem; border-radius: 20px; text-align: center; max-width: 1200px; box-shadow: var(--shadow-hover); position: relative; overflow: hidden; }
+        .mantra-of-the-day::before { content: 'ॐ'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 15rem; opacity: 0.05; font-family: 'Samarkan', sans-serif; z-index: 0; }
+        .mantra-of-the-day h2 { font-family: 'Playfair Display', serif; color: var(--gold); margin-bottom: 1.5rem; font-size: 2.5rem; position: relative; z-index: 1; }
+        .mantra-of-the-day .refresh-btn { background: var(--gold); color: var(--maroon); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.2rem; cursor: pointer; position: absolute; top: 20px; right: 20px; display: flex; align-items: center; justify-content: center; transition: var(--transition); z-index: 2; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+        .mantra-of-the-day .refresh-btn:hover { background: var(--gold-light); transform: rotate(90deg); }
+        .mantra-controls { display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; margin-bottom: 3rem; align-items: center; }
+        .search-container { position: relative; max-width: 500px; width: 100%; }
+        .search-container input { width: 100%; padding: 1rem 1rem 1rem 3.5rem; border-radius: 50px; border: 2px solid rgba(123, 44, 44, 0.2); background: var(--card-bg); font-size: 1rem; color: var(--text); transition: var(--transition); box-shadow: var(--shadow); }
+        .search-container input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3); }
+        .search-container i { position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); color: var(--henna); }
+        .mantra-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+        .filter-btn { background: transparent; border: 2px solid var(--gold); color: var(--maroon); padding: 0.8rem 1.8rem; border-radius: 100px; cursor: pointer; font-weight: 600; font-size: 1rem; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem; }
+        .filter-btn:hover, .filter-btn.active { background: var(--gold); color: white; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .mantras-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .mantra-card { background: var(--card-bg); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow); transition: var(--transition); display: flex; flex-direction: column; position: relative; overflow: hidden; border: 1px solid rgba(123, 44, 44, 0.1); }
+        .mantra-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+        .mantra-card.hidden { display: none; }
+        .mantra-category { position: absolute; top: 15px; right: 15px; background: var(--gold); color: white; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .mantra-info { flex-grow: 1; }
+        .mantra-title-container { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .mantra-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--maroon); position: relative; padding-bottom: 0.5rem; }
+        .mantra-deity-icon { font-size: 1.5rem; color: var(--gold); }
+        .mantra-sanskrit { font-family: 'Samarkan', sans-serif; font-size: 1.8rem; line-height: 1.6; color: var(--henna); margin: 1.5rem 0; min-height: 80px; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .mantra-transliteration { font-style: italic; color: var(--text); margin-bottom: 1rem; font-size: 1.1rem; background: rgba(123, 44, 44, 0.05); padding: 1rem; border-radius: 10px; border-left: 3px solid var(--gold); }
+        .mantra-purpose { font-weight: bold; color: var(--maroon); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .mantra-purpose i { color: var(--gold); }
+        .mantra-actions { margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(123, 44, 44, 0.1); display: flex; justify-content: space-between; gap: 1rem; }
+        .action-btn { background: var(--card-bg); border: 1px solid rgba(123, 44, 44, 0.2); color: var(--maroon); padding: 0.8rem; border-radius: 10px; cursor: pointer; font-weight: 500; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem; flex: 1; justify-content: center; font-size: 0.9rem; }
+        .action-btn:hover { background-color: var(--maroon); color: white; }
+        .action-btn.favorite.active { background-color: var(--gold); color: white; border-color: var(--gold); }
+        .favorites-section { margin-top: 3rem; padding-top: 3rem; border-top: 2px dashed rgba(123, 44, 44, 0.2); }
+        .favorites-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+        .favorites-header h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--maroon); }
+        .favorites-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .no-favorites, .no-results { grid-column: 1/-1; text-align: center; padding: 2rem; background: rgba(123,44,44,0.05); border-radius: 15px; }
+        .no-favorites i, .no-results i { font-size: 3rem; color: var(--henna); opacity: 0.3; margin-bottom: 1rem; }
+        .no-favorites p, .no-results p { font-size: 1.1rem; color: var(--henna); }
+        .no-favorites p.sub { font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8; }
+        footer { background: linear-gradient(135deg, var(--henna), var(--maroon)); color: var(--ivory); text-align: center; padding: 2rem; margin-top: 4rem; }
+        .copyright { font-size: 1.1rem; max-width: 800px; margin: 0 auto; line-height: 1.8; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+        .modal-overlay.visible { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--ivory); border-radius: 15px; padding: 2.5rem; max-width: 600px; width: 90%; box-shadow: var(--shadow-hover); position: relative; transform: scale(0.9); transition: transform 0.3s; }
+        .modal-overlay.visible .modal-content { transform: scale(1); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(123,44,44,0.1); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .modal-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--maroon); }
+        .modal-close { background: none; border: none; font-size: 1.8rem; color: var(--henna); cursor: pointer; transition: var(--transition); }
+        .modal-close:hover { color: var(--maroon); transform: rotate(90deg); }
+        .modal-body p { margin-bottom: 1rem; line-height: 1.7; }
+        .modal-body h4 { font-family: 'Playfair Display', serif; color: var(--maroon); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--maroon); color: white; padding: 1rem 2rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); z-index: 1000; transform: translateY(100px); opacity: 0; transition: all 0.4s ease; display: flex; align-items: center; gap: 1rem; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast i { color: var(--gold); font-size: 1.5rem; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #fdf8f0 0%, #f8efe3 100%);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%237b2c2c' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-        /* Header for this page */
-        .mantra-page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2.5rem;
-            background-color: var(--card-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(123, 44, 44, 0.1);
-            box-shadow: var(--shadow);
-        }
-
-        .logo {
-            font-family: 'Samarkan', sans-serif;
-            font-size: 2rem;
-            color: var(--maroon);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-icon {
-            font-size: 1.8rem;
-            color: var(--gold);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .service-button {
-            background: linear-gradient(135deg, var(--maroon), var(--henna));
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 15px rgba(123, 44, 44, 0.2);
-            text-decoration: none;
-        }
-
-        .service-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(123, 44, 44, 0.3);
-        }
-
-        /* Main content */
-        main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: var(--maroon);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 2px;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--henna);
-        }
-
-        /* Mantra of the Day Styling */
-        .mantra-of-the-day {
-            background: linear-gradient(135deg, var(--maroon), var(--henna));
-            color: var(--ivory);
-            padding: 3rem 2rem;
-            margin: 2rem auto 3rem;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 1200px;
-            box-shadow: var(--shadow-hover);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mantra-of-the-day::before {
-            content: 'ॐ';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 15rem;
-            opacity: 0.05;
-            font-family: 'Samarkan', sans-serif;
-            z-index: 0;
-        }
-
-        .mantra-of-the-day h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-            font-size: 2.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .mantra-of-the-day .refresh-btn {
-            background: var(--gold);
-            color: var(--maroon);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            z-index: 2;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .mantra-of-the-day .refresh-btn:hover {
-            background: var(--gold-light);
-            transform: rotate(90deg);
-        }
-
-        /* Search and Filters */
-        .mantra-controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-            align-items: center;
-        }
-
-        .search-container {
-            position: relative;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 1rem 1rem 1rem 3.5rem;
-            border-radius: 50px;
-            border: 2px solid rgba(123, 44, 44, 0.2);
-            background: var(--card-bg);
-            font-size: 1rem;
-            color: var(--text);
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-
-        .search-container input:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
-        }
-
-        .search-container i {
-            position: absolute;
-            left: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--henna);
-        }
-
-        .mantra-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--maroon);
-            padding: 0.8rem 1.8rem;
-            border-radius: 100px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--gold);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Mantra Cards Grid */
-        .mantras-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        /* Mantra Card Enhancements */
-        .mantra-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(123, 44, 44, 0.1);
-        }
-
-        .mantra-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .mantra-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--gold), var(--maroon));
-        }
-
-        .mantra-card.hidden {
-            display: none;
-        }
-
-        .mantra-category {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--gold);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .mantra-info {
-            flex-grow: 1;
-        }
-
-        .mantra-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: var(--maroon);
-            margin-bottom: 1rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .mantra-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--gold);
-        }
-
-        .mantra-sanskrit {
-            font-family: 'Samarkan', sans-serif;
-            font-size: 1.8rem;
-            line-height: 1.6;
-            color: var(--henna);
-            margin: 1.5rem 0;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .mantra-transliteration {
-            font-style: italic;
-            color: var(--text);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            background: rgba(123, 44, 44, 0.05);
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 3px solid var(--gold);
-        }
-
-        .mantra-purpose {
-            font-weight: bold;
-            color: var(--maroon);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .mantra-purpose i {
-            color: var(--gold);
-        }
-
-        .mantra-actions {
-            margin-top: auto;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(123, 44, 44, 0.1);
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-
-        .action-btn {
-            background: var(--card-bg);
-            border: 1px solid rgba(123, 44, 44, 0.2);
-            color: var(--maroon);
-            padding: 0.6rem 1.2rem;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex: 1;
-            justify-content: center;
-        }
-
-        .action-btn:hover {
-            background-color: var(--maroon);
-            color: white;
-        }
-
-        .action-btn.favorite.active {
-            background-color: var(--gold);
-            color: white;
-            border-color: var(--gold);
-        }
-
-        .favorites-section {
-            margin-top: 3rem;
-            padding-top: 3rem;
-            border-top: 2px dashed rgba(123, 44, 44, 0.2);
-        }
-
-        .favorites-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .favorites-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--maroon);
-        }
-
-        .favorites-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, var(--henna), var(--maroon));
-            color: var(--ivory);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        .copyright {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .mantra-page-header {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-            
-            .mantras-container {
-                grid-template-columns: 1fr;
-            }
-            
+        @media (min-width: 768px) {
             .mantra-controls {
-                flex-direction: column;
+                flex-direction: row;
             }
-            
-            .section-header h2 {
-                font-size: 2.2rem;
-            }
-            
-            .mantra-of-the-day {
-                padding: 2rem 1rem;
-            }
-            
-            .mantra-sanskrit {
-                font-size: 1.5rem;
-            }
+        }
+        @media (max-width: 520px) {
+            .mantra-page-header { padding: 1rem 1.5rem; }
+            main { padding: 1.5rem; }
+            .logo { font-size: 1.8rem; }
+            .nav-button { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
+            .nav-button .button-text-full { display: none; } /* Hide full text on mobile */
+            .nav-button .button-text-short { display: inline; } /* Show short text on mobile */
+            .section-header h2 { font-size: 2.2rem; }
+            .filter-btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+            .mantras-container { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 521px) {
+            .nav-button .button-text-short { display: none; } /* Hide short text on desktop */
         }
 
-        /* Animations */
-        .animate-card {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Toast notification */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--maroon);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s ease;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .toast i {
-            color: var(--gold);
-            font-size: 1.5rem;
-        }
     </style>
 </head>
 
 <body>
     <header class="mantra-page-header">
-        <div class="logo">
-            <i class="fas fa-om logo-icon"></i>
-            theastronox
-        </div>
-        <a href="blogs.html" class="service-button">
+        <div class="logo"><i class="fas fa-om logo-icon"></i>theastronox</div>
+        <a href="index.html" class="nav-button">
             <i class="fas fa-arrow-left"></i>
-            Back to Home
+            <span class="button-text-full">Back to Home</span>
+            <span class="button-text-short">Home</span>
         </a>
     </header>
 
@@ -562,517 +128,222 @@
         <section class="section" id="mantras">
             <div class="section-header">
                 <h2>Sacred Mantras Collection</h2>
-                <p>Discover divine vibrations, filter by deity, or explore the Mantra of the Day. Save your favorites for later contemplation.</p>
+                <p>Discover divine vibrations. Learn, contemplate, and save your favorites.</p>
             </div>
             
-            <div id="mantraOfTheDay" class="mantra-of-the-day">
-                </div>
+            <div id="mantraOfTheDay" class="mantra-of-the-day"></div>
 
             <div class="mantra-controls">
                 <div class="search-container">
                     <i class="fas fa-search"></i>
                     <input type="text" id="searchInput" placeholder="Search mantras by name, purpose or text...">
                 </div>
-                
                 <div class="mantra-filters">
-                    <button class="filter-btn active" data-filter="all">
-                        <i class="fas fa-om"></i>
-                        All
-                    </button>
-                    <button class="filter-btn" data-filter="ganesh">
-                        <i class="fas fa-elephant"></i>
-                        Ganesh
-                    </button>
-                    <button class="filter-btn" data-filter="shiv">
-                        <i class="fas fa-mountain"></i>
-                        Shiv
-                    </button>
-                    <button class="filter-btn" data-filter="devi">
-                        <i class="fas fa-female"></i>
-                        Devi
-                    </button>
-                    <button class="filter-btn" data-filter="vishnu">
-                        <i class="fas fa-feather-alt"></i>
-                        Vishnu
-                    </button>
-                    <button class="filter-btn" data-filter="hanuman">
-                        <i class="fas fa-hand-rock"></i>
-                        Hanuman
-                    </button>
-                     <button class="filter-btn" data-filter="bhairav">
-                        <i class="fas fa-dog"></i>
-                        Bhairav
-                    </button>
-                    <button class="filter-btn" data-filter="navgrah">
-                        <i class="fas fa-satellite-dish"></i>
-                        Navgrah
-                    </button>
-                     <button class="filter-btn" data-filter="general">
-                        <i class="fas fa-star"></i>
-                        General
-                    </button>
-                    <button class="filter-btn" data-filter="favorites">
-                        <i class="fas fa-heart"></i>
-                        Favorites
-                    </button>
+                    <button class="filter-btn active" data-filter="all"><i class="fas fa-om"></i>All</button>
+                    <button class="filter-btn" data-filter="ganesh"><i class="fas fa-elephant"></i>Ganesh</button>
+                    <button class="filter-btn" data-filter="shiv"><i class="fas fa-mountain"></i>Shiv</button>
+                    <button class="filter-btn" data-filter="devi"><i class="fas fa-female"></i>Devi</button>
+                    <button class="filter-btn" data-filter="vishnu"><i class="fas fa-feather-alt"></i>Vishnu</button>
+                    <button class="filter-btn" data-filter="hanuman"><i class="fas fa-hand-rock"></i>Hanuman</button>
+                    <button class="filter-btn" data-filter="bhairav"><i class="fas fa-dog"></i>Bhairav</button>
+                    <button class="filter-btn" data-filter="navgrah"><i class="fas fa-satellite-dish"></i>Navgrah</button>
+                    <button class="filter-btn" data-filter="general"><i class="fas fa-star"></i>General</button>
+                    <button class="filter-btn" data-filter="favorites"><i class="fas fa-heart"></i>Favorites</button>
                 </div>
             </div>
 
-            <div class="mantras-container">
-                </div>
+            <div class="mantras-container"></div>
 
             <div class="favorites-section">
-                <div class="favorites-header">
-                    <i class="fas fa-heart" style="color: var(--gold); font-size: 2rem;"></i>
-                    <h3>Your Favorite Mantras</h3>
-                </div>
-                <div class="favorites-container" id="favoritesContainer">
-                    </div>
+                <div class="favorites-header"><i class="fas fa-heart" style="color: var(--gold); font-size: 2rem;"></i><h3>Your Favorite Mantras</h3></div>
+                <div class="favorites-container" id="favoritesContainer"></div>
             </div>
         </section>
     </main>
 
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMessage">Mantra copied to clipboard!</span>
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMessage"></span></div>
+    
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" class="modal-title"></h3>
+                <button id="modalClose" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="copyright">
-                ॐ सर्वे भवन्तु सुखिनः — Guided by cosmic wisdom © 2025 | May these sacred vibrations bring peace and harmony to all beings
-            </div>
-        </div>
+        <div class="footer-content"><div class="copyright">ॐ सर्वे भवन्तु सुखिनः — Guided by cosmic wisdom © 2025 | May these sacred vibrations bring peace and harmony to all beings</div></div>
     </footer>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // Font Awesome icons have been assigned to each mantra for visual categorization.
         const mantraData = [
-            // Ganesh Mantras
-            {
-                id: 1, category: 'ganesh', title: 'Ganesh Mantra', purpose: 'For Removing Obstacles',
-                transliteration: 'Vakratund Mahakay Suryakoti Samaprabha | Nirvighnam Kuru Me Dev Sarvakaryeshu Sarvada ||',
-                sanskrit: 'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥', favorite: false
-            },
-            {
-                id: 2, category: 'ganesh', title: 'Ganesh Gayatri Mantra', purpose: 'For Wisdom and Enlightenment',
-                transliteration: 'Om Ekdantaya Vidmahe Vakratundaya Dheemahi Tanno Danti Prachodayat ||',
-                sanskrit: 'ॐ एकदन्ताय विद्महे वक्रतुण्डाय धीमहि तन्नो दन्ति प्रचोदयात् ॥', favorite: false
-            },
-            {
-                id: 3, category: 'ganesh', title: 'Ganesh Beej Mantra', purpose: 'For Success in New Beginnings',
-                transliteration: 'Om Gang Ganpataye Namah ||',
-                sanskrit: 'ॐ गं गणपतये नमः ॥', favorite: false
-            },
+             // Ganesh Mantras
+            { id: 1, category: 'ganesh', title: 'Ganesh Mantra', purpose: 'For Removing Obstacles', transliteration: 'Vakratund Mahakay Suryakoti Samaprabha | Nirvighnam Kuru Me Dev Sarvakaryeshu Sarvada ||', sanskrit: 'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। निर्विघ्नं कuru मे देव सर्वकार्येषु सर्वदा॥', favorite: false, deityIcon: 'fas fa-elephant' },
+            { id: 2, category: 'ganesh', title: 'Ganesh Gayatri Mantra', purpose: 'For Wisdom and Enlightenment', transliteration: 'Om Ekdantaya Vidmahe Vakratundaya Dheemahi Tanno Danti Prachodayat ||', sanskrit: 'ॐ एकदन्ताय विद्महे वक्रतुण्डाय धीमहि तन्नो दन्ति प्रचोदयात् ॥', favorite: false, deityIcon: 'fas fa-elephant' },
+            { id: 3, category: 'ganesh', title: 'Ganesh Beej Mantra', purpose: 'For Success in New Beginnings', transliteration: 'Om Gang Ganpataye Namah ||', sanskrit: 'ॐ गं गणपतये नमः ॥', favorite: false, deityIcon: 'fas fa-elephant' },
+            
             // Shiv Mantras
-            {
-                id: 4, category: 'shiv', title: 'Shiv Gayatri Mantra', purpose: 'For Peace and Spiritual Growth',
-                transliteration: 'Om Tatpurushaye Vidmahe Mahadevaye Dhimahi Tanno Rudrah Prachodayat ||',
-                sanskrit: 'ॐ तत्पुरुषाय विद्महे महादेवाय धीमहि तन्नो रुद्रः प्रचोदयात् ॥', favorite: false
-            },
-            {
-                id: 5, category: 'shiv', title: 'Maha Mrityunjay Beej Mantra', purpose: 'For Healing and Protection',
-                transliteration: 'Om Haung Jung Sah Om ||',
-                sanskrit: 'ॐ हौं जूं सः ॐ ॥', favorite: false
-            },
-            {
-                id: 6, category: 'shiv', title: 'Shiv Mantra (Panchakshari)', purpose: 'For Transformation and Purification',
-                transliteration: 'Om Namah Shivay ||',
-                sanskrit: 'ॐ नमः शिवाय ॥', favorite: false
-            },
-             {
-                id: 10, category: 'shiv', title: 'Maha Mrityunjay Mantra', purpose: 'For Conquering Death',
-                transliteration: 'Om Trayambakam Yajamahe Sugandhim Pushtivardhanam Urvarukmiv Bandhananmrityormukshiya Mamritat ||',
-                sanskrit: 'ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्, उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय मामृतात् ॥', favorite: false
-            },
-            {
-                id: 11, category: 'shiv', title: 'Shadpranavyukta Maha Mrityunjay Mantra', purpose: 'Extended Healing and Protection',
-                transliteration: 'Om Haung Jung Sah Om Bhurbhuvah Swah Om Trayambakam Yajamahe Sugandhimpushthivardhanam Urvarukmiv Bandhananmrityormukshiya Mamritat Om Swah Bhuvah Bhuh Om Sah Jung Haung Om ||',
-                sanskrit: 'ॐ हौं जूं सः ॐ भूर्भुवः स्वः ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्, उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय मामृतात् ॐ स्वः भुवः भूः ॐ सः जूं हौं ॐ ॥', favorite: false
-            },
+            { id: 4, category: 'shiv', title: 'Shiv Gayatri Mantra', purpose: 'For Peace and Spiritual Growth', transliteration: 'Om Tatpurushaye Vidmahe Mahadevaye Dhimahi Tanno Rudrah Prachodayat ||', sanskrit: 'ॐ तत्पुरुषाय विद्महे महादेवाय धीमहि तन्नो रुद्रः प्रचोदयात् ॥', favorite: false, deityIcon: 'fas fa-mountain' },
+            { id: 5, category: 'shiv', title: 'Maha Mrityunjay Beej Mantra', purpose: 'For Healing and Protection', transliteration: 'Om Haung Jung Sah Om ||', sanskrit: 'ॐ हौं जूं सः ॐ ॥', favorite: false, deityIcon: 'fas fa-mountain' },
+            { id: 6, category: 'shiv', title: 'Shiv Mantra (Panchakshari)', purpose: 'For Transformation and Purification', transliteration: 'Om Namah Shivay ||', sanskrit: 'ॐ नमः शिवाय ॥', favorite: false, deityIcon: 'fas fa-mountain' },
+            { id: 10, category: 'shiv', title: 'Maha Mrityunjay Mantra', purpose: 'For Conquering Death', transliteration: 'Om Trayambakam Yajamahe Sugandhim Pushtivardhanam Urvarukmiv Bandhananmrityormukshiya Mamritat ||', sanskrit: 'ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्, उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय मामृतात् ॥', favorite: false, deityIcon: 'fas fa-mountain' },
+            { id: 11, category: 'shiv', title: 'Shadpranavyukta Maha Mrityunjay Mantra', purpose: 'Extended Healing and Protection', transliteration: 'Om Haung Jung Sah Om Bhurbhuvah Swah Om Trayambakam Yajamahe Sugandhimpushthivardhanam Urvarukmiv Bandhananmrityormukshiya Mamritat Om Swah Bhuvah Bhuh Om Sah Jung Haung Om ||', sanskrit: 'ॐ हौं जूं सः ॐ भूर्भुवः स्वः ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्, उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय मामृतात् ॐ स्वः भुवः भूः ॐ सः जूं हौं ॐ ॥', favorite: false, deityIcon: 'fas fa-mountain' },
+            
             // Devi Mantras
-            {
-                id: 7, category: 'devi', title: 'Mahalaxmi Gayatri Mantra', purpose: 'To Invoke Goddess Laxmi',
-                transliteration: 'Om Mahalaxmaye Cha Vidmahe Vishnupatnaye Cha Dheemahi Tanno Laxmih Prachodayat ||',
-                sanskrit: 'ॐ महालक्ष्म्यै च विद्महे विष्णुपत्न्यै च धीमहि तन्नो लक्ष्मीः प्रचोदयात् ॥', favorite: false
-            },
-            {
-                id: 8, category: 'devi', title: 'Mahalaxmi Beej Mantra', purpose: 'For Abundance and Prosperity',
-                transliteration: 'Om Shreeng Mahalaxmaye Namah ||',
-                sanskrit: 'ॐ श्रीं महालक्ष्म्यै नमः ॥', favorite: false
-            },
-            {
-                id: 9, category: 'devi', title: 'Mahalaxmi Maha Mantra', purpose: 'For Overall Fortune and Well-being',
-                transliteration: 'Om Shreeng Hreeng Shreeng Kamale Kamalalaye Praseed Praseed | Shreeng Hreeng Shreeng Om Mahalaxmye Namah ||',
-                sanskrit: 'ॐ श्रीं ह्रीं श्रीं कमले कमलालये प्रसीद प्रसीद। श्रीं ह्रीं श्रीं ॐ महालक्ष्म्यै नमः ॥', favorite: false
-            },
-            {
-                id: 12, category: 'devi', title: 'Gayatri Mantra', purpose: 'Universal Prayer for Enlightenment',
-                transliteration: 'Om Bhur Bhuvah Swah Tatsaviturvarenyam Bhargo Devasya Dheemahi Dhiyo Yo Nah Prachodayaat ||',
-                sanskrit: 'ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गोदेवस्य धीमहि धियो यो नः प्रचोदयात्॥', favorite: false
-            },
-             {
-                id: 13, category: 'devi', title: 'Bagalamukhi Mantra', purpose: 'To Stun Enemies and Negativity',
-                transliteration: 'Om Hleem Bagalamukhi Sarvdushtanaam Vacham Mukham Padam Stambhay Jeehvaam Keelay Buddhim Vinashay Hleem Om Swaha ||',
-                sanskrit: 'ॐ ह्लीं बगलामुखि सर्वदुष्टानां वाचं मुखं पदं स्तम्भय। जिह्वाम् कीलय बुद्धिं विनाशय ह्लीं ॐ स्वाहा॥', favorite: false
-            },
-            {
-                id: 14, category: 'devi', title: 'Sarva Kalyaani Mantra', purpose: 'For All-round Auspiciousness',
-                transliteration: 'Sarv Mangal Mangalye Shive Sarvarth Sadhike Sharanye Tryambke Gouri Narayani Namostute ||',
-                sanskrit: 'सर्वमंगल मांगल्ये शिवे सर्वार्थ साधिके। शरण्ये त्र्यंबके गौरि नारायणि नमोस्तुते॥', favorite: false
-            },
-            {
-                id: 15, category: 'devi', title: 'Shakti Daayini Mantra', purpose: 'To Invoke Creative and Destructive Power',
-                transliteration: 'Sristhisthiti Vinashanam Shaktibhute Sanatani Gunaashraye Gunamaye Narayani Namostute ||',
-                sanskrit: 'सृष्टिस्थिति विनाशानां शक्तिभूते सनातनि। गुणाश्रये गुणमये नारायणि नमोस्तु ते॥', favorite: false
-            },
-            {
-                id: 16, category: 'devi', title: 'Durga Mantra', purpose: 'For Protection and Strength',
-                transliteration: 'Om Dung Durgayai Namah ||',
-                sanskrit: 'ॐ दुं दुर्गायै नमः ॥', favorite: false
-            },
-            {
-                id: 17, category: 'devi', title: 'Chamunda Mantra', purpose: 'For Victory over Evils',
-                transliteration: 'Om Aing Hreeng Kleeng Chamundaye Vichchaye ||',
-                sanskrit: 'ॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चै॥', favorite: false
-            },
-            {
-                id: 18, category: 'devi', title: 'Maatangi Mantra', purpose: 'For Knowledge and Speech',
-                transliteration: 'Om Hreem Kleem Hoom Matangayai Phat Swaha ||',
-                sanskrit: 'ॐ ह्रीं क्लीं हूं मातंग्यै फट् स्वाहा॥', favorite: false
-            },
-            {
-                id: 39, category: 'devi', title: 'Tripur Sundari Beej Mantra', purpose: 'For Divine Beauty and Attraction',
-                transliteration: 'Om Shree Shree Lalita Mahatripursundraye Shree Mahalaxmaye Namah ||',
-                sanskrit: 'ॐ श्रीं श्रीं ललिता महात्रिपुरसुन्दर्यै श्री महालक्ष्म्यै नमः ॥', favorite: false
-            },
-            {
-                id: 40, category: 'devi', title: 'Sampoorna Vidya Prapti Mantra', purpose: 'For Complete Knowledge',
-                transliteration: 'Vidyah Samastastav Devi Bhedah Striyah Samastah Sakla Jagtsu Tvayaikya Puritmambayaitat Ka Te Stutih Stavyapara Paroktih ||',
-                sanskrit: 'विद्याः समस्तास्तव देवि भेदाः। स्त्रियः समस्ताः सकला जगत्सु। त्वयैकया पूरितमम्बयैतत् का ते स्तुतिः स्तव्यपरा परोक्तिः॥', favorite: false
-            },
-            {
-                id: 41, category: 'devi', title: 'Saraswati Mantra', purpose: 'To Worship Goddess Saraswati',
-                transliteration: 'Om Aing Mahasaraswatyai Namah ||',
-                sanskrit: 'ॐ ऐं महासरस्वत्यै नमः ॥', favorite: false
-            },
-            {
-                id: 42, category: 'devi', title: 'Vidya Prapti Mantra', purpose: 'For Attaining Knowledge',
-                transliteration: 'Om Aing Hreeng Shreeng Vagdevyai Namah ||',
-                sanskrit: 'ॐ ऐं ह्रीं श्रीं वाग्देव्यै नमः ॥', favorite: false
-            },
+            { id: 7, category: 'devi', title: 'Mahalaxmi Gayatri Mantra', purpose: 'To Invoke Goddess Laxmi', transliteration: 'Om Mahalaxmaye Cha Vidmahe Vishnupatnaye Cha Dheemahi Tanno Laxmih Prachodayat ||', sanskrit: 'ॐ महालक्ष्म्यै च विद्महे विष्णुपत्न्यै च धीमहि तन्नो लक्ष्मीः प्रचोदयात् ॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 8, category: 'devi', title: 'Mahalaxmi Beej Mantra', purpose: 'For Abundance and Prosperity', transliteration: 'Om Shreeng Mahalaxmaye Namah ||', sanskrit: 'ॐ श्रीं महालक्ष्म्यै नमः ॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 9, category: 'devi', title: 'Mahalaxmi Maha Mantra', purpose: 'For Overall Fortune and Well-being', transliteration: 'Om Shreeng Hreeng Shreeng Kamale Kamalalaye Praseed Praseed | Shreeng Hreeng Shreeng Om Mahalaxmye Namah ||', sanskrit: 'ॐ श्रीं ह्रीं श्रीं कमले कमलालये प्रसीद प्रसीद। श्रीं ह्रीं श्रीं ॐ महालक्ष्म्यै नमः ॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 12, category: 'devi', title: 'Gayatri Mantra', purpose: 'Universal Prayer for Enlightenment', transliteration: 'Om Bhur Bhuvah Swah Tatsaviturvarenyam Bhargo Devasya Dheemahi Dhiyo Yo Nah Prachodayaat ||', sanskrit: 'ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गोदेवस्य धीमहि धियो यो नः प्रचोदयात्॥', favorite: false, deityIcon: 'fas fa-sun' },
+            { id: 13, category: 'devi', title: 'Bagalamukhi Mantra', purpose: 'To Stun Enemies and Negativity', transliteration: 'Om Hleem Bagalamukhi Sarvdushtanaam Vacham Mukham Padam Stambhay Jeehvaam Keelay Buddhim Vinashay Hleem Om Swaha ||', sanskrit: 'ॐ ह्लीं बगलामुखि सर्वदुष्टानां वाचं मुखं पदं स्तम्भय। जिह्वाम् कीलय बुद्धिं विनाशय ह्लीं ॐ स्वाहा॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 14, category: 'devi', title: 'Sarva Kalyaani Mantra', purpose: 'For All-round Auspiciousness', transliteration: 'Sarv Mangal Mangalye Shive Sarvarth Sadhike Sharanye Tryambke Gouri Narayani Namostute ||', sanskrit: 'सर्वमंगल मांगल्ये शिवे सर्वार्थ साधिके। शरण्ये त्र्यंबके गौरि नारायणि नमोस्तुते॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 15, category: 'devi', title: 'Shakti Daayini Mantra', purpose: 'To Invoke Creative and Destructive Power', transliteration: 'Sristhisthiti Vinashanam Shaktibhute Sanatani Gunaashraye Gunamaye Narayani Namostute ||', sanskrit: 'सृष्टिस्थिति विनाशानां शक्तिभूते सनातनि। गुणाश्रये गुणमये नारायणि नमोस्तु ते॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 16, category: 'devi', title: 'Durga Mantra', purpose: 'For Protection and Strength', transliteration: 'Om Dung Durgayai Namah ||', sanskrit: 'ॐ दुं दुर्गायै नमः ॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 17, category: 'devi', title: 'Chamunda Mantra', purpose: 'For Victory over Evils', transliteration: 'Om Aing Hreeng Kleeng Chamundaye Vichchaye ||', sanskrit: 'ॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चै॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 18, category: 'devi', title: 'Maatangi Mantra', purpose: 'For Knowledge and Speech', transliteration: 'Om Hreem Kleem Hoom Matangayai Phat Swaha ||', sanskrit: 'ॐ ह्रीं क्लीं हूं मातंग्यै फट् स्वाहा॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 39, category: 'devi', title: 'Tripur Sundari Beej Mantra', purpose: 'For Divine Beauty and Attraction', transliteration: 'Om Shree Shree Lalita Mahatripursundraye Shree Mahalaxmaye Namah ||', sanskrit: 'ॐ श्रीं श्रीं ललिता महात्रिपुरसुन्दर्यै श्री महालक्ष्म्यै नमः ॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 40, category: 'devi', title: 'Sampoorna Vidya Prapti Mantra', purpose: 'For Complete Knowledge', transliteration: 'Vidyah Samastastav Devi Bhedah Striyah Samastah Sakla Jagtsu Tvayaikya Puritmambayaitat Ka Te Stutih Stavyapara Paroktih ||', sanskrit: 'विद्याः समस्तास्तव देवि भेदाः। स्त्रियः समस्ताः सकला जगत्सु। त्वयैकया पूरितमम्बयैतत् का ते स्तुतिः स्तव्यपरा परोक्तिः॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 41, category: 'devi', title: 'Saraswati Mantra', purpose: 'To Worship Goddess Saraswati', transliteration: 'Om Aing Mahasaraswatyai Namah ||', sanskrit: 'ॐ ऐं महासरस्वत्यै नमः ॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 42, category: 'devi', title: 'Vidya Prapti Mantra', purpose: 'For Attaining Knowledge', transliteration: 'Om Aing Hreeng Shreeng Vagdevyai Namah ||', sanskrit: 'ॐ ऐं ह्रीं श्रीं वाग्देव्यै नमः ॥', favorite: false, deityIcon: 'fas fa-female' },
+
             // Vishnu & Narayan Mantras
-            {
-                id: 19, category: 'vishnu', title: 'Narayan Mantra', purpose: 'To Worship Laxminarayan',
-                transliteration: 'Om Hreem Hreem Shreem Shreem Laxminarayanaaya Namah ||',
-                sanskrit: 'ॐ ह्रीं ह्रीं श्रीं श्रीं लक्ष्मीनारायणाय नमः ॥', favorite: false
-            },
-            {
-                id: 20, category: 'vishnu', title: 'Narayan Beej Mantra', purpose: 'For Peace and Devotion',
-                transliteration: 'Om Namo Narayanaaya ||',
-                sanskrit: 'ॐ नमो नारायणाय॥', favorite: false
-            },
-            {
-                id: 21, category: 'vishnu', title: 'Vishnu Mantra', purpose: 'Universal Prayer to Lord Vishnu',
-                transliteration: 'Om Namo Bhagwate Vasudevaya ||',
-                sanskrit: 'ॐ नमो भगवते वासुदेवाय॥', favorite: false
-            },
+            { id: 19, category: 'vishnu', title: 'Narayan Mantra', purpose: 'To Worship Laxminarayan', transliteration: 'Om Hreem Hreem Shreem Shreem Laxminarayanaaya Namah ||', sanskrit: 'ॐ ह्रीं ह्रीं श्रीं श्रीं लक्ष्मीनारायणाय नमः ॥', favorite: false, deityIcon: 'fas fa-feather-alt' },
+            { id: 20, category: 'vishnu', title: 'Narayan Beej Mantra', purpose: 'For Peace and Devotion', transliteration: 'Om Namo Narayanaaya ||', sanskrit: 'ॐ नमो नारायणाय॥', favorite: false, deityIcon: 'fas fa-feather-alt' },
+            { id: 21, category: 'vishnu', title: 'Vishnu Mantra', purpose: 'Universal Prayer to Lord Vishnu', transliteration: 'Om Namo Bhagwate Vasudevaya ||', sanskrit: 'ॐ नमो भगवते वासुदेवाय॥', favorite: false, deityIcon: 'fas fa-feather-alt' },
+            
             // Hanuman Mantras
-            {
-                id: 22, category: 'hanuman', title: 'Hanumaan Beej Mantra', purpose: 'For Strength and Courage',
-                transliteration: 'Om Hang Hanumataye Namah ||',
-                sanskrit: 'ॐ हं हनुमते नमः ॥', favorite: false
-            },
-            {
-                id: 23, category: 'hanuman', title: 'Hanumaan Mantra', purpose: 'For Protection from Dangers',
-                transliteration: 'Om Hang Hanumate Rudratamakaye Hum Phat Swaha ||',
-                sanskrit: 'ॐ हं हनुमते रुद्रात्मकाय हुं फट् स्वाहा॥', favorite: false
-            },
+            { id: 22, category: 'hanuman', title: 'Hanumaan Beej Mantra', purpose: 'For Strength and Courage', transliteration: 'Om Hang Hanumataye Namah ||', sanskrit: 'ॐ हं हनुमते नमः ॥', favorite: false, deityIcon: 'fas fa-hand-rock' },
+            { id: 23, category: 'hanuman', title: 'Hanumaan Mantra', purpose: 'For Protection from Dangers', transliteration: 'Om Hang Hanumate Rudratamakaye Hum Phat Swaha ||', sanskrit: 'ॐ हं हनुमते रुद्रात्मकाय हुं फट् स्वाहा॥', favorite: false, deityIcon: 'fas fa-hand-rock' },
+            
             // Bhairav Mantras
-            {
-                id: 24, category: 'bhairav', title: 'Batuk Bhairav Mantra', purpose: 'For Relief from Misfortunes',
-                transliteration: 'Om Hreeng Batukay Apaduddharnay Kuru Kuru Batukay Hreeng Om Swaha ||',
-                sanskrit: 'ॐ ह्रीं बटुकाय आपदुद्धारणाय कुरु कुरु बटुकाय ह्रीं ॐ स्वाहा॥', favorite: false
-            },
-            {
-                id: 25, category: 'bhairav', title: 'Batuk Bhairav Beej Mantra', purpose: 'To Worship Lord Bhairav',
-                transliteration: 'Om Bang Batukbhairvaaye Namah ||',
-                sanskrit: 'ॐ बं बटुकभैरवाय नमः ॥', favorite: false
-            },
+            { id: 24, category: 'bhairav', title: 'Batuk Bhairav Mantra', purpose: 'For Relief from Misfortunes', transliteration: 'Om Hreeng Batukay Apaduddharnay Kuru Kuru Batukay Hreeng Om Swaha ||', sanskrit: 'ॐ ह्रीं बटुकाय आपदुद्धारणाय कुरु कुरु बटुकाय ह्रीं ॐ स्वाहा॥', favorite: false, deityIcon: 'fas fa-dog' },
+            { id: 25, category: 'bhairav', title: 'Batuk Bhairav Beej Mantra', purpose: 'To Worship Lord Bhairav', transliteration: 'Om Bang Batukbhairvaaye Namah ||', sanskrit: 'ॐ बं बटुकभैरवाय नमः ॥', favorite: false, deityIcon: 'fas fa-dog' },
+            
             // Navgrah Mantras
-            {
-                id: 43, category: 'navgrah', title: 'Navgrah Mantra', purpose: 'To Pacify all Nine Planets',
-                transliteration: 'Bramha Muraristripurantkari Bhanu Shashi Bhumisuto Budhashcha Gurushcha Shukrah Shanirahuketvah Sarve Graha Shantikara Bhavantu ||',
-                sanskrit: 'ब्रह्मा मुरारिस्त्रिपुरान्तकारी भानुः शशी भूमिसुतो बुधश्च। गुरुश्च शुक्रः शनिराहुकेतवः सर्वे ग्रहाः शान्तिकरा भवन्तु॥', favorite: false
-            },
-            {
-                id: 44, category: 'navgrah', title: 'Shani Vedik Mantra', purpose: 'Vedic Prayer to Saturn',
-                transliteration: 'Om Shanno Devirabhishtaya Aapo Bhavantu Peetaye Shanyorabhi Sravantu Nah ||',
-                sanskrit: 'ॐ शं नो देवीरभिष्टय आपो भवन्तु पीतये। शं योरभि स्रवन्तु नः॥', favorite: false
-            },
-            {
-                id: 45, category: 'navgrah', title: 'Shani Pauranik Mantra', purpose: 'Mythological Prayer to Saturn',
-                transliteration: 'Neelanjan Samabhasam Raviputram Yamagrajam | Chhayamartandsambhutam Tam Namami Shaneshcharam ||',
-                sanskrit: 'नीलांजन समाभासं रविपुत्रं यमाग्रजम्। छायामार्तंड संभूतं तं नमामि शनैश्चरम्॥', favorite: false
-            },
-            {
-                id: 46, category: 'navgrah', title: 'Sun Mantra (Beej)', purpose: 'To Appease the Sun',
-                transliteration: 'Om Hrang Hreeng Hraung Sah Suryay Namah ||',
-                sanskrit: 'ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः ॥', favorite: false
-            },
-            {
-                id: 47, category: 'navgrah', title: 'Moon Mantra (Beej)', purpose: 'To Appease the Moon',
-                transliteration: 'Om Shrang Shreeng Shraung Sah Chandramase Namah ||',
-                sanskrit: 'ॐ श्रां श्रीं श्रौं सः चंद्रमसे नमः ॥', favorite: false
-            },
-            {
-                id: 48, category: 'navgrah', title: 'Mars Mantra (Beej)', purpose: 'To Appease Mars',
-                transliteration: 'Om Krang Kreeng Kraung Sah Bhaumay Namah ||',
-                sanskrit: 'ॐ क्रां क्रीं क्रौं सः भौमाय नमः ॥', favorite: false
-            },
-            {
-                id: 49, category: 'navgrah', title: 'Mercury Mantra (Beej)', purpose: 'To Appease Mercury',
-                transliteration: 'Om Bram Breem Braum Sah Budhay Namah ||',
-                sanskrit: 'ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः ॥', favorite: false
-            },
-            {
-                id: 50, category: 'navgrah', title: 'Jupiter Mantra (Beej)', purpose: 'To Appease Jupiter',
-                transliteration: 'Om Gram Greem Graum Sah Guruve Namah ||',
-                sanskrit: 'ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः ॥', favorite: false
-            },
-            {
-                id: 51, category: 'navgrah', title: 'Venus Mantra (Beej)', purpose: 'To Appease Venus',
-                transliteration: 'Om Dram Dreem Draum Sah Shukray Namah ||',
-                sanskrit: 'ॐ द्रां द्रीं द्रौं सः शुक्राय नमः ॥', favorite: false
-            },
-            {
-                id: 52, category: 'navgrah', title: 'Saturn Mantra (Beej)', purpose: 'To Appease Saturn',
-                transliteration: 'Om Pram Preem Praum Sah Shanaishcharaye Namah ||',
-                sanskrit: 'ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः ॥', favorite: false
-            },
-            {
-                id: 53, category: 'navgrah', title: 'Rahu Mantra (Beej)', purpose: 'To Appease Rahu',
-                transliteration: 'Om Bhram Bhreem Bhraum Sah Rahve Namah ||',
-                sanskrit: 'ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः ॥', favorite: false
-            },
-            {
-                id: 54, category: 'navgrah', title: 'Ketu Mantra (Beej)', purpose: 'To Appease Ketu',
-                transliteration: 'Om Sram Sreem Sraum Sah Ketve Namah ||',
-                sanskrit: 'ॐ स्रां स्रीं स्रौं सः केतवे नमः ॥', favorite: false
-            },
+            { id: 43, category: 'navgrah', title: 'Navgrah Mantra', purpose: 'To Pacify all Nine Planets', transliteration: 'Bramha Muraristripurantkari Bhanu Shashi Bhumisuto Budhashcha Gurushcha Shukrah Shanirahuketvah Sarve Graha Shantikara Bhavantu ||', sanskrit: 'ब्रह्मा मुरारिस्त्रिपुरान्तकारी भानुः शशी भूमिसुतो बुधश्च। गुरुश्च शुक्रः शनिराहुकेतवः सर्वे ग्रहाः शान्तिकरा भवन्तु॥', favorite: false, deityIcon: 'fas fa-satellite-dish' },
+            { id: 44, category: 'navgrah', title: 'Shani Vedik Mantra', purpose: 'Vedic Prayer to Saturn', transliteration: 'Om Shanno Devirabhishtaya Aapo Bhavantu Peetaye Shanyorabhi Sravantu Nah ||', sanskrit: 'ॐ शं नो देवीरभिष्टय आपो भवन्तु पीतये। शं योरभि स्रवन्तु नः॥', favorite: false, deityIcon: 'fas fa-satellite-dish' },
+            { id: 45, category: 'navgrah', title: 'Shani Pauranik Mantra', purpose: 'Mythological Prayer to Saturn', transliteration: 'Neelanjan Samabhasam Raviputram Yamagrajam | Chhayamartandsambhutam Tam Namami Shaneshcharam ||', sanskrit: 'नीलांजन समाभासं रविपुत्रं यमाग्रजम्। छायामार्तंड संभूतं तं नमामि शनैश्चरम्॥', favorite: false, deityIcon: 'fas fa-satellite-dish' },
+            { id: 46, category: 'navgrah', title: 'Sun Mantra (Beej)', purpose: 'To Appease the Sun', transliteration: 'Om Hrang Hreeng Hraung Sah Suryay Namah ||', sanskrit: 'ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः ॥', favorite: false, deityIcon: 'fas fa-sun' },
+            { id: 47, category: 'navgrah', title: 'Moon Mantra (Beej)', purpose: 'To Appease the Moon', transliteration: 'Om Shrang Shreeng Shraung Sah Chandramase Namah ||', sanskrit: 'ॐ श्रां श्रीं श्रौं सः चंद्रमसे नमः ॥', favorite: false, deityIcon: 'fas fa-moon' },
+            { id: 48, category: 'navgrah', title: 'Mars Mantra (Beej)', purpose: 'To Appease Mars', transliteration: 'Om Krang Kreeng Kraung Sah Bhaumay Namah ||', sanskrit: 'ॐ क्रां क्रीं क्रौं सः भौमाय नमः ॥', favorite: false, deityIcon: 'fas fa-adjust' },
+            { id: 49, category: 'navgrah', title: 'Mercury Mantra (Beej)', purpose: 'To Appease Mercury', transliteration: 'Om Bram Breem Braum Sah Budhay Namah ||', sanskrit: 'ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः ॥', favorite: false, deityIcon: 'fas fa-leaf' },
+            { id: 50, category: 'navgrah', title: 'Jupiter Mantra (Beej)', purpose: 'To Appease Jupiter', transliteration: 'Om Gram Greem Graum Sah Guruve Namah ||', sanskrit: 'ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः ॥', favorite: false, deityIcon: 'fas fa-cross' },
+            { id: 51, category: 'navgrah', title: 'Venus Mantra (Beej)', purpose: 'To Appease Venus', transliteration: 'Om Dram Dreem Draum Sah Shukray Namah ||', sanskrit: 'ॐ द्रां द्रीं द्रौं सः शुक्राय नमः ॥', favorite: false, deityIcon: 'fas fa-gem' },
+            { id: 52, category: 'navgrah', title: 'Saturn Mantra (Beej)', purpose: 'To Appease Saturn', transliteration: 'Om Pram Preem Praum Sah Shanaishcharaye Namah ||', sanskrit: 'ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः ॥', favorite: false, deityIcon: 'fas fa-balance-scale' },
+            { id: 53, category: 'navgrah', title: 'Rahu Mantra (Beej)', purpose: 'To Appease Rahu', transliteration: 'Om Bhram Bhreem Bhraum Sah Rahve Namah ||', sanskrit: 'ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः ॥', favorite: false, deityIcon: 'fas fa-dragon' },
+            { id: 54, category: 'navgrah', title: 'Ketu Mantra (Beej)', purpose: 'To Appease Ketu', transliteration: 'Om Sram Sreem Sraum Sah Ketve Namah ||', sanskrit: 'ॐ स्रां स्रीं स्रौं सः केतवे नमः ॥', favorite: false, deityIcon: 'fas fa-meteor' },
+            
             // General Purpose Mantras
-            {
-                id: 26, category: 'general', title: 'Rog Naashak Mantra', purpose: 'For Relief from Diseases',
-                transliteration: 'Roganasheshanpahansi Tushta Rushta Tu Kaman Saklanbhishtan Twamashritanam Na Vipannaranam Twamashrita Hyashrayatam Prayanti ||',
-                sanskrit: 'रोगानशेषानपहंसि तुष्टा रुष्टा तु कामान् सकलानभीष्टान्। त्वामाश्रितानां न विपन्नराणां त्वामाश्रिता ह्याश्रयतां प्रान्ति॥', favorite: false
-            },
-            {
-                id: 27, category: 'general', title: 'Putra Prapti Mantra', purpose: 'For Progeny',
-                transliteration: 'Om Devaki Sut Govinda Vasudev Jagatpate | Dehi Mey Tanayam Krishna Twamaham Sharnam Gatah ||',
-                sanskrit: 'ॐ देवकीसुतगोविन्द वासुदेवजगत्पते। देहि मे तनयं कृष्ण त्वामहं शरणं गतः॥', favorite: false
-            },
-            {
-                id: 28, category: 'general', title: 'Patni Prapti Mantra', purpose: 'To Find a Good Wife',
-                transliteration: 'Patni Manoramam Dehi Manovrittanusarinim | Tarinim Durgasansarsagarasya Kulodbhawam ||',
-                sanskrit: 'पत्नीं मनोरमां देहि मनोवृत्तानुसारिणीम्। तारिणीं दुर्गसंसारसागरस्य कुलोद्भवाम्॥', favorite: false
-            },
-            {
-                id: 29, category: 'general', title: 'Var Prapti Mantra', purpose: 'To Find a Good Husband',
-                transliteration: 'Katyayni Mahamaye Mahayoginya Dhishwari | Nandgopasutam Devam Patim Me Kuru Te Namah ||',
-                sanskrit: 'कात्यायनि महामाये महायोगिन्यधीश्वरि। नन्दगोपसुतं देवि पतिं मे कुरु ते नमः॥', favorite: false
-            },
-            {
-                id: 30, category: 'general', title: 'Sarva Baadha Mukti Mantra', purpose: 'For Freedom from All Troubles',
-                transliteration: 'Sarvabadha Vinirmukto, Dhandhanyasutanvitah Manushyo Matprasaden Bhavishyati Na Sanshayah ||',
-                sanskrit: 'सर्वाबाधा-विनिर्मुक्तो, धनधान्यसुतान्वितः। मनुष्यो मत्प्रसादेन भविष्यति न संशयः॥', favorite: false
-            },
-            {
-                id: 31, category: 'general', title: 'Samasya Nidaan Mantra', purpose: 'For Problem Resolution',
-                transliteration: 'Sharanagat Deenarta Paritranaparayane | Sarvsyartihare Devi, Narayani Namostute ||',
-                sanskrit: 'शरणागतदीनार्तपरित्राणपरायणे। सर्वस्यार्तिहरे देवि, नारायणि नमोऽस्तु ते॥', favorite: false
-            },
-            {
-                id: 32, category: 'general', title: 'Bhay Nivaaran Mantra', purpose: 'For Fear Removal',
-                transliteration: 'Sarvaswarupe Sarveshe Sarvashakti Samanvite Bhayebhyastrahi No Devi Durge Devi Namostute ||',
-                sanskrit: 'सर्वस्वरूपे सर्वेशे सर्वशक्ति समन्विते। भयेभ्यस्त्राहि नो देवि! दुर्गे देवि! नमोऽस्तु ते॥', favorite: false
-            },
-            {
-                id: 33, category: 'general', title: 'Suraksha Mantra', purpose: 'For Protection',
-                transliteration: 'Shulen Pahi No devi Pahi Khadgen Chambike Ghanta Swanen Nah Pahi, Chapajyanihswanen Cha ||',
-                sanskrit: 'शूलेन पाहि नो देवि! पाहि खड्गेन चाम्बिके। घण्टास्वनेन नः पाहि, चापज्यानिःस्वनेन च॥', favorite: false
-            },
-            {
-                id: 34, category: 'general', title: 'Saubhagya Mantra', purpose: 'For Good Fortune',
-                transliteration: 'Dehi Saubhaagyamaarogyam Dehi Me Paramam Sukham Rupam Dehi Jayam Dehi, Yasho Dehi Dwisho Jahi ||',
-                sanskrit: 'देहि सौभाग्यमारोग्यं देहि मे परमं सुखम्। रूपं देहि जयं देहि, यशो देहि द्विषो जहि॥', favorite: false
-            },
-            {
-                id: 35, category: 'general', title: 'Mahamaari Nivaaran Mantra', purpose: 'For Relief from Epidemics',
-                transliteration: 'Jayanti Mangala Kali, Bhadrakali Kapalini Durga Kshama Shiva Dhatri Swaha Swadha Namostute Te ||',
-                sanskrit: 'जयन्ती मंगला काली, भद्रकाली कपालिनी। दुर्गा क्षमा शिवा धात्री स्वाहा स्वधा नमोऽस्तु ते॥', favorite: false
-            },
-            {
-                id: 36, category: 'general', title: 'Paap Mukti Mantra', purpose: 'For Freedom from Sins',
-                transliteration: 'Hinasti Daityatejansi Swanenapurya Ya Jagat Sa Ghanta Patu No Devi Papebhyo Nah Sutaniv ||',
-                sanskrit: 'हिनस्ति दैत्यतेजांसि स्वनेनापूर्य या जगत्। सा घण्टा पातु नो देवि! पापेभ्यो नः सुतानिव॥', favorite: false
-            },
-            {
-                id: 37, category: 'general', title: 'Mukti Prapti Mantra', purpose: 'For Liberation',
-                transliteration: 'Vidhehi Devi Kalyanam, Vidhehi Paramam Shriyam Rupam Dehi Jayam Dehi, Yasho Dehi Dwisho Jahi ||',
-                sanskrit: 'विधेहि देवि कल्याणं, विधेहि परमां श्रियम्। रूपं देहि जयं देहि, यशो देहि द्विषो जहि॥', favorite: false
-            },
-            {
-                id: 38, category: 'general', title: 'Shatru Nishphalikaran Mantra', purpose: 'To Nullify Enemies',
-                transliteration: 'Tato Nishumbhah Samprapya Chetnamatkarmukah Aajghan Sharairdevim Kalim Kesarimam Tatha ||',
-                sanskrit: 'ततो निशुम्भः सम्प्राप्य चेतनाऽऽत्तकार्मुकः। आजघान शरैर्देवीं कालीं केसरिणं तथा॥', favorite: false
-            }
+            { id: 26, category: 'general', title: 'Rog Naashak Mantra', purpose: 'For Relief from Diseases', transliteration: 'Roganasheshanpahansi Tushta Rushta Tu Kaman Saklanbhishtan Twamashritanam Na Vipannaranam Twamashrita Hyashrayatam Prayanti ||', sanskrit: 'रोगानशेषानपहंसि तुष्टा रुष्टा तु कामान् सकलानभीष्टान्। त्वामाश्रितानां न विपन्नराणां त्वामाश्रिता ह्याश्रयतां प्रान्ति॥', favorite: false, deityIcon: 'fas fa-heartbeat' },
+            { id: 27, category: 'general', title: 'Putra Prapti Mantra', purpose: 'For Progeny', transliteration: 'Om Devaki Sut Govinda Vasudev Jagatpate | Dehi Mey Tanayam Krishna Twamaham Sharnam Gatah ||', sanskrit: 'ॐ देवकीसुतगोविन्द वासुदेवजगत्पते। देहि मे तनयं कृष्ण त्वामहं शरणं गतः॥', favorite: false, deityIcon: 'fas fa-child' },
+            { id: 28, category: 'general', title: 'Patni Prapti Mantra', purpose: 'To Find a Good Wife', transliteration: 'Patni Manoramam Dehi Manovrittanusarinim | Tarinim Durgasansarsagarasya Kulodbhawam ||', sanskrit: 'पत्नीं मनोरमां देहि मनोवृत्तानुसारिणीम्। तारिणीं दुर्गसंसारसागरस्य कुलोद्भवाम्॥', favorite: false, deityIcon: 'fas fa-female' },
+            { id: 29, category: 'general', title: 'Var Prapti Mantra', purpose: 'To Find a Good Husband', transliteration: 'Katyayni Mahamaye Mahayoginya Dhishwari | Nandgopasutam Devam Patim Me Kuru Te Namah ||', sanskrit: 'कात्यायनि महामाये महायोगिन्यधीश्वरि। नन्दगोपसुतं देवि पतिं मे कुरु ते नमः॥', favorite: false, deityIcon: 'fas fa-male' },
+            { id: 30, category: 'general', title: 'Sarva Baadha Mukti Mantra', purpose: 'For Freedom from All Troubles', transliteration: 'Sarvabadha Vinirmukto, Dhandhanyasutanvitah Manushyo Matprasaden Bhavishyati Na Sanshayah ||', sanskrit: 'सर्वाबाधा-विनिर्मुक्तो, धनधान्यसुतान्वितः। मनुष्यो मत्प्रसादेन भविष्यति न संशयः॥', favorite: false, deityIcon: 'fas fa-shield-alt' },
+            { id: 31, category: 'general', title: 'Samasya Nidaan Mantra', purpose: 'For Problem Resolution', transliteration: 'Sharanagat Deenarta Paritranaparayane | Sarvsyartihare Devi, Narayani Namostute ||', sanskrit: 'शरणागतदीनार्तपरित्राणपरायणे। सर्वस्यार्तिहरे देवि, नारायणि नमोऽस्तु ते॥', favorite: false, deityIcon: 'fas fa-lightbulb' },
+            { id: 32, category: 'general', title: 'Bhay Nivaaran Mantra', purpose: 'For Fear Removal', transliteration: 'Sarvaswarupe Sarveshe Sarvashakti Samanvite Bhayebhyastrahi No Devi Durge Devi Namostute ||', sanskrit: 'सर्वस्वरूपे सर्वेशे सर्वशक्ति समन्विते। भयेभ्यस्त्राहि नो देवि! दुर्गे देवि! नमोऽस्तु ते॥', favorite: false, deityIcon: 'fas fa-eye' },
+            { id: 33, category: 'general', title: 'Suraksha Mantra', purpose: 'For Protection', transliteration: 'Shulen Pahi No devi Pahi Khadgen Chambike Ghanta Swanen Nah Pahi, Chapajyanihswanen Cha ||', sanskrit: 'शूलेन पाहि नो देवि! पाहि खड्गेन चाम्बिके। घण्टास्वनेन नः पाहि, चापज्यानिःस्वनेन च॥', favorite: false, deityIcon: 'fas fa-shield-alt' },
+            { id: 34, category: 'general', title: 'Saubhagya Mantra', purpose: 'For Good Fortune', transliteration: 'Dehi Saubhaagyamaarogyam Dehi Me Paramam Sukham Rupam Dehi Jayam Dehi, Yasho Dehi Dwisho Jahi ||', sanskrit: 'देहि सौभाग्यमारोग्यं देहि मे परमं सुखम्। रूपं देहि जयं देहि, यशो देहि द्विषो जहि॥', favorite: false, deityIcon: 'fas fa-star' },
+            { id: 35, category: 'general', title: 'Mahamaari Nivaaran Mantra', purpose: 'For Relief from Epidemics', transliteration: 'Jayanti Mangala Kali, Bhadrakali Kapalini Durga Kshama Shiva Dhatri Swaha Swadha Namostute Te ||', sanskrit: 'जयन्ती मंगला काली, भद्रकाली कपालिनी। दुर्गा क्षमा शिवा धात्री स्वाहा स्वधा नमोऽस्तु ते॥', favorite: false, deityIcon: 'fas fa-viruses' },
+            { id: 36, category: 'general', title: 'Paap Mukti Mantra', purpose: 'For Freedom from Sins', transliteration: 'Hinasti Daityatejansi Swanenapurya Ya Jagat Sa Ghanta Patu No Devi Papebhyo Nah Sutaniv ||', sanskrit: 'हिनस्ति दैत्यतेजांसि स्वनेनापूर्य या जगत्। सा घण्टा पातु नो देवि! पापेभ्यो नः सुतानिव॥', favorite: false, deityIcon: 'fas fa-praying-hands' },
+            { id: 37, category: 'general', title: 'Mukti Prapti Mantra', purpose: 'For Liberation', transliteration: 'Vidhehi Devi Kalyanam, Vidhehi Paramam Shriyam Rupam Dehi Jayam Dehi, Yasho Dehi Dwisho Jahi ||', sanskrit: 'विधेहि देवि कल्याणं, विधेहि परमां श्रियम्। रूपं देहि जयं देहि, यशो देहि द्विषो जहि॥', favorite: false, deityIcon: 'fas fa-om' },
+            { id: 38, category: 'general', title: 'Shatru Nishphalikaran Mantra', purpose: 'To Nullify Enemies', transliteration: 'Tato Nishumbhah Samprapya Chetnamatkarmukah Aajghan Sharairdevim Kalim Kesarimam Tatha ||', sanskrit: 'ततो निशुम्भः सम्प्राप्य चेतनाऽऽत्तकार्मुकः। आजघान शरैर्देवीं कालीं केसरिणं तथा॥', favorite: false, deityIcon: 'fas fa-skull-crossbones' }
         ];
 
         const container = document.querySelector('.mantras-container');
         const favoritesContainer = document.getElementById('favoritesContainer');
         const mantraOfTheDayContainer = document.getElementById('mantraOfTheDay');
-        const filterBtns = document.querySelectorAll('.filter-btn');
         const searchInput = document.getElementById('searchInput');
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toastMessage');
 
-        // Load favorites from localStorage
+        const infoModal = document.getElementById('infoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const modalClose = document.getElementById('modalClose');
+
         const loadFavorites = () => {
-            const savedFavorites = localStorage.getItem('mantraFavorites');
-            if (savedFavorites) {
-                const favoriteIds = JSON.parse(savedFavorites);
-                mantraData.forEach(mantra => {
-                    mantra.favorite = favoriteIds.includes(mantra.id);
-                });
-            }
+            const favoriteIds = JSON.parse(localStorage.getItem('mantraFavorites') || '[]');
+            mantraData.forEach(m => m.favorite = favoriteIds.includes(m.id));
         };
 
-        // Save favorites to localStorage
         const saveFavorites = () => {
-            const favoriteIds = mantraData
-                .filter(mantra => mantra.favorite)
-                .map(mantra => mantra.id);
+            const favoriteIds = mantraData.filter(m => m.favorite).map(m => m.id);
             localStorage.setItem('mantraFavorites', JSON.stringify(favoriteIds));
         };
 
-        // Show toast notification
         const showToast = (message) => {
             toastMessage.textContent = message;
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+            setTimeout(() => toast.classList.remove('show'), 3000);
         };
 
-        // Function to render mantras
         const renderMantras = (filter = 'all', searchTerm = '') => {
-            container.innerHTML = ''; // Clear existing mantras
+            container.innerHTML = '';
+            let filteredData = (filter === 'all') ? mantraData : mantraData.filter(m => m.category === filter || (filter === 'favorites' && m.favorite));
             
-            let filteredData;
-            
-            if (filter === 'favorites') {
-                filteredData = mantraData.filter(m => m.favorite);
-            } else {
-                filteredData = filter === 'all' ? 
-                    mantraData : 
-                    mantraData.filter(m => m.category === filter);
-            }
-            
-            // Apply search filter
-            if (searchTerm) {
-                const term = searchTerm.toLowerCase();
-                filteredData = filteredData.filter(mantra => 
-                    mantra.title.toLowerCase().includes(term) ||
-                    mantra.purpose.toLowerCase().includes(term) ||
-                    mantra.transliteration.toLowerCase().includes(term) ||
-                    mantra.sanskrit.toLowerCase().includes(term)
-                );
-            }
-            
-            if (filteredData.length === 0) {
-                container.innerHTML = `
-                    <div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-                        <i class="fas fa-search" style="font-size: 4rem; color: var(--henna); opacity: 0.5; margin-bottom: 1.5rem;"></i>
-                        <h3 style="color: var(--maroon);">No mantras found</h3>
-                        <p>Try adjusting your search or filter criteria</p>
-                    </div>
-                `;
-                return;
+            const trimmedSearchTerm = searchTerm.trim();
+            if (trimmedSearchTerm) {
+                const term = trimmedSearchTerm.toLowerCase();
+                filteredData = filteredData.filter(m => ['title', 'purpose', 'transliteration', 'sanskrit'].some(key => m[key].toLowerCase().includes(term)));
             }
 
-            filteredData.forEach((mantra, index) => {
+            if (filteredData.length === 0) {
+                let message = `<p>No mantras found.</p>`;
+                if(trimmedSearchTerm) {
+                    message = `<p>No mantras found for "<strong>${trimmedSearchTerm}</strong>".</p><p class="sub">Please check your spelling or try a different filter.</p>`;
+                }
+                container.innerHTML = `<div class="no-results"><i class="fas fa-search"></i>${message}</div>`;
+                return;
+            }
+            
+            filteredData.forEach((mantra) => {
                 const card = document.createElement('div');
-                card.className = 'mantra-card animate-card';
-                card.dataset.category = mantra.category;
-                card.style.animationDelay = `${index * 0.1}s`;
+                card.className = 'mantra-card';
+                card.dataset.id = mantra.id;
                 card.innerHTML = `
                     <div class="mantra-category">${mantra.category}</div>
                     <div class="mantra-info">
-                        <h3 class="mantra-title">${mantra.title}</h3>
-                        <p class="mantra-purpose"><i class="fas fa-star"></i>${mantra.purpose}</p>
+                        <div class="mantra-title-container">
+                            <i class="${mantra.deityIcon} mantra-deity-icon"></i>
+                            <h3 class="mantra-title">${mantra.title}</h3>
+                        </div>
+                        <p class="mantra-purpose"><i class="fas fa-bullseye"></i> ${mantra.purpose}</p>
                         <div class="mantra-sanskrit">${mantra.sanskrit}</div>
                         <p class="mantra-transliteration">${mantra.transliteration}</p>
                     </div>
                     <div class="mantra-actions">
-                        <button class="action-btn copy-btn" data-id="${mantra.id}">
-                            <i class="fas fa-copy"></i> Copy
-                        </button>
-                        <button class="action-btn favorite ${mantra.favorite ? 'active' : ''}" data-id="${mantra.id}">
-                            <i class="fas fa-heart"></i> Favorite
-                        </button>
+                        <button class="action-btn info-btn" data-id="${mantra.id}"><i class="fas fa-info-circle"></i> Info</button>
+                        <button class="action-btn copy-btn" data-id="${mantra.id}"><i class="fas fa-copy"></i> Copy</button>
+                        <button class="action-btn favorite ${mantra.favorite ? 'active' : ''}" data-id="${mantra.id}"><i class="fas fa-heart"></i> Favorite</button>
                     </div>
                 `;
                 container.appendChild(card);
             });
-            
             renderFavorites();
         };
         
-        // Function to render favorites
         const renderFavorites = () => {
-            const favorites = mantraData.filter(mantra => mantra.favorite);
+            const favorites = mantraData.filter(m => m.favorite);
             favoritesContainer.innerHTML = '';
-            
             if (favorites.length === 0) {
-                favoritesContainer.innerHTML = `
-                    <div class="no-favorites" style="grid-column: 1/-1; text-align: center; padding: 2rem; background: rgba(123,44,44,0.05); border-radius: 15px;">
-                        <i class="fas fa-heart" style="font-size: 3rem; color: var(--henna); opacity: 0.3; margin-bottom: 1rem;"></i>
-                        <p>You haven't saved any favorites yet</p>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Click the heart icon on any mantra to save it here</p>
-                    </div>
-                `;
+                favoritesContainer.innerHTML = `<div class="no-favorites"><i class="fas fa-heart-crack"></i><p>Your Favorite Mantras Will Appear Here</p><p class="sub">Click the heart icon <i class="fas fa-heart"></i> on any mantra to save it.</p></div>`;
                 return;
             }
-            
             favorites.forEach(mantra => {
                 const card = document.createElement('div');
                 card.className = 'mantra-card';
-                card.innerHTML = `
-                    <div class="mantra-category">${mantra.category}</div>
-                    <div class="mantra-info">
-                        <h3 class="mantra-title">${mantra.title}</h3>
-                        <p class="mantra-purpose"><i class="fas fa-star"></i>${mantra.purpose}</p>
-                        <div class="mantra-sanskrit">${mantra.sanskrit}</div>
-                    </div>
-                    <div class="mantra-actions">
-                        <button class="action-btn copy-btn" data-id="${mantra.id}">
-                            <i class="fas fa-copy"></i> Copy
-                        </button>
-                    </div>
-                `;
+                card.innerHTML = `<div class="mantra-category">${mantra.category}</div><div class="mantra-info"><h3 class="mantra-title">${mantra.title}</h3><p class="mantra-purpose"><i class="fas fa-star"></i>${mantra.purpose}</p><div class="mantra-sanskrit">${mantra.sanskrit}</div></div>`;
                 favoritesContainer.appendChild(card);
             });
         };
         
-        // Function to render Mantra of the Day
         const renderMantraOfTheDay = () => {
-            if (mantraData.length === 0) return;
-            const randomIndex = Math.floor(Math.random() * mantraData.length);
-            const mantra = mantraData[randomIndex];
+            const mantra = mantraData[Math.floor(Math.random() * mantraData.length)];
             mantraOfTheDayContainer.innerHTML = `
-                <button class="refresh-btn" id="refreshMantra">
-                    <i class="fas fa-sync-alt"></i>
-                </button>
+                <button class="refresh-btn" id="refreshMantra"><i class="fas fa-sync-alt"></i></button>
                 <h2>Mantra of the Day</h2>
                 <div class="mantra-card" style="background: rgba(0,0,0,0.15); max-width: 800px; margin: 0 auto;">
                     <div class="mantra-category">${mantra.category}</div>
@@ -1080,81 +351,61 @@
                         <h3 class="mantra-title" style="color: var(--gold);">${mantra.title}</h3>
                         <p class="mantra-purpose" style="color: var(--gold-light);"><i class="fas fa-star"></i>${mantra.purpose}</p>
                         <div class="mantra-sanskrit" style="color: var(--ivory);">${mantra.sanskrit}</div>
-                        <p class="mantra-transliteration" style="color: rgba(253,248,240,0.9);">${mantra.transliteration}</p>
                     </div>
-                </div>
-            `;
+                </div>`;
+            document.getElementById('refreshMantra').addEventListener('click', () => {
+                renderMantraOfTheDay();
+                showToast("New Mantra of the Day selected!");
+            });
         };
 
-        // Filter button logic
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
+        document.querySelector('.mantra-filters').addEventListener('click', (e) => {
+            if (e.target.closest('.filter-btn')) {
+                const btn = e.target.closest('.filter-btn');
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 renderMantras(btn.dataset.filter, searchInput.value);
-            });
+            }
         });
 
-        // Search functionality
         searchInput.addEventListener('input', () => {
-            const activeFilter = document.querySelector('.filter-btn.active');
-            renderMantras(activeFilter.dataset.filter, searchInput.value);
+            renderMantras(document.querySelector('.filter-btn.active').dataset.filter, searchInput.value);
         });
 
-        // Event delegation for action buttons
-        document.addEventListener('click', (e) => {
-            // Copy button logic
-            if (e.target.closest('.copy-btn')) {
-                const btn = e.target.closest('.copy-btn');
-                const id = parseInt(btn.dataset.id);
-                const mantra = mantraData.find(m => m.id === id);
-                
-                if (mantra) {
-                    const textToCopy = `${mantra.title}\n\n${mantra.transliteration}\n${mantra.sanskrit}`;
-                    
-                    navigator.clipboard.writeText(textToCopy).then(() => {
-                        showToast("Mantra copied to clipboard!");
-                    }).catch(err => {
-                        showToast("Failed to copy mantra");
-                        console.error('Failed to copy: ', err);
-                    });
-                }
-            }
+        document.addEventListener('click', e => {
+            const copyBtn = e.target.closest('.copy-btn');
+            const favoriteBtn = e.target.closest('.favorite');
+            const infoBtn = e.target.closest('.info-btn');
 
-            // Favorite button logic
-            if (e.target.closest('.favorite')) {
-                const btn = e.target.closest('.favorite');
-                const id = parseInt(btn.dataset.id);
-                const mantra = mantraData.find(m => m.id === id);
-                
-                if (mantra) {
-                    mantra.favorite = !mantra.favorite;
-                    btn.classList.toggle('active', mantra.favorite);
-                    saveFavorites();
-                    renderFavorites();
-                    
-                    // Re-render main list if the active filter is 'favorites'
-                    const activeFilterBtn = document.querySelector('.filter-btn.active');
-                    if (activeFilterBtn && activeFilterBtn.dataset.filter === 'favorites') {
-                         renderMantras('favorites', searchInput.value);
-                    }
-                    
-                    if (mantra.favorite) {
-                        showToast("Added to favorites!");
-                    } else {
-                        showToast("Removed from favorites");
-                    }
-                }
+            if (copyBtn) {
+                const mantra = mantraData.find(m => m.id === parseInt(copyBtn.dataset.id));
+                navigator.clipboard.writeText(`${mantra.title}\n\n${mantra.transliteration}\n${mantra.sanskrit}`).then(() => showToast("Mantra copied to clipboard!"));
             }
-            
-            // Refresh Mantra of the Day
-            if (e.target.closest('#refreshMantra')) {
-                renderMantraOfTheDay();
-                showToast("New Mantra of the Day selected");
+            if (favoriteBtn) {
+                const mantra = mantraData.find(m => m.id === parseInt(favoriteBtn.dataset.id));
+                mantra.favorite = !mantra.favorite;
+                favoriteBtn.classList.toggle('active', mantra.favorite);
+                saveFavorites();
+                renderFavorites();
+                if (document.querySelector('.filter-btn.active')?.dataset.filter === 'favorites') renderMantras('favorites', searchInput.value);
+                showToast(mantra.favorite ? "Added to favorites!" : "Removed from favorites");
+            }
+            if (infoBtn) {
+                const mantra = mantraData.find(m => m.id === parseInt(infoBtn.dataset.id));
+                modalTitle.textContent = mantra.title;
+                modalBody.innerHTML = `
+                    <h4>Purpose & Benefits</h4>
+                    <p>${mantra.purpose}. This is placeholder text. A detailed description of the mantra's spiritual significance, benefits of chanting, and historical context would be displayed here.</p>
+                    <h4>Recommended Practice</h4>
+                    <p>It is often recommended to chant this mantra 108 times, preferably in the morning or during a quiet time of day. This is a general guideline; consult a guru for specific instructions.</p>
+                `;
+                infoModal.classList.add('visible');
             }
         });
 
-        // Initial setup
+        modalClose.addEventListener('click', () => infoModal.classList.remove('visible'));
+        infoModal.addEventListener('click', (e) => { if (e.target === infoModal) infoModal.classList.remove('visible'); });
+
         loadFavorites();
         renderMantraOfTheDay();
         renderMantras();
