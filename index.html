@@ -9,7 +9,6 @@
         href="https://fonts.googleapis.com/css2?family=Samarkan:wght@400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <style>
         /* CSS Custom Properties for easy theme management */
@@ -269,7 +268,7 @@
         .section {
             padding: 6rem 2rem;
         }
-        
+
         /* Wrapper to constrain content width inside full-width sections */
         .section-wrapper {
             max-width: 1200px;
@@ -319,7 +318,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8rem;
+            gap: 4rem; /* Reduced gap for mobile */
         }
 
         .service-tapestry-item {
@@ -341,65 +340,65 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Desktop-only timeline styles */
+        @media (min-width: 769px) {
+            .tapestry-container {
+                 gap: 8rem;
+            }
+            .service-tapestry-item::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: -80px;
+                transform: translateY(-50%);
+                width: 60px;
+                height: 60px;
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2rem;
+                color: var(--gold);
+                background: white;
+                border-radius: 50%;
+                box-shadow: var(--shadow);
+            }
 
-        .service-tapestry-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: -80px;
-            transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--gold);
-            background: white;
-            border-radius: 50%;
-            box-shadow: var(--shadow);
+            .service-tapestry-item:nth-child(1)::before {
+                content: '\f77c'; /* fas fa-journal-whills */
+            }
+            .service-tapestry-item:nth-child(2)::before {
+                content: '\f004'; /* fas fa-heart */
+            }
+            .service-tapestry-item:nth-child(3)::before {
+                content: '\f133'; /* fas fa-calendar-alt */
+            }
+            .service-tapestry-item:nth-child(4)::before {
+                content: '\f0b1'; /* fas fa-briefcase */
+            }
+
+            .service-tapestry-item::after {
+                content: '';
+                position: absolute;
+                top: -4rem;
+                left: -50px; /* Adjusted position */
+                width: 2px;
+                height: calc(100% + 8rem);
+                background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+            }
+
+            .tapestry-container>div:first-child::after {
+                background: linear-gradient(to bottom, var(--gold), var(--gold), transparent);
+            }
+
+            .tapestry-container>div:last-child::after {
+                height: calc(50% + 4rem);
+                background: linear-gradient(to bottom, transparent, var(--gold));
+            }
         }
 
-        .service-tapestry-item:nth-child(1)::before {
-            content: '\f77c';
-        }
-
-        /* fas fa-journal-whills */
-        .service-tapestry-item:nth-child(2)::before {
-            content: '\f004';
-        }
-
-        /* fas fa-heart */
-        .service-tapestry-item:nth-child(3)::before {
-            content: '\f133';
-        }
-
-        /* fas fa-calendar-alt */
-        .service-tapestry-item:nth-child(4)::before {
-            content: '\f0b1';
-        }
-
-        /* fas fa-briefcase */
-        .service-tapestry-item::after {
-            content: '';
-            position: absolute;
-            top: -4rem;
-            left: -79px;
-            width: 1px;
-            height: calc(100% + 8rem);
-            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-        }
-
-        .tapestry-container>div:first-child::after {
-            background: linear-gradient(to bottom, var(--gold), var(--gold), transparent);
-        }
-
-        .tapestry-container>div:last-child::after {
-            height: calc(50% + 4rem);
-            background: linear-gradient(to bottom, transparent, var(--gold));
-        }
 
         .tapestry-content {
             text-align: center;
@@ -437,7 +436,7 @@
             transform: scale(1.05);
         }
 
-        
+        /* Mulank Calculator Section */
         .mulank-container {
             max-width: 800px;
             margin: 0 auto;
@@ -645,23 +644,22 @@
             line-height: 1.7;
             color: rgba(253, 248, 240, 0.9);
         }
-        
-        /* Innovated About Section Styles */
+
+        /* About Section Styles */
         #about {
             background: linear-gradient(to bottom, #f7f0e6 0%, #f1e8da 15%, #f1e8da 85%, #f7f0e6 100%);
         }
+
         .about-container-innovated {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 4rem;
+            gap: 2.5rem; /* Reduced gap for mobile */
             align-items: center;
-            max-width: 1100px; /* This is now controlled by the .section-wrapper */
-            margin: 0 auto;
         }
 
         .about-image-innovated {
             position: relative;
-            max-width: 400px;
+            max-width: 320px; /* Adjusted size for mobile */
             margin: 0 auto;
         }
 
@@ -699,10 +697,11 @@
             display: flex;
             background: rgba(123, 44, 44, 0.05);
             border-bottom: 1px solid rgba(123, 44, 44, 0.1);
+            flex-wrap: wrap; /* Allow tabs to wrap on mobile */
         }
 
         .journey-tab {
-            flex: 1;
+            flex: 1 1 50%; /* Allow two tabs per row on smaller screens */
             padding: 1rem;
             text-align: center;
             background: transparent;
@@ -728,15 +727,15 @@
 
         .journey-content-wrapper {
             padding: 2.5rem;
-            min-height: 300px;
+            min-height: 250px; /* Adjusted min-height */
             position: relative;
         }
-        
+
         .journey-content {
             position: absolute;
-            top: 2.5rem; /* Match padding */
-            left: 2.5rem; /* Match padding */
-            right: 2.5rem; /* Match padding */
+            top: 2.5rem;
+            left: 2.5rem;
+            right: 2.5rem;
             opacity: 0;
             visibility: hidden;
             transform: translateY(15px);
@@ -744,7 +743,7 @@
         }
 
         .journey-content.active {
-            position: relative; /* Changed to relative when active */
+            position: relative;
             top: auto;
             left: auto;
             right: auto;
@@ -759,7 +758,8 @@
             margin-bottom: 1.5rem;
         }
 
-        .journey-content p {
+        .journey-content p, .journey-content li {
+            font-size: 1.1rem; /* Consistent font size */
             line-height: 1.8;
             color: var(--text);
             margin-bottom: 1.5rem;
@@ -773,21 +773,18 @@
         .journey-content li {
             position: relative;
             padding-left: 25px;
-            margin-bottom: 1rem;
-            line-height: 1.7;
         }
 
         .journey-content li::before {
             content: '✦';
             position: absolute;
             left: 0;
-            top: 0;
+            top: 2px;
             color: var(--gold);
             font-size: 1rem;
         }
 
         /* Testimonials Section */
-
         .testimonials-bg-pattern {
             position: absolute;
             top: 50%;
@@ -802,7 +799,7 @@
 
         .testimonials-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: 1fr; /* Default to single column */
             gap: 2.5rem;
         }
 
@@ -906,9 +903,8 @@
 
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 5rem;
-            align-items: flex-start;
+            grid-template-columns: 1fr; /* Single column layout on mobile */
+            gap: 3rem;
         }
 
         .contact-info h3 {
@@ -1084,7 +1080,7 @@
 
         /* Mobile Navigation */
         .mobile-menu-btn {
-            display: none;
+            display: none; /* Hidden by default */
             background: none;
             border: none;
             color: var(--maroon);
@@ -1097,11 +1093,10 @@
             position: fixed;
             top: 0;
             right: -100%;
-            width: 70%;
+            width: 80%; /* Adjusted width */
             max-width: 320px;
             height: 100vh;
             background: var(--ivory);
-            backdrop-filter: blur(12px);
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -1203,72 +1198,41 @@
 
         /* Animation Keyframes */
         @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-        
-        @keyframes pan-background {
-            0% {
-                transform: translateX(0) translateY(0);
-            }
-
-            50% {
-                transform: translateX(5%) translateY(10%);
-            }
-
-            100% {
-                transform: translateX(0) translateY(0);
-            }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
 
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
-            }
-
-            50% {
-                box-shadow: 0 0 30px rgba(244, 197, 66, 0.7), 0 0 50px rgba(244, 197, 66, 0.5);
-            }
-
-            100% {
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
-            }
-        }
-        
         /* Responsive Media Queries */
+
+        /* Laptops and Desktops */
         @media (min-width: 992px) {
             .about-container-innovated {
                 grid-template-columns: 400px 1fr;
             }
-        }
-
-        @media (min-width: 768px) {
-            .mulank-container {
+            .contact-container {
+                grid-template-columns: 1fr 1.2fr;
+                gap: 5rem;
+            }
+            .testimonials-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+             .mulank-container {
                 grid-template-columns: 1fr 1fr;
             }
         }
-
-        @media (max-width: 991px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+        
+        /* Tablets and small laptops */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .testimonials-container {
+                grid-template-columns: repeat(2, 1fr);
             }
-            /* Remove left/right padding on full-width sections */
-            #services, #about, #contact {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
+             .mulank-container {
+                grid-template-columns: 1fr 1fr;
             }
         }
-
+        
+        /* Mobile Devices (up to 768px) */
         @media (max-width: 768px) {
             header {
                 padding: 1rem 1.5rem;
@@ -1281,71 +1245,80 @@
             .mobile-menu-btn {
                 display: block;
             }
-
-            .hero {
-                /* Make hero section use section-wrapper logic */
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-
-            .section-header h2 {
-                font-size: 2.5rem;
-            }
-
-            .section {
-                padding: 4rem 0; /* Adjust padding for full-width sections */
-            }
-             .section-wrapper {
-                 padding: 0 1.5rem;
-             }
-
-            .service-tapestry-item::before,
-            .service-tapestry-item::after {
-                display: none;
-            }
-
-            #about {
+            
+            body {
                 background-attachment: scroll;
             }
-            .journey-tabs {
-                flex-wrap: wrap;
+            
+            .section {
+                padding: 4rem 1.5rem;
             }
-            .journey-tab {
-                flex-basis: 50%;
-                font-size: 1rem;
+            
+            .section-header h2 {
+                font-size: 2.8rem;
             }
-        }
+            .section-header p {
+                font-size: 1.1rem;
+            }
 
-        @media (max-width: 480px) {
             .hero-text h1 {
                 font-size: 2.5rem;
             }
 
             .hero-text .byline {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
 
-            .ios-button {
-                padding: 1rem 2rem;
+            .tapestry-content h3 {
+                font-size: 2rem;
+            }
+            
+            .mulank-input-panel, .mulank-result-panel {
+                padding: 2rem;
+            }
+
+            .about-container-innovated {
+                gap: 2.5rem;
+            }
+            
+            .journey-tab {
                 font-size: 1rem;
             }
-
-            .section-header h2 {
-                font-size: 2.2rem;
+            
+            .journey-content-wrapper {
+                padding: 2rem;
             }
 
             .contact-form {
-                padding: 2rem;
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+            .section-header {
+                margin-bottom: 3rem;
+            }
+            .section-header h2 {
+                font-size: 2.2rem;
             }
             
-            .service-tapestry-item {
+            .hero-text h1 {
+                font-size: 2.1rem;
+            }
+            
+            .ios-button {
+                padding: 1rem 2.2rem;
+                font-size: 1rem;
+            }
+
+            .service-tapestry-item, .contact-form, .journey-content-wrapper {
                 padding: 2rem;
             }
         }
+
     </style>
 </head>
 
@@ -1378,17 +1351,17 @@
         <button class="close-menu" id="closeMenu">
             <i class="fas fa-times"></i>
         </button>
-        <a href="#home" class="active">Home</a>
-        <a href="#services">Services</a>
-        <a href="#mulank">Mulank</a>
-        <a href="#about">About</a>
-        <a href="#testimonials">Testimonials</a>
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#mulank" class="nav-link">Mulank</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
         <a href="mantras.html">Mantras</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
     <main>
-        <section class="hero section">
+        <section class="hero section" id="home">
             <div class="section-wrapper">
                 <div class="hero-text">
                     <div class="profile-pic">
@@ -1490,7 +1463,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="section" id="about">
             <div class="section-wrapper">
                 <div class="section-header">
@@ -1726,16 +1699,14 @@
             const mobileNav = document.getElementById('mobileNav');
             const closeMenu = document.getElementById('closeMenu');
             const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a.nav-link');
             const openMobileMenu = () => { mobileNav.classList.add('active'); mobileNavOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; };
             const closeMobileMenu = () => { mobileNav.classList.remove('active'); mobileNavOverlay.classList.remove('active'); document.body.style.overflow = ''; };
             mobileMenuBtn.addEventListener('click', openMobileMenu);
             closeMenu.addEventListener('click', closeMobileMenu);
             mobileNavOverlay.addEventListener('click', closeMobileMenu);
             mobileNavLinks.forEach(link => {
-                if (!link.href.includes('mantras.html')) {
-                    link.addEventListener('click', closeMobileMenu);
-                }
+                link.addEventListener('click', closeMobileMenu);
             });
 
             // --- Page Load Effects ---
@@ -1744,20 +1715,21 @@
                 setTimeout(() => {
                     loader.classList.add('loader-hidden');
                     document.body.style.overflow = '';
-                }, 500); // Short delay after content loads
+                }, 500);
             });
-            document.body.style.overflow = 'hidden'; // Hide scrollbars until loaded
+            document.body.style.overflow = 'hidden';
 
 
             // --- Anchor Scroll with Lenis ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (!targetId || targetId === '#') return;
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        lenis.scrollTo(targetElement, { offset: -80, duration: 2 });
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            lenis.scrollTo(targetElement, { offset: -80, duration: 2 });
+                        }
                     }
                 });
             });
@@ -1776,7 +1748,6 @@
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i>Sending...';
 
-                    // This is a demonstration. In a real application, you would send the form data to a server.
                     setTimeout(() => {
                         showCustomAlert('Consultation request sent successfully! This is a demo.');
                         this.reset();
@@ -1796,17 +1767,17 @@
                 });
             }, { root: null, rootMargin: '0px', threshold: 0.15 });
 
-            const animateElements = document.querySelectorAll('.service-tapestry-item, .testimonial-card, .blog-card');
+            const animateElements = document.querySelectorAll('.service-tapestry-item, .testimonial-card');
             animateElements.forEach(el => { animateObserver.observe(el); });
 
             // --- Active Nav Link on Scroll ---
             const sections = document.querySelectorAll('main > .section');
-            const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
+            const allNavLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
             const navObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const id = entry.target.getAttribute('id');
-                        navLinks.forEach(link => {
+                        allNavLinks.forEach(link => {
                             link.classList.remove('active');
                             if (link.getAttribute('href') === `#${id}`) {
                                 link.classList.add('active');
@@ -1819,7 +1790,7 @@
                 if(section.id) navObserver.observe(section); 
             });
 
-            // --- Innovated About Section Tabs ---
+            // --- About Section Tabs ---
             const journeyTabs = document.querySelectorAll('.journey-tab');
             const journeyContents = document.querySelectorAll('.journey-content');
             
@@ -1827,15 +1798,12 @@
                 tab.addEventListener('click', () => {
                     const tabId = tab.dataset.tab;
                     
-                    // Update tabs
                     journeyTabs.forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
                     
-                    // Update content
                     journeyContents.forEach(content => {
                         content.classList.remove('active');
                         if (content.id === tabId) {
-                            // Delay adding active class for fade-in effect
                             setTimeout(() => content.classList.add('active'), 0);
                         }
                     });
@@ -1846,7 +1814,7 @@
             // --- Mulank & Bhagyank Calculator Script ---
             function reduceToSingleDigit(num) {
                 let sum = num;
-                while (sum > 9) {
+                while (sum > 9 && sum !== 11 && sum !== 22) { // Keep master numbers 11, 22
                     sum = String(sum).split('').reduce((acc, digit) => acc + Number(digit), 0);
                 }
                 return sum;
@@ -1896,9 +1864,13 @@
                     const day = date.getUTCDate();
                     const month = date.getUTCMonth() + 1;
                     const year = date.getUTCFullYear();
+                    
+                    const daySum = String(day).split('').reduce((acc, digit) => acc + Number(digit), 0);
+                    const monthSum = String(month).split('').reduce((acc, digit) => acc + Number(digit), 0);
+                    const yearSum = String(year).split('').reduce((acc, digit) => acc + Number(digit), 0);
 
-                    const mulank = reduceToSingleDigit(day);
-                    const bhagyank = reduceToSingleDigit(reduceToSingleDigit(day) + reduceToSingleDigit(month) + reduceToSingleDigit(year));
+                    const mulank = reduceToSingleDigit(daySum);
+                    const bhagyank = reduceToSingleDigit(daySum + monthSum + yearSum);
 
                     mulankResultCard.innerHTML = `
                         <h4>Mulank (Root Number)</h4>
@@ -1942,7 +1914,6 @@
 
         });
     </script>
-    <script src="main.js"></script>
 
 </body>
 
