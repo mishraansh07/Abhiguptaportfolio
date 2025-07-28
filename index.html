@@ -62,7 +62,8 @@
         .logo,
         .byline,
         .footer-logo,
-        .om-symbol {
+        .om-symbol,
+        .mantra-sanskrit {
             font-family: 'Samarkan', sans-serif;
             font-weight: 400;
         }
@@ -267,6 +268,7 @@
         /* General Section Styling */
         .section {
             padding: 6rem 2rem;
+            position: relative;
         }
 
         /* Wrapper to constrain content width inside full-width sections */
@@ -309,16 +311,27 @@
             line-height: 1.7;
         }
 
+        /* Universal animated element base styles */
+        .animated-item {
+             opacity: 0;
+             transform: translateY(40px);
+             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animated-item.is-visible {
+             opacity: 1;
+             transform: translateY(0);
+        }
+
         /* Services Section with Tapestry Layout */
-        #services {
-            background: linear-gradient(to bottom, var(--ivory) 0%, #f7f0e6 15%, #f7f0e6 85%, var(--ivory) 100%);
+        #services, #about, #why-us, #faq, #mantras-glimpse {
+            background: linear-gradient(to bottom, #fdf8f0 0%, #f7f0e6 50%, #fdf8f0 100%);
         }
 
         .tapestry-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4rem; /* Reduced gap for mobile */
+            gap: 4rem;
         }
 
         .service-tapestry-item {
@@ -331,16 +344,14 @@
             border: 1px solid rgba(212, 175, 55, 0.3);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .service-tapestry-item.animate {
-            opacity: 1;
-            transform: translateY(0);
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
         }
         
+        .service-tapestry-item:hover {
+            box-shadow: 0 12px 45px rgba(123, 44, 44, 0.2);
+            transform: translateY(-5px);
+        }
+
         /* Desktop-only timeline styles */
         @media (min-width: 769px) {
             .tapestry-container {
@@ -366,24 +377,16 @@
                 box-shadow: var(--shadow);
             }
 
-            .service-tapestry-item:nth-child(1)::before {
-                content: '\f77c'; /* fas fa-journal-whills */
-            }
-            .service-tapestry-item:nth-child(2)::before {
-                content: '\f004'; /* fas fa-heart */
-            }
-            .service-tapestry-item:nth-child(3)::before {
-                content: '\f133'; /* fas fa-calendar-alt */
-            }
-            .service-tapestry-item:nth-child(4)::before {
-                content: '\f0b1'; /* fas fa-briefcase */
-            }
+            .service-tapestry-item:nth-child(1)::before { content: '\f77c'; }
+            .service-tapestry-item:nth-child(2)::before { content: '\f004'; }
+            .service-tapestry-item:nth-child(3)::before { content: '\f133'; }
+            .service-tapestry-item:nth-child(4)::before { content: '\f0b1'; }
 
             .service-tapestry-item::after {
                 content: '';
                 position: absolute;
                 top: -4rem;
-                left: -50px; /* Adjusted position */
+                left: -50px;
                 width: 2px;
                 height: calc(100% + 8rem);
                 background: linear-gradient(to bottom, transparent, var(--gold), transparent);
@@ -644,147 +647,189 @@
             line-height: 1.7;
             color: rgba(253, 248, 240, 0.9);
         }
-
-        /* About Section Styles */
-        #about {
-            background: linear-gradient(to bottom, #f7f0e6 0%, #f1e8da 15%, #f1e8da 85%, #f7f0e6 100%);
-        }
-
-        .about-container-innovated {
+        
+        /* -- NEW Celestial Journey (About) Section -- */
+        .journey-grid-container {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2.5rem; /* Reduced gap for mobile */
-            align-items: center;
+            gap: 3rem;
+            align-items: flex-start;
         }
-
-        .about-image-innovated {
+        
+        .journey-image-panel {
+            text-align: center;
+        }
+        
+        .journey-image-frame {
+            display: inline-block;
             position: relative;
-            max-width: 320px; /* Adjusted size for mobile */
-            margin: 0 auto;
-        }
-
-        .profile-frame-innovated {
-            width: 100%;
-            aspect-ratio: 1/1;
+            padding: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 50%;
-            overflow: hidden;
-            position: relative;
-            box-shadow: var(--shadow);
-            border: 4px solid var(--gold);
         }
 
-        .profile-frame-innovated img {
+        .journey-image-frame::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 100%;
             height: 100%;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            animation: rotate-slow 20s linear infinite;
+        }
+
+        @keyframes rotate-slow {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .journey-image-frame img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            border: 5px solid var(--ivory);
+            position: relative;
+            z-index: 1;
         }
 
-        .profile-frame-innovated:hover img {
-            transform: scale(1.05);
+        .journey-image-panel h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--maroon);
+            margin-top: 1.5rem;
         }
 
-        .journey-panel {
+        .journey-milestone {
+            border-bottom: 1px solid rgba(123, 44, 44, 0.15);
+        }
+        
+        .milestone-header {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .milestone-header:hover {
+            background-color: rgba(212, 175, 55, 0.05);
+        }
+        
+        .milestone-header i {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-right: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .milestone-header h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--maroon);
+            font-weight: 600;
+            flex-grow: 1;
+        }
+        
+        .milestone-toggle {
+            font-size: 1.2rem;
+            color: var(--maroon);
+            transition: transform 0.4s ease;
+        }
+        
+        .milestone-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+        
+        .milestone-content-inner {
+            padding: 0 1rem 0;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .milestone-content-inner p, .milestone-content-inner li {
+             font-size: 1.1rem; line-height: 1.8; color: var(--text); margin-bottom: 1.5rem;
+        }
+        .milestone-content-inner ul { list-style: none; padding: 0; }
+        .milestone-content-inner li { position: relative; padding-left: 25px; }
+        .milestone-content-inner li::before {
+             content: '✦'; position: absolute; left: 0; top: 2px; color: var(--gold); font-size: 1rem;
+        }
+        
+        .journey-milestone.active .milestone-toggle {
+            transform: rotate(45deg);
+        }
+        .journey-milestone.active .milestone-content {
+            max-height: 400px; /* Adjust if content is longer */
+            padding-bottom: 1.5rem;
+        }
+        .journey-milestone.active .milestone-content-inner {
+            opacity: 1;
+            transition-delay: 0.2s;
+        }
+
+        @media (min-width: 992px) {
+            .journey-grid-container {
+                grid-template-columns: 1fr 1.5fr;
+                gap: 5rem;
+            }
+             .journey-image-panel {
+                margin-top: 2rem;
+            }
+        }
+
+
+        /* --- Why Choose Us Section --- */
+        .why-us-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        .why-us-card {
             background: var(--card-bg);
             border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            backdrop-filter: blur(10px);
-            overflow: hidden;
-        }
-
-        .journey-tabs {
-            display: flex;
-            background: rgba(123, 44, 44, 0.05);
-            border-bottom: 1px solid rgba(123, 44, 44, 0.1);
-            flex-wrap: wrap; /* Allow tabs to wrap on mobile */
-        }
-
-        .journey-tab {
-            flex: 1 1 50%; /* Allow two tabs per row on smaller screens */
-            padding: 1rem;
+            padding: 2.5rem 2rem;
             text-align: center;
-            background: transparent;
-            border: none;
-            color: var(--maroon);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: var(--shadow);
             transition: var(--transition);
-            border-bottom: 3px solid transparent;
-            position: relative;
         }
-
-        .journey-tab:hover {
-            background: rgba(212, 175, 55, 0.1);
+        .why-us-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(123, 44, 44, 0.2);
         }
-
-        .journey-tab.active {
+        .why-us-icon {
+            font-size: 3rem;
             color: var(--gold);
-            border-bottom-color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: transform 0.4s ease;
         }
-
-        .journey-content-wrapper {
-            padding: 2.5rem;
-            min-height: 250px; /* Adjusted min-height */
-            position: relative;
+        .why-us-card:hover .why-us-icon {
+            transform: scale(1.1) rotate(5deg);
         }
-
-        .journey-content {
-            position: absolute;
-            top: 2.5rem;
-            left: 2.5rem;
-            right: 2.5rem;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(15px);
-            transition: opacity 0.5s, transform 0.5s, visibility 0.5s;
-        }
-
-        .journey-content.active {
-            position: relative;
-            top: auto;
-            left: auto;
-            right: auto;
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .journey-content h3 {
-            font-size: 2.2rem;
+        .why-us-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             color: var(--maroon);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
-
-        .journey-content p, .journey-content li {
-            font-size: 1.1rem; /* Consistent font size */
-            line-height: 1.8;
-            color: var(--text);
-            margin-bottom: 1.5rem;
-        }
-
-        .journey-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .journey-content li {
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .journey-content li::before {
-            content: '✦';
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: var(--gold);
+        .why-us-card p {
             font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text);
         }
+
 
         /* Testimonials Section */
+        #testimonials {
+             background: var(--ivory);
+        }
         .testimonials-bg-pattern {
             position: absolute;
             top: 50%;
@@ -813,13 +858,6 @@
             overflow: hidden;
             border: 1px solid rgba(212, 175, 55, 0.2);
             transition: var(--transition);
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        .testimonial-card.animate {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .testimonial-card:hover {
@@ -895,6 +933,106 @@
             opacity: 0.8;
             font-size: 0.95rem;
         }
+
+        /* --- FAQ Section --- */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            cursor: pointer;
+            background: transparent;
+            width: 100%;
+            border: none;
+            text-align: left;
+            transition: background-color 0.3s;
+        }
+        .faq-question h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--maroon);
+            font-weight: 600;
+        }
+        .faq-icon {
+            font-size: 1.2rem;
+            color: var(--gold);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+        .faq-answer p {
+            padding: 0 1.5rem 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+        .faq-item.active .faq-question {
+            background-color: rgba(212, 175, 55, 0.05);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px; /* Adjust as needed */
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        /* --- Mantras Glimpse Section --- */
+        .mantras-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .mantra-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .mantra-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(123, 44, 44, 0.2);
+        }
+        .mantra-card .mantra-sanskrit {
+            font-size: 2.5rem;
+            color: var(--maroon);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .mantra-card .mantra-meaning {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .mantras-container-footer {
+            text-align: center;
+        }
+
 
         /* Contact Section */
         #contact {
@@ -1207,9 +1345,6 @@
 
         /* Laptops and Desktops */
         @media (min-width: 992px) {
-            .about-container-innovated {
-                grid-template-columns: 400px 1fr;
-            }
             .contact-container {
                 grid-template-columns: 1fr 1.2fr;
                 gap: 5rem;
@@ -1219,6 +1354,10 @@
             }
              .mulank-container {
                 grid-template-columns: 1fr 1fr;
+            }
+            .mantras-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
             }
         }
         
@@ -1230,10 +1369,13 @@
              .mulank-container {
                 grid-template-columns: 1fr 1fr;
             }
+            .mantras-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
-        /* Mobile Devices (up to 768px) */
-        @media (max-width: 768px) {
+        /* Mobile Devices (up to 767px) */
+        @media (max-width: 767px) {
             header {
                 padding: 1rem 1.5rem;
             }
@@ -1276,21 +1418,20 @@
             .mulank-input-panel, .mulank-result-panel {
                 padding: 2rem;
             }
-
-            .about-container-innovated {
-                gap: 2.5rem;
-            }
             
-            .journey-tab {
-                font-size: 1rem;
-            }
-            
-            .journey-content-wrapper {
-                padding: 2rem;
-            }
-
             .contact-form {
                 padding: 2.5rem;
+            }
+            
+            .why-us-container {
+                gap: 1.5rem;
+            }
+            
+            .faq-question h3 {
+                font-size: 1.1rem;
+            }
+            .mantra-card .mantra-sanskrit {
+                font-size: 2rem;
             }
         }
 
@@ -1314,8 +1455,15 @@
                 font-size: 1rem;
             }
 
-            .service-tapestry-item, .contact-form, .journey-content-wrapper {
+            .service-tapestry-item, .contact-form, .why-us-card, .faq-item, .mantra-card {
+                padding: 1.5rem;
+            }
+            .mantra-card {
                 padding: 2rem;
+            }
+            
+            .footer-links {
+                gap: 1rem 1.5rem;
             }
         }
 
@@ -1337,7 +1485,9 @@
             <a href="#services">Services</a>
             <a href="#mulank">Mulank</a>
             <a href="#about">About</a>
+            <a href="#why-us">Why Us</a>
             <a href="#testimonials">Testimonials</a>
+            <a href="#faq">FAQ</a>
             <a href="mantras.html">Mantras</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -1355,8 +1505,10 @@
         <a href="#services" class="nav-link">Services</a>
         <a href="#mulank" class="nav-link">Mulank</a>
         <a href="#about" class="nav-link">About</a>
+        <a href="#why-us" class="nav-link">Why Us</a>
         <a href="#testimonials" class="nav-link">Testimonials</a>
-        <a href="mantras.html">Mantras</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="mantras.html" class="nav-link">Mantras</a>
         <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
@@ -1365,7 +1517,7 @@
             <div class="section-wrapper">
                 <div class="hero-text">
                     <div class="profile-pic">
-                        <img src="Prof_pic/profpic.png"
+                        <img src="Prof_pic/prof_pic.jpeg"
                             onerror="this.onerror=null;this.src='https://placehold.co/180x180/7b2c2c/fdf8f0?text=AG';">
                     </div>
                     <h1>
@@ -1384,12 +1536,12 @@
 
         <section class="section" id="services">
             <div class="section-wrapper">
-                <div class="section-header">
+                <div class="section-header animated-item">
                     <h2>The Tapestry of Fate</h2>
                     <p>Unveiling the sacred services woven into the cosmic design of your life.</p>
                 </div>
                 <div class="tapestry-container">
-                    <div class="service-tapestry-item">
+                    <div class="service-tapestry-item animated-item">
                         <div class="tapestry-content">
                             <h3>Natal Chart Reading</h3>
                             <p>A comprehensive analysis of your birth chart to reveal your life's purpose, strengths, and
@@ -1397,7 +1549,7 @@
                             <a href="#contact" class="service-button">Book Now</a>
                         </div>
                     </div>
-                    <div class="service-tapestry-item">
+                    <div class="service-tapestry-item animated-item" style="transition-delay: 0.1s;">
                         <div class="tapestry-content">
                             <h3>Relationship Synastry</h3>
                             <p>Unveil the karmic threads and cosmic dynamics in your relationships through the sacred art of
@@ -1405,7 +1557,7 @@
                             <a href="#contact" class="service-button">Book Now</a>
                         </div>
                     </div>
-                    <div class="service-tapestry-item">
+                    <div class="service-tapestry-item animated-item" style="transition-delay: 0.2s;">
                         <div class="tapestry-content">
                             <h3>Varshaphala Forecast</h3>
                             <p>Receive detailed predictions and divine guidance for the year ahead, based on your personal
@@ -1413,7 +1565,7 @@
                             <a href="#contact" class="service-button">Book Now</a>
                         </div>
                     </div>
-                    <div class="service-tapestry-item">
+                    <div class="service-tapestry-item animated-item" style="transition-delay: 0.3s;">
                         <div class="tapestry-content">
                             <h3>Career & Dharma Path</h3>
                             <p>Identify your professional strengths, optimal career paths aligned with your Dharma, and
@@ -1427,11 +1579,11 @@
 
         <section class="section" id="mulank">
             <div class="section-wrapper">
-                <div class="section-header">
+                <div class="section-header animated-item">
                     <h2>Discover Your Cosmic Numbers</h2>
                     <p>Your birth date holds the key to your Mulank (Root Number) and Bhagyank (Life Path Number).</p>
                 </div>
-                <div class="mulank-container">
+                <div class="mulank-container animated-item">
                     <div class="mulank-input-panel">
                         <h3>Calculate Your Numbers</h3>
                         <p>Enter your birth date to reveal your Mulank and Bhagyank, the core numbers defining your
@@ -1466,47 +1618,97 @@
 
         <section class="section" id="about">
             <div class="section-wrapper">
-                <div class="section-header">
+                <div class="section-header animated-item">
                     <h2>The Celestial Journey</h2>
-                    <p>Unveiling the path and purpose behind The Astronox</p>
+                    <p>Unveiling the path and purpose behind The Astronox.</p>
                 </div>
-                <div class="about-container-innovated">
-                    <div class="about-image-innovated">
-                        <div class="profile-frame-innovated">
-                            <img src="Prof_pic/profpic.png"
-                                alt="Abhishek Gupta - The Astronox">
+                <div class="journey-grid-container animated-item">
+                    <div class="journey-image-panel">
+                        <div class="journey-image-frame">
+                            <img src="Prof_pic/prof_pic.jpeg" alt="Abhishek Gupta - The Astronox">
+                        </div>
+                        <h3>Abhishek Gupta</h3>
+                    </div>
+                    <div class="journey-milestones-panel">
+                        <div class="journey-milestone">
+                            <div class="milestone-header">
+                                <i class="fas fa-star"></i>
+                                <h4>The Calling</h4>
+                                <div class="milestone-toggle"><i class="fas fa-plus"></i></div>
+                            </div>
+                            <div class="milestone-content">
+                                 <div class="milestone-content-inner">
+                                    <p>My journey began not in a classroom, but under the vast, starlit sky of Lucknow, where a profound curiosity for the cosmos was ignited. This early fascination grew into a deep-seated calling to understand the intricate dance of the planets and their influence on our lives, leading me to the sacred science of Jyotish.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="journey-milestone">
+                            <div class="milestone-header">
+                                <i class="fas fa-route"></i>
+                                <h4>The Path</h4>
+                                <div class="milestone-toggle"><i class="fas fa-plus"></i></div>
+                            </div>
+                             <div class="milestone-content">
+                                 <div class="milestone-content-inner">
+                                    <p>I pursued my calling with devotion, immersing myself in the timeless teachings of Vedic astrology under the guidance of revered gurus. My path was one of rigorous study and spiritual practice, learning to interpret the celestial language and translate its wisdom into practical, life-affirming guidance.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="journey-milestone">
+                            <div class="milestone-header">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <h4>The Mission</h4>
+                                <div class="milestone-toggle"><i class="fas fa-plus"></i></div>
+                            </div>
+                             <div class="milestone-content">
+                                 <div class="milestone-content-inner">
+                                    <p>The mission of The Astronox is to be a clear channel for this sacred knowledge. I am here to help you decode your unique cosmic blueprint, understand your karmic patterns, and harness planetary energies to navigate life's challenges. My goal is to empower you to live a life of greater clarity, purpose, and alignment.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="journey-milestone">
+                            <div class="milestone-header">
+                                <i class="fas fa-award"></i>
+                                <h4>Credentials</h4>
+                                <div class="milestone-toggle"><i class="fas fa-plus"></i></div>
+                            </div>
+                             <div class="milestone-content">
+                                 <div class="milestone-content-inner">
+                                     <ul>
+                                        <li>Vedic Astrology (Jyotish) Certification from top Indian institutes.</li>
+                                        <li>Expertise in Vedic Numerology, Snan Remedies, and Gemstones.</li>
+                                        <li>Specialized focus on Relationship Synastry, and Career Dharma.</li>
+                                        <li>Over a decade of dedicated study, mentorship, and consultations.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="journey-panel">
-                        <div class="journey-tabs">
-                            <button class="journey-tab active" data-tab="calling">The Calling</button>
-                            <button class="journey-tab" data-tab="path">The Path</button>
-                            <button class="journey-tab" data-tab="mission">The Mission</button>
-                            <button class="journey-tab" data-tab="credentials">Credentials</button>
-                        </div>
-                        <div class="journey-content-wrapper">
-                            <div class="journey-content active" id="calling">
-                                <h3>A Cosmic Awakening</h3>
-                                <p>My journey began not in a classroom, but under the vast, starlit sky of Lucknow, where a profound curiosity for the cosmos was ignited. This early fascination grew into a deep-seated calling to understand the intricate dance of the planets and their influence on our lives, leading me to the sacred science of Jyotish.</p>
-                            </div>
-                            <div class="journey-content" id="path">
-                                <h3>Immersion in Ancient Wisdom</h3>
-                                <p>I pursued my calling with devotion, immersing myself in the timeless teachings of Vedic astrology under the guidance of revered gurus. My path was one of rigorous study and spiritual practice, learning to interpret the celestial language and translate its wisdom into practical, life-affirming guidance for the modern world.</p>
-                            </div>
-                            <div class="journey-content" id="mission">
-                                <h3>To Illuminate and Empower</h3>
-                                <p>The mission of The Astronox is to be a clear channel for this sacred knowledge. I am here to help you decode your unique cosmic blueprint, understand your karmic patterns, and harness planetary energies to navigate life's challenges. My goal is to empower you to live a life of greater clarity, purpose, and alignment with your true self.</p>
-                            </div>
-                            <div class="journey-content" id="credentials">
-                                <h3>My Foundation of Expertise</h3>
-                                 <ul>
-                                    <li>Vedic Astrology (Jyotish) Certification from top Indian institutes.</li>
-                                    <li>Expertise in Vedic Numerology, Snan (Ritual Bathing) Remedies, and Gemstone recommendations.</li>
-                                    <li>Specialized focus on Relationship Synastry, Career Dharma, and Varshaphala (Yearly Forecasting).</li>
-                                    <li>Over a decade of dedicated personal study, mentorship, and professional client consultations.</li>
-                                </ul>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="why-us">
+            <div class="section-wrapper">
+                <div class="section-header animated-item">
+                    <h2>Why Choose The Astronox?</h2>
+                    <p>Guidance rooted in authenticity, wisdom, and genuine care.</p>
+                </div>
+                <div class="why-us-container">
+                    <div class="why-us-card animated-item">
+                        <i class="fas fa-book-open why-us-icon"></i>
+                        <h3>Authentic Knowledge</h3>
+                        <p>Guidance based on the pure, classical principles of Vedic Astrology, passed down through a traditional Guru-Shishya parampara.</p>
+                    </div>
+                    <div class="why-us-card animated-item" style="transition-delay: 0.15s;">
+                        <i class="fas fa-hand-holding-heart why-us-icon"></i>
+                        <h3>Empathetic Approach</h3>
+                        <p>A compassionate, non-judgmental space where you are heard and your life's journey is honored with respect and confidentiality.</p>
+                    </div>
+                    <div class="why-us-card animated-item" style="transition-delay: 0.3s;">
+                        <i class="fas fa-lightbulb why-us-icon"></i>
+                        <h3>Clarity & Empowerment</h3>
+                        <p>We focus on providing clear insights and practical remedies to empower you, transforming cosmic knowledge into actionable life strategy.</p>
                     </div>
                 </div>
             </div>
@@ -1515,12 +1717,12 @@
         <section class="section" id="testimonials">
             <div class="section-wrapper">
                 <div class="testimonials-bg-pattern"></div>
-                <div class="section-header">
+                <div class="section-header animated-item">
                     <h2>Echoes of Gratitude</h2>
                     <p>What clients say about their astrological consultations</p>
                 </div>
                 <div class="testimonials-container">
-                    <div class="testimonial-card" style="transition-delay: 0s;">
+                    <div class="testimonial-card animated-item">
                         <div class="testimonial-content">
                             <p class="testimonial-text">"Abhishek's reading was incredibly insightful. He didn't just
                                 tell
@@ -1536,7 +1738,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-card" style="transition-delay: 0.1s;">
+                    <div class="testimonial-card animated-item" style="transition-delay: 0.15s;">
                         <div class="testimonial-content">
                             <p class="testimonial-text">"The relationship analysis was spot on. Abhishek explained the
                                 dynamics between me and my partner with such clarity. We've implemented his suggestions
@@ -1551,7 +1753,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-card" style="transition-delay: 0.2s;">
+                    <div class="testimonial-card animated-item" style="transition-delay: 0.3s;">
                         <div class="testimonial-content">
                             <p class="testimonial-text">"Abhishek's yearly forecast helped me navigate a challenging
                                 period
@@ -1570,14 +1772,95 @@
                 </div>
             </div>
         </section>
+        
+        <section class="section" id="faq">
+            <div class="section-wrapper">
+                <div class="section-header animated-item">
+                    <h2>Cosmic Queries</h2>
+                    <p>Your questions about the astrological journey, answered.</p>
+                </div>
+                <div class="faq-container animated-item">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <h3>What is Vedic Astrology (Jyotish)?</h3>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Vedic Astrology, or Jyotish, is the ancient Indian science of light. It analyzes the positions of celestial bodies at your time of birth to understand your unique karmic blueprint, personality, life events, and spiritual path.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <h3>What details do I need for a reading?</h3>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>For an accurate reading, I require your exact date of birth, time of birth, and place of birth (city and country). The more precise the birth time, the more detailed and accurate the chart analysis will be.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <h3>What if I don't know my exact birth time?</h3>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>While an exact time is ideal, a close approximation can still provide valuable insights, especially for the placement of slower-moving planets. If the time is completely unknown, we can use other techniques, though some specific predictions might be limited.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <h3>How are consultations conducted?</h3>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Consultations are primarily conducted online via phone call or video conference (like WhatsApp or Google Meet) for clients worldwide. This ensures you can receive guidance from the comfort of your home.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <button class="faq-question">
+                            <h3>Is my personal information kept confidential?</h3>
+                            <i class="fas fa-plus faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Absolutely. All your personal details and the contents of our consultation are held in the strictest confidence. Your privacy and trust are paramount.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="mantras-glimpse">
+            <div class="section-wrapper">
+                 <div class="section-header animated-item">
+                    <h2>The Power of Mantras</h2>
+                    <p>Harness cosmic energy and find inner peace through the sacred sound vibrations of ancient mantras.</p>
+                </div>
+                <div class="mantras-container">
+                    <div class="mantra-card animated-item">
+                        <p class="mantra-sanskrit">ॐ भूर्भुवः स्वः</p>
+                        <p class="mantra-meaning">"The Gayatri Mantra, a prayer for universal enlightenment, purifies the chanter and the listener, bestowing wisdom and peace."</p>
+                    </div>
+                    <div class="mantra-card animated-item" style="transition-delay: 0.2s;">
+                         <p class="mantra-sanskrit">ॐ त्र्यम्बकं यजामहे</p>
+                        <p class="mantra-meaning">"The Mahamrityunjaya Mantra, a call for healing and rejuvenation, is a powerful chant for overcoming obstacles and fostering longevity."</p>
+                    </div>
+                </div>
+                <div class="mantras-container-footer animated-item">
+                    <a href="mantras.html" class="ios-button">
+                        <i class="fas fa-om icon"></i>
+                        Explore More Mantras
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <section class="section" id="contact">
             <div class="section-wrapper">
-                <div class="section-header">
+                <div class="section-header animated-item">
                     <h2>Connect with the Cosmos</h2>
                     <p>Let's explore your cosmic blueprint together</p>
                 </div>
-                <div class="contact-container">
+                <div class="contact-container animated-item">
                     <div class="contact-info">
                         <h3>Contact Information</h3>
                         <div class="contact-item"><i class="fas fa-map-marker-alt"></i>
@@ -1652,7 +1935,9 @@
                 <a href="#services">Services</a>
                 <a href="#mulank">Mulank</a>
                 <a href="#about">About</a>
+                <a href="#why-us">Why Us</a>
                 <a href="#testimonials">Testimonials</a>
+                <a href="#faq">FAQ</a>
                 <a href="mantras.html">Mantras</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -1693,6 +1978,13 @@
                     customAlert.classList.remove('visible');
                 });
             }
+             if (customAlert) {
+                customAlert.addEventListener('click', (e) => {
+                    if(e.target === customAlert) {
+                        customAlert.classList.remove('visible');
+                    }
+                });
+            }
 
             // --- Mobile Menu Logic ---
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1713,20 +2005,22 @@
             const loader = document.getElementById('loader');
             window.addEventListener('load', () => {
                 setTimeout(() => {
-                    loader.classList.add('loader-hidden');
+                    if(loader) loader.classList.add('loader-hidden');
                     document.body.style.overflow = '';
                 }, 500);
             });
-            document.body.style.overflow = 'hidden';
+            if(loader) {
+                 document.body.style.overflow = 'hidden';
+            }
 
 
             // --- Anchor Scroll with Lenis ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    if (this.getAttribute('href').startsWith('#')) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#') && href.length > 1) {
                         e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
+                        const targetElement = document.querySelector(href);
                         if (targetElement) {
                             lenis.scrollTo(targetElement, { offset: -80, duration: 2 });
                         }
@@ -1749,7 +2043,7 @@
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i>Sending...';
 
                     setTimeout(() => {
-                        showCustomAlert('Consultation request sent successfully! This is a demo.');
+                        showCustomAlert('Thank you! Your consultation request has been received. This is a functional demo.');
                         this.reset();
                         submitButton.disabled = false;
                         submitButton.innerHTML = originalButtonContent;
@@ -1758,17 +2052,19 @@
             }
 
             // --- Scroll-triggered Animations ---
+            const animatedItems = document.querySelectorAll('.animated-item');
             const animateObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
+                        entry.target.classList.add('is-visible');
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { root: null, rootMargin: '0px', threshold: 0.15 });
+            }, { root: null, rootMargin: '0px', threshold: 0.1 });
 
-            const animateElements = document.querySelectorAll('.service-tapestry-item, .testimonial-card');
-            animateElements.forEach(el => { animateObserver.observe(el); });
+            animatedItems.forEach(item => {
+                animateObserver.observe(item);
+            });
 
             // --- Active Nav Link on Scroll ---
             const sections = document.querySelectorAll('main > .section');
@@ -1779,7 +2075,8 @@
                         const id = entry.target.getAttribute('id');
                         allNavLinks.forEach(link => {
                             link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${id}`) {
+                            const linkHref = link.getAttribute('href');
+                            if (linkHref === `#${id}`) {
                                 link.classList.add('active');
                             }
                         });
@@ -1790,23 +2087,34 @@
                 if(section.id) navObserver.observe(section); 
             });
 
-            // --- About Section Tabs ---
-            const journeyTabs = document.querySelectorAll('.journey-tab');
-            const journeyContents = document.querySelectorAll('.journey-content');
-            
-            journeyTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const tabId = tab.dataset.tab;
+            // --- NEW: Journey Milestone Accordion ---
+            const milestones = document.querySelectorAll('.journey-milestone');
+            milestones.forEach(milestone => {
+                const header = milestone.querySelector('.milestone-header');
+                header.addEventListener('click', () => {
+                    const isActive = milestone.classList.contains('active');
                     
-                    journeyTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    
-                    journeyContents.forEach(content => {
-                        content.classList.remove('active');
-                        if (content.id === tabId) {
-                            setTimeout(() => content.classList.add('active'), 0);
-                        }
-                    });
+                    // Close all other milestones
+                    milestones.forEach(m => m.classList.remove('active'));
+
+                    // If the clicked one wasn't active, open it
+                    if (!isActive) {
+                        milestone.classList.add('active');
+                    }
+                });
+            });
+
+
+            // --- FAQ Accordion ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
                 });
             });
 
