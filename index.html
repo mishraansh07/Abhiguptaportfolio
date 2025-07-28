@@ -24,9 +24,6 @@
             --shadow: 0 8px 32px rgba(123, 44, 44, 0.15);
             --radius: 20px;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --space-bg: #100808;
-            /* SVG background for a unique, lightweight space effect */
-            --space-bg-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="nebula1" cx="20%" cy="20%" r="60%"><stop offset="0%" stop-color="%237b2c2c" stop-opacity="0.2"/><stop offset="100%" stop-color="%23100808" stop-opacity="0"/></radialGradient><radialGradient id="nebula2" cx="85%" cy="75%" r="50%"><stop offset="0%" stop-color="%23d4af37" stop-opacity="0.15"/><stop offset="100%" stop-color="%23100808" stop-opacity="0"/></radialGradient><pattern id="stars" width="100" height="100" patternUnits="userSpaceOnUse"><circle fill="%23fdf8f0" cx="10" cy="10" r="0.8" opacity="0.8"/><circle fill="%23fdf8f0" cx="50" cy="80" r="0.6" opacity="0.6"/><circle fill="%23d4af37" cx="80" cy="30" r="0.7" opacity="0.7"/><circle fill="%23fdf8f0" cx="30" cy="50" r="0.5" opacity="0.5"/></pattern></defs><rect width="100%" height="100%" fill="%23100808"/><rect width="100%" height="100%" fill="url(%23nebula1)"/><rect width="100%" height="100%" fill="url(%23nebula2)"/><rect width="100%" height="100%" fill="url(%23stars)"/><g stroke="%23d4af37" stroke-opacity="0.2" stroke-width="0.5"><path d="M100 150 L 250 200 L 300 100 Z M150 175 L 100 150" fill="none"/><path d="M800 600 L 950 650 L 1000 550 L 900 500 Z M 950 650 L 850 680" fill="none"/><path d="M1100 100 L 1000 200 L 900 150 Z" fill="none"/><path d="M200 700 L 350 650 L 400 750 Z M 350 650 L 280 720" fill="none"/></g></svg>');
         }
 
         /* General Body Styling */
@@ -271,6 +268,10 @@
         /* General Section Styling */
         .section {
             padding: 6rem 2rem;
+        }
+        
+        /* Wrapper to constrain content width inside full-width sections */
+        .section-wrapper {
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -312,8 +313,6 @@
         /* Services Section with Tapestry Layout */
         #services {
             background: linear-gradient(to bottom, var(--ivory) 0%, #f7f0e6 15%, #f7f0e6 85%, var(--ivory) 100%);
-            padding-top: 8rem;
-            padding-bottom: 8rem;
         }
 
         .tapestry-container {
@@ -438,13 +437,7 @@
             transform: scale(1.05);
         }
 
-        /* Innovated Mulank Calculator Section */
-        #mulank {
-            padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
+        
         .mulank-container {
             max-width: 800px;
             margin: 0 auto;
@@ -569,7 +562,7 @@
             font-family: 'Playfair Display', serif;
             color: rgba(253, 248, 240, 0.4);
         }
-        
+
         .hidden {
             display: none !important;
         }
@@ -583,6 +576,7 @@
             z-index: 2;
             transition: opacity 0.5s;
         }
+
         .selector-btn {
             background: transparent;
             border: 2px solid var(--gold);
@@ -593,11 +587,13 @@
             transition: var(--transition);
             font-weight: 600;
         }
-        .selector-btn:hover, .selector-btn.active {
+
+        .selector-btn:hover,
+        .selector-btn.active {
             background: var(--gold);
             color: var(--henna);
         }
-        
+
         .numerology-results-wrapper {
             position: relative;
             z-index: 1;
@@ -608,16 +604,23 @@
         }
 
         .numerology-result-card {
-            background: rgba(0,0,0,0.1);
+            background: rgba(0, 0, 0, 0.1);
             padding: 2rem;
             border-radius: 15px;
             border: 1px solid rgba(212, 175, 55, 0.3);
             animation: fadeIn 0.5s ease-in-out;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .numerology-result-card h4 {
@@ -626,6 +629,7 @@
             color: var(--gold);
             margin-bottom: 0.5rem;
         }
+
         .numerology-result-card .number-display {
             font-size: 5rem;
             font-weight: bold;
@@ -634,256 +638,155 @@
             margin-bottom: 1rem;
             text-shadow: 0 0 20px rgba(244, 197, 66, 0.5);
         }
+
         .numerology-result-card .description {
             font-family: 'Playfair Display', serif;
             font-size: 1.1rem;
             line-height: 1.7;
             color: rgba(253, 248, 240, 0.9);
         }
-
-
-        /* Sacred Journey Section */
+        
+        /* Innovated About Section Styles */
         #about {
-            padding: 8rem 2rem;
-            position: relative;
-            background-color: var(--space-bg);
-            background-attachment: fixed;
-            overflow: hidden;
-            /* Hide overflow for pseudo-element */
+            background: linear-gradient(to bottom, #f7f0e6 0%, #f1e8da 15%, #f1e8da 85%, #f7f0e6 100%);
         }
-
-        /* Animated background pseudo-element */
-        #about::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 120%;
-            height: 120%;
-            background-image: var(--space-bg-image);
-            background-size: cover;
-            background-repeat: repeat;
-            animation: pan-background 180s linear infinite;
-            z-index: 0;
-            will-change: transform;
-        }
-
-        @keyframes pan-background {
-            0% {
-                transform: translateX(0) translateY(0);
-            }
-
-            50% {
-                transform: translateX(5%) translateY(10%);
-            }
-
-            100% {
-                transform: translateX(0) translateY(0);
-            }
-        }
-
-        #about .section-header {
-            position: relative;
-            z-index: 1;
-        }
-
-        #about .section-header h2 {
-            color: var(--ivory);
-        }
-
-        #about .section-header p {
-            color: var(--ivory);
-            opacity: 0.8;
-        }
-
-        #about .section-header h2::after {
-            background: var(--saffron);
-        }
-
-        .chart-journey-container {
+        .about-container-innovated {
             display: grid;
             grid-template-columns: 1fr;
             gap: 4rem;
             align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .journey-wheel-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            height: auto;
-            aspect-ratio: 1 / 1;
+            max-width: 1100px; /* This is now controlled by the .section-wrapper */
             margin: 0 auto;
         }
 
-        .journey-wheel-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><defs><path id="zodiac" d="M250,250 m-215,0 a215,215 0 1,1 430,0 a215,215 0 1,1 -430,0"/></defs><circle cx="250" cy="250" r="248" fill="none" stroke="%23d4af37" stroke-width="0.5" stroke-opacity="0.3"/><circle cx="250" cy="250" r="150" fill="none" stroke="%23d4af37" stroke-width="0.5" stroke-opacity="0.3"/><path d="M250,25 L250,475 M25,250 L475,250 M78,78 L422,422 M78,422 L422,78" stroke="%23d4af37" stroke-width="0.5" stroke-opacity="0.3"/><circle cx="250" cy="250" r="180" fill="rgba(253, 248, 240, 0.05)" stroke="%23d4af37" stroke-width="1" stroke-opacity="0.5"/><text font-family="sans-serif" font-size="20" fill="%23d4af37" opacity="0.4"><textPath xlink:href="%23zodiac" startOffset="5%">&♈; &♉; &♊; &♋; &♌; &♍; &♎; &♏; &♐; &♑; &♒; &♓;</textPath></text><path d="M250 180 L235 250 L250 320 L265 250 Z" fill="%23d4af37" opacity="0.1"/></svg>');
-            transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-
-        .journey-wheel-points {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
-            }
-
-            50% {
-                box-shadow: 0 0 30px rgba(244, 197, 66, 0.7), 0 0 50px rgba(244, 197, 66, 0.5);
-            }
-
-            100% {
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
-            }
-        }
-
-        .journey-point {
-            position: absolute;
-            width: 20%;
-            height: 20%;
-            max-width: 80px;
-            max-height: 80px;
-            background: var(--card-bg);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            cursor: pointer;
-            transition: transform 0.5s, background 0.5s, border-color 0.5s;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .journey-point.active {
-            background: var(--gold);
-            border-color: var(--ivory);
-            z-index: 5;
-            animation: pulse-glow 2.5s infinite ease-in-out;
-        }
-
-        .journey-point:not(.active):hover {
-            border-color: var(--saffron);
-        }
-
-        .jp-icon {
-            font-size: 1.8rem;
-            line-height: 1;
-            transition: color 0.5s;
-            color: var(--maroon);
-        }
-
-        .jp-label {
-            font-size: 0.65rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-top: 5px;
-            transition: color 0.5s;
-            color: var(--henna);
-        }
-
-        .journey-point.active .jp-icon,
-        .journey-point.active .jp-label {
-            color: white;
-        }
-
-        .journey-point[data-journey="1"] {
-            top: 2%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .journey-point[data-journey="2"] {
-            top: 50%;
-            right: 2%;
-            transform: translateY(-50%);
-        }
-
-        .journey-point[data-journey="3"] {
-            bottom: 2%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .journey-point[data-journey="4"] {
-            top: 50%;
-            left: 2%;
-            transform: translateY(-50%);
-        }
-
-        .journey-content-panel {
-            background: transparent;
-            text-align: center;
+        .about-image-innovated {
             position: relative;
-            min-height: 250px;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
+        .profile-frame-innovated {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            border: 4px solid var(--gold);
+        }
+
+        .profile-frame-innovated img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .profile-frame-innovated:hover img {
+            transform: scale(1.05);
+        }
+
+        .journey-panel {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .journey-tabs {
+            display: flex;
+            background: rgba(123, 44, 44, 0.05);
+            border-bottom: 1px solid rgba(123, 44, 44, 0.1);
+        }
+
+        .journey-tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            background: transparent;
+            border: none;
+            color: var(--maroon);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+
+        .journey-tab:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .journey-tab.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        .journey-content-wrapper {
+            padding: 2.5rem;
+            min-height: 300px;
+            position: relative;
+        }
+        
         .journey-content {
+            position: absolute;
+            top: 2.5rem; /* Match padding */
+            left: 2.5rem; /* Match padding */
+            right: 2.5rem; /* Match padding */
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out, visibility 0.6s;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            transform: translateY(20px);
+            transform: translateY(15px);
+            transition: opacity 0.5s, transform 0.5s, visibility 0.5s;
         }
 
         .journey-content.active {
+            position: relative; /* Changed to relative when active */
+            top: auto;
+            left: auto;
+            right: auto;
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
 
-        /* Apply Samarkan font to all text in the journey content */
-        .journey-content h3,
-        .journey-content p,
-        .journey-content .house-title {
-            font-family: 'Samarkan', sans-serif;
-        }
-
         .journey-content h3 {
-            font-size: 3.5rem;
-            color: var(--ivory);
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+            font-size: 2.2rem;
+            color: var(--maroon);
             margin-bottom: 1.5rem;
         }
 
         .journey-content p {
-            font-size: 1.8rem;
-            line-height: 1.6;
-            color: var(--ivory);
-            opacity: 0.8;
-            max-width: 700px;
-            margin: 0 auto;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.5rem;
         }
 
-        .journey-content .house-title {
-            font-weight: 400;
+        .journey-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .journey-content li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .journey-content li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            top: 0;
             color: var(--gold);
-            text-transform: uppercase;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
+            font-size: 1rem;
         }
 
         /* Testimonials Section */
-        #testimonials {
-            position: relative;
-        }
 
         .testimonials-bg-pattern {
             position: absolute;
@@ -999,7 +902,6 @@
         /* Contact Section */
         #contact {
             background: rgba(251, 238, 220, 0.4);
-            border-top: 1px solid rgba(123, 44, 44, 0.1);
         }
 
         .contact-container {
@@ -1313,146 +1215,39 @@
                 transform: translateY(0px);
             }
         }
+        
+        @keyframes pan-background {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
 
-        /* ------------------------- */
-        /* NEW SECTIONS */
-        /* ------------------------- */
+            50% {
+                transform: translateX(5%) translateY(10%);
+            }
 
-        /* Blog Section */
-        #blog {
-            background: linear-gradient(to bottom, #f7f0e6 0%, #f1e8da 15%, #f1e8da 85%, #f7f0e6 100%);
-            padding: 6rem 2rem;
+            100% {
+                transform: translateX(0) translateY(0);
+            }
         }
 
-        .blog-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
-        }
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
+            }
 
-        .blog-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-            position: relative;
-        }
+            50% {
+                box-shadow: 0 0 30px rgba(244, 197, 66, 0.7), 0 0 50px rgba(244, 197, 66, 0.5);
+            }
 
-        .blog-card.animate {
-            opacity: 1;
-            transform: translateY(0);
+            100% {
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
+            }
         }
-
-        .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(123, 44, 44, 0.2);
-        }
-
-        .blog-image {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .blog-card:hover .blog-image img {
-            transform: scale(1.05);
-        }
-
-        .blog-category {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--gold);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-
-        .blog-content {
-            padding: 2rem;
-        }
-
-        .blog-date {
-            font-size: 0.9rem;
-            color: var(--henna);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .blog-date i {
-            color: var(--gold);
-        }
-
-        .blog-title {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--maroon);
-            font-family: 'Playfair Display', serif;
-            transition: color 0.3s;
-        }
-
-        .blog-card:hover .blog-title {
-            color: var(--gold);
-        }
-
-        .blog-excerpt {
-            color: var(--text);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .blog-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--gold);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .blog-link:hover {
-            gap: 1rem;
-            color: var(--maroon);
-        }
-
-        .blog-link i {
-            transition: transform 0.3s;
-        }
-
-        .blog-link:hover i {
-            transform: translateX(5px);
-        }
-
+        
         /* Responsive Media Queries */
         @media (min-width: 992px) {
-            .chart-journey-container {
-                grid-template-columns: 450px 1fr;
-                gap: 5rem;
-            }
-
-            .journey-content-panel {
-                text-align: left;
-                min-height: auto;
-            }
-
-            .journey-content p {
-                margin: 0;
+            .about-container-innovated {
+                grid-template-columns: 400px 1fr;
             }
         }
 
@@ -1466,6 +1261,11 @@
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
+            }
+            /* Remove left/right padding on full-width sections */
+            #services, #about, #contact {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
             }
         }
 
@@ -1482,6 +1282,12 @@
                 display: block;
             }
 
+            .hero {
+                /* Make hero section use section-wrapper logic */
+                padding-left: 0;
+                padding-right: 0;
+            }
+
             .hero-text h1 {
                 font-size: 3rem;
             }
@@ -1491,8 +1297,11 @@
             }
 
             .section {
-                padding: 4rem 1.5rem;
+                padding: 4rem 0; /* Adjust padding for full-width sections */
             }
+             .section-wrapper {
+                 padding: 0 1.5rem;
+             }
 
             .service-tapestry-item::before,
             .service-tapestry-item::after {
@@ -1502,13 +1311,12 @@
             #about {
                 background-attachment: scroll;
             }
-
-            .chart-journey-container {
-                gap: 2rem;
+            .journey-tabs {
+                flex-wrap: wrap;
             }
-
-            .journey-wheel-wrapper {
-                margin-bottom: 2rem;
+            .journey-tab {
+                flex-basis: 50%;
+                font-size: 1rem;
             }
         }
 
@@ -1533,29 +1341,9 @@
             .contact-form {
                 padding: 2rem;
             }
-
+            
             .service-tapestry-item {
                 padding: 2rem;
-            }
-
-            .journey-content-panel {
-                min-height: 280px;
-            }
-
-            .journey-content h3 {
-                font-size: 2.8rem;
-            }
-
-            .journey-content p {
-                font-size: 1.5rem;
-            }
-
-            .jp-icon {
-                font-size: 1.5rem;
-            }
-
-            .jp-label {
-                font-size: 0.6rem;
             }
         }
     </style>
@@ -1577,7 +1365,6 @@
             <a href="#mulank">Mulank</a>
             <a href="#about">About</a>
             <a href="#testimonials">Testimonials</a>
-            <a href="#blog">Blog</a>
             <a href="mantras.html">Mantras</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -1596,303 +1383,289 @@
         <a href="#mulank">Mulank</a>
         <a href="#about">About</a>
         <a href="#testimonials">Testimonials</a>
-        <a href="#blog">Blog</a>
         <a href="mantras.html">Mantras</a>
         <a href="#contact">Contact</a>
     </nav>
 
     <main>
-        <section class="hero" id="home">
-            <div class="hero-text">
-                <div class="profile-pic">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                        alt="Abhishek Gupta"
-                        onerror="this.onerror=null;this.src='https://placehold.co/180x180/7b2c2c/fdf8f0?text=AG';">
+        <section class="hero section">
+            <div class="section-wrapper">
+                <div class="hero-text">
+                    <div class="profile-pic">
+                        <img src="Prof_pic/profpic.png"
+                            onerror="this.onerror=null;this.src='https://placehold.co/180x180/7b2c2c/fdf8f0?text=AG';">
+                    </div>
+                    <h1>
+                        Unlock the Secrets of Your Karma
+                        <br>
+                        – Here & Now with the Astronox –
+                    </h1>
+                    <p class="byline">by Abhishek Gupta</p>
+                    <a href="#services" class="ios-button">
+                        <i class="fas fa-star-and-crescent icon"></i>
+                        Discover Your Path
+                    </a>
                 </div>
-                <h1>
-                    Unlock the Secrets of Your Karma
-                    <br>
-                    – Here & Now with the Astronox –
-                </h1>
-                <p class="byline">by Abhishek Gupta</p>
-                <a href="#services" class="ios-button">
-                    <i class="fas fa-star-and-crescent icon"></i>
-                    Discover Your Path
-                </a>
             </div>
         </section>
 
         <section class="section" id="services">
-            <div class="section-header">
-                <h2>The Tapestry of Fate</h2>
-                <p>Unveiling the sacred services woven into the cosmic design of your life.</p>
-            </div>
-            <div class="tapestry-container">
-                <div class="service-tapestry-item">
-                    <div class="tapestry-content">
-                        <h3>Natal Chart Reading</h3>
-                        <p>A comprehensive analysis of your birth chart to reveal your life's purpose, strengths, and
-                            challenges, as inscribed by the cosmos at your birth.</p>
-                        <a href="#contact" class="service-button">Book Now</a>
-                    </div>
+            <div class="section-wrapper">
+                <div class="section-header">
+                    <h2>The Tapestry of Fate</h2>
+                    <p>Unveiling the sacred services woven into the cosmic design of your life.</p>
                 </div>
-                <div class="service-tapestry-item">
-                    <div class="tapestry-content">
-                        <h3>Relationship Synastry</h3>
-                        <p>Unveil the karmic threads and cosmic dynamics in your relationships through the sacred art of
-                            synastry and composite chart analysis.</p>
-                        <a href="#contact" class="service-button">Book Now</a>
+                <div class="tapestry-container">
+                    <div class="service-tapestry-item">
+                        <div class="tapestry-content">
+                            <h3>Natal Chart Reading</h3>
+                            <p>A comprehensive analysis of your birth chart to reveal your life's purpose, strengths, and
+                                challenges, as inscribed by the cosmos at your birth.</p>
+                            <a href="#contact" class="service-button">Book Now</a>
+                        </div>
                     </div>
-                </div>
-                <div class="service-tapestry-item">
-                    <div class="tapestry-content">
-                        <h3>Varshaphala Forecast</h3>
-                        <p>Receive detailed predictions and divine guidance for the year ahead, based on your personal
-                            transits and planetary cycles (Varshaphala).</p>
-                        <a href="#contact" class="service-button">Book Now</a>
+                    <div class="service-tapestry-item">
+                        <div class="tapestry-content">
+                            <h3>Relationship Synastry</h3>
+                            <p>Unveil the karmic threads and cosmic dynamics in your relationships through the sacred art of
+                                synastry and composite chart analysis.</p>
+                            <a href="#contact" class="service-button">Book Now</a>
+                        </div>
                     </div>
-                </div>
-                <div class="service-tapestry-item">
-                    <div class="tapestry-content">
-                        <h3>Career & Dharma Path</h3>
-                        <p>Identify your professional strengths, optimal career paths aligned with your Dharma, and
-                            auspicious timing for pivotal decisions.</p>
-                        <a href="#contact" class="service-button">Book Now</a>
+                    <div class="service-tapestry-item">
+                        <div class="tapestry-content">
+                            <h3>Varshaphala Forecast</h3>
+                            <p>Receive detailed predictions and divine guidance for the year ahead, based on your personal
+                                transits and planetary cycles (Varshaphala).</p>
+                            <a href="#contact" class="service-button">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-tapestry-item">
+                        <div class="tapestry-content">
+                            <h3>Career & Dharma Path</h3>
+                            <p>Identify your professional strengths, optimal career paths aligned with your Dharma, and
+                                auspicious timing for pivotal decisions.</p>
+                            <a href="#contact" class="service-button">Book Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="section" id="mulank">
-            <div class="section-header">
-                <h2>Discover Your Cosmic Numbers</h2>
-                <p>Your birth date holds the key to your Mulank (Root Number) and Bhagyank (Life Path Number).</p>
-            </div>
-            <div class="mulank-container">
-                <div class="mulank-input-panel">
-                    <h3>Calculate Your Numbers</h3>
-                    <p>Enter your birth date to reveal your Mulank and Bhagyank, the core numbers defining your character and destiny.</p>
-                    <div class="mulank-input-group">
-                        <input type="date" id="birthDateInput" class="form-control">
-                        <button id="mulankCalculateBtn">
-                            <i class="fas fa-atom"></i>
-                            <span>Reveal My Numbers</span>
-                        </button>
-                    </div>
+            <div class="section-wrapper">
+                <div class="section-header">
+                    <h2>Discover Your Cosmic Numbers</h2>
+                    <p>Your birth date holds the key to your Mulank (Root Number) and Bhagyank (Life Path Number).</p>
                 </div>
-                <div class="mulank-result-panel">
-                    <div class="numerology-selector hidden" id="numerologySelector">
-                        <button class="selector-btn active" data-type="mulank">Mulank</button>
-                        <button class="selector-btn" data-type="bhagyank">Bhagyank</button>
+                <div class="mulank-container">
+                    <div class="mulank-input-panel">
+                        <h3>Calculate Your Numbers</h3>
+                        <p>Enter your birth date to reveal your Mulank and Bhagyank, the core numbers defining your
+                            character and destiny.</p>
+                        <div class="mulank-input-group">
+                            <input type="date" id="birthDateInput" class="form-control">
+                            <button id="mulankCalculateBtn">
+                                <i class="fas fa-atom"></i>
+                                <span>Reveal My Numbers</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="numerology-results-wrapper" id="numerologyResultsWrapper">
-                        <div class="numerology-result-card hidden" id="mulankResultCard">
-                             </div>
-                        <div class="numerology-result-card hidden" id="bhagyankResultCard">
+                    <div class="mulank-result-panel">
+                        <div class="numerology-selector hidden" id="numerologySelector">
+                            <button class="selector-btn active" data-type="mulank">Mulank</button>
+                            <button class="selector-btn" data-type="bhagyank">Bhagyank</button>
+                        </div>
+                        <div class="numerology-results-wrapper" id="numerologyResultsWrapper">
+                            <div class="numerology-result-card hidden" id="mulankResultCard">
                             </div>
-                    </div>
-                    <div class="mulank-placeholder" id="mulankPlaceholder">
-                        <i class="fas fa-star-of-life"></i>
-                        <p>Your cosmic numbers await</p>
+                            <div class="numerology-result-card hidden" id="bhagyankResultCard">
+                            </div>
+                        </div>
+                        <div class="mulank-placeholder" id="mulankPlaceholder">
+                            <i class="fas fa-star-of-life"></i>
+                            <p>Your cosmic numbers await</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
+        
         <section class="section" id="about">
-            <div class="section-header">
-                <h2>My Sacred Journey</h2>
-                <p>A life mapped by the stars. Click a house to trace the celestial path.</p>
-            </div>
-            <div class="chart-journey-container">
-                <div class="journey-wheel-wrapper">
-                    <div class="journey-wheel-bg" id="journey-wheel-bg"></div>
-                    <div class="journey-wheel-points" id="journey-wheel-points">
-                        <div class="journey-point" data-journey="1">
-                            <i class="fas fa-child jp-icon"></i>
-                            <span class="jp-label">The Self</span>
+            <div class="section-wrapper">
+                <div class="section-header">
+                    <h2>The Celestial Journey</h2>
+                    <p>Unveiling the path and purpose behind The Astronox</p>
+                </div>
+                <div class="about-container-innovated">
+                    <div class="about-image-innovated">
+                        <div class="profile-frame-innovated">
+                            <img src="Prof_pic/profpic.png"
+                                alt="Abhishek Gupta - The Astronox">
                         </div>
-                        <div class="journey-point" data-journey="2">
-                            <i class="fas fa-book-reader jp-icon"></i>
-                            <span class="jp-label">The Guru</span>
+                    </div>
+                    <div class="journey-panel">
+                        <div class="journey-tabs">
+                            <button class="journey-tab active" data-tab="calling">The Calling</button>
+                            <button class="journey-tab" data-tab="path">The Path</button>
+                            <button class="journey-tab" data-tab="mission">The Mission</button>
+                            <button class="journey-tab" data-tab="credentials">Credentials</button>
                         </div>
-                        <div class="journey-point" data-journey="3">
-                            <i class="fas fa-briefcase jp-icon"></i>
-                            <span class="jp-label">The Work</span>
-                        </div>
-                        <div class="journey-point" data-journey="4">
-                            <i class="fas fa-hands-holding-child jp-icon"></i>
-                            <span class="jp-label">The Service</span>
+                        <div class="journey-content-wrapper">
+                            <div class="journey-content active" id="calling">
+                                <h3>A Cosmic Awakening</h3>
+                                <p>My journey began not in a classroom, but under the vast, starlit sky of Lucknow, where a profound curiosity for the cosmos was ignited. This early fascination grew into a deep-seated calling to understand the intricate dance of the planets and their influence on our lives, leading me to the sacred science of Jyotish.</p>
+                            </div>
+                            <div class="journey-content" id="path">
+                                <h3>Immersion in Ancient Wisdom</h3>
+                                <p>I pursued my calling with devotion, immersing myself in the timeless teachings of Vedic astrology under the guidance of revered gurus. My path was one of rigorous study and spiritual practice, learning to interpret the celestial language and translate its wisdom into practical, life-affirming guidance for the modern world.</p>
+                            </div>
+                            <div class="journey-content" id="mission">
+                                <h3>To Illuminate and Empower</h3>
+                                <p>The mission of The Astronox is to be a clear channel for this sacred knowledge. I am here to help you decode your unique cosmic blueprint, understand your karmic patterns, and harness planetary energies to navigate life's challenges. My goal is to empower you to live a life of greater clarity, purpose, and alignment with your true self.</p>
+                            </div>
+                            <div class="journey-content" id="credentials">
+                                <h3>My Foundation of Expertise</h3>
+                                 <ul>
+                                    <li>Vedic Astrology (Jyotish) Certification from top Indian institutes.</li>
+                                    <li>Expertise in Vedic Numerology, Snan (Ritual Bathing) Remedies, and Gemstone recommendations.</li>
+                                    <li>Specialized focus on Relationship Synastry, Career Dharma, and Varshaphala (Yearly Forecasting).</li>
+                                    <li>Over a decade of dedicated personal study, mentorship, and professional client consultations.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="journey-content-panel" id="journey-content-panel">
-                    </div>
             </div>
         </section>
 
         <section class="section" id="testimonials">
-            <div class="testimonials-bg-pattern"></div>
-            <div class="section-header">
-                <h2>Echoes of Gratitude</h2>
-                <p>What clients say about their astrological consultations</p>
-            </div>
-            <div class="testimonials-container">
-                <div class="testimonial-card" style="transition-delay: 0s;">
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"Abhishek's reading was incredibly insightful. He didn't just tell
-                            me what my chart said, he helped me understand how to work with my planetary energies. His
-                            guidance transformed my career path."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">RK</div>
-                            <div class="author-info">
-                                <h4>Rajesh Kapoor</h4>
-                                <p>Mumbai, India</p>
+            <div class="section-wrapper">
+                <div class="testimonials-bg-pattern"></div>
+                <div class="section-header">
+                    <h2>Echoes of Gratitude</h2>
+                    <p>What clients say about their astrological consultations</p>
+                </div>
+                <div class="testimonials-container">
+                    <div class="testimonial-card" style="transition-delay: 0s;">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Abhishek's reading was incredibly insightful. He didn't just
+                                tell
+                                me what my chart said, he helped me understand how to work with my planetary energies.
+                                His
+                                guidance transformed my career path."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">RK</div>
+                                <div class="author-info">
+                                    <h4>Rajesh Kapoor</h4>
+                                    <p>Mumbai, India</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="testimonial-card" style="transition-delay: 0.1s;">
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"The relationship analysis was spot on. Abhishek explained the
-                            dynamics between me and my partner with such clarity. We've implemented his suggestions and
-                            our relationship has improved dramatically."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">PM</div>
-                            <div class="author-info">
-                                <h4>Priya Mehta</h4>
-                                <p>Delhi, India</p>
+                    <div class="testimonial-card" style="transition-delay: 0.1s;">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"The relationship analysis was spot on. Abhishek explained the
+                                dynamics between me and my partner with such clarity. We've implemented his suggestions
+                                and
+                                our relationship has improved dramatically."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">PM</div>
+                                <div class="author-info">
+                                    <h4>Priya Mehta</h4>
+                                    <p>Delhi, India</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="testimonial-card" style="transition-delay: 0.2s;">
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"Abhishek's yearly forecast helped me navigate a challenging period
-                            with confidence. His predictions were accurate and his practical advice was invaluable. I
-                            consult him every year now."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">AK</div>
-                            <div class="author-info">
-                                <h4>Anil Kumar</h4>
-                                <p>Bangalore, India</p>
+                    <div class="testimonial-card" style="transition-delay: 0.2s;">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Abhishek's yearly forecast helped me navigate a challenging
+                                period
+                                with confidence. His predictions were accurate and his practical advice was invaluable.
+                                I
+                                consult him every year now."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">AK</div>
+                                <div class="author-info">
+                                    <h4>Anil Kumar</h4>
+                                    <p>Bangalore, India</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="blog">
-            <div class="section-header">
-                <h2>Cosmic Insights</h2>
-                <p>Explore the wisdom of the stars through our articles</p>
-            </div>
-            <div class="blog-container">
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1194&q=80" alt="Planetary Alignment">
-                        <div class="blog-category">Planetary Movements</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date"><i class="fas fa-calendar-alt"></i> June 15, 2025</div>
-                        <h3 class="blog-title">Understanding the Jupiter-Saturn Conjunction</h3>
-                        <p class="blog-excerpt">Discover how this rare celestial event will impact your zodiac sign and what it means for your spiritual growth...</p>
-                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1192&q=80" alt="Vedic Astrology">
-                        <div class="blog-category">Vedic Wisdom</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date"><i class="fas fa-calendar-alt"></i> May 28, 2025</div>
-                        <h3 class="blog-title">The 27 Nakshatras: Your Cosmic Address</h3>
-                        <p class="blog-excerpt">Learn how the lunar mansions shape your personality, relationships, and life path according to Vedic astrology...</p>
-                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1194&q=80" alt="Meditation">
-                        <div class="blog-category">Spiritual Practice</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date"><i class="fas fa-calendar-alt"></i> May 12, 2025</div>
-                        <h3 class="blog-title">Meditation Techniques for Each Zodiac Sign</h3>
-                        <p class="blog-excerpt">Discover personalized meditation practices based on your sun sign to enhance your spiritual connection and inner peace...</p>
-                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="section" id="contact">
-            <div class="section-header">
-                <h2>Connect with the Cosmos</h2>
-                <p>Let's explore your cosmic blueprint together</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i>
-                        <div class="contact-text">
-                            <h4>Location</h4>
-                            <p>Lucknow, Uttar Pradesh, India</p>
-                        </div>
-                    </div>
-                    <div class="contact-item"><i class="fas fa-envelope"></i>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <p>Theastronox@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item"><i class="fas fa-phone-alt"></i>
-                        <div class="contact-text">
-                            <h4>Phone</h4>
-                            <p>+91 7607947437 (Wp)</p>
-                        </div>
-                    </div>
-                    <div class="contact-item"><i class="fas fa-clock"></i>
-                        <div class="contact-text">
-                            <h4>Consultation Hours</h4>
-                            <p>11AM to 11PM (Mon to Sat)<br>Sunday: Close</p>
-                        </div>
+            <div class="section-wrapper">
+                <div class="section-header">
+                    <h2>Connect with the Cosmos</h2>
+                    <p>Let's explore your cosmic blueprint together</p>
                 </div>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/the_astronox?igsh=MWs2MXlqMHhjZDh3dQ%3D%3D" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/abhishek-gupta-astronox/" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://wa.me/qr/M6S4IXSZJCAAC1" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="consultationForm">
-                        <div class="form-group"><label for="name">Full Name</label><input type="text" id="name"
-                                class="form-control" placeholder="Enter your name" required></div>
-                        <div class="form-group"><label for="email">Email Address</label><input type="email" id="email"
-                                class="form-control" placeholder="Enter your email" required></div>
-                        <div class="form-group"><label for="service">Service Interested In</label><select id="service"
-                                class="form-control" required>
-                                <option value="">Select a service</option>
-                                <option value="natal">Natal Chart Reading</option>
-                                <option value="relationship">Relationship Analysis</option>
-                                <option value="yearly">Yearly Forecast</option>
-                                <option value="career">Career Guidance</option>
-                            </select></div>
-                        <div class="form-group"><label for="birthdate">Birth Date & Time</label><input type="text"
-                                id="birthdate" class="form-control" placeholder="DD/MM/YYYY, HH:MM AM/PM" required>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item"><i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Lucknow, Uttar Pradesh, India</p>
+                            </div>
                         </div>
-                        <div class="form-group"><label for="birthplace">Birth Place</label><input type="text"
-                                id="birthplace" class="form-control" placeholder="City, Country" required></div>
-                        <div class="form-group"><label for="message">Your Questions</label><textarea id="message"
-                                class="form-control" placeholder="Specific areas you'd like guidance on"
-                                rows="4"></textarea></div>
-                        <button type="submit" class="ios-button" style="width: 100%;"><i class="fas fa-paper-plane"
-                                style="margin-right: 10px;"></i>Request Consultation</button>
-                    </form>
+                        <div class="contact-item"><i class="fas fa-envelope"></i>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>Theastronox@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item"><i class="fas fa-phone-alt"></i>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+91 7607947437 (Wp)</p>
+                            </div>
+                        </div>
+                        <div class="contact-item"><i class="fas fa-clock"></i>
+                            <div class="contact-text">
+                                <h4>Consultation Hours</h4>
+                                <p>11AM to 11PM (Mon to Sat)<br>Sunday: Close</p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/the_astronox?igsh=MWs2MXlqMHhjZDh3dQ%3D%3D"
+                                class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/abhishek-gupta-astronox/" class="social-link"
+                                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://wa.me/qr/M6S4IXSZJCAAC1" class="social-link" aria-label="WhatsApp"><i
+                                    class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="consultationForm">
+                            <div class="form-group"><label for="name">Full Name</label><input type="text" id="name"
+                                    class="form-control" placeholder="Enter your name" required></div>
+                            <div class="form-group"><label for="email">Email Address</label><input type="email"
+                                    id="email" class="form-control" placeholder="Enter your email" required></div>
+                            <div class="form-group"><label for="service">Service Interested In</label><select
+                                    id="service" class="form-control" required>
+                                    <option value="">Select a service</option>
+                                    <option value="natal">Natal Chart Reading</option>
+                                    <option value="relationship">Relationship Analysis</option>
+                                    <option value="yearly">Yearly Forecast</option>
+                                    <option value="career">Career Guidance</option>
+                                </select></div>
+                            <div class="form-group"><label for="birthdate">Birth Date & Time</label><input type="text"
+                                    id="birthdate" class="form-control" placeholder="DD/MM/YYYY, HH:MM AM/PM" required>
+                            </div>
+                            <div class="form-group"><label for="birthplace">Birth Place</label><input type="text"
+                                    id="birthplace" class="form-control" placeholder="City, Country" required></div>
+                            <div class="form-group"><label for="message">Your Questions</label><textarea id="message"
+                                    class="form-control" placeholder="Specific areas you'd like guidance on"
+                                    rows="4"></textarea></div>
+                            <button type="submit" class="ios-button" style="width: 100%;"><i class="fas fa-paper-plane"
+                                    style="margin-right: 10px;"></i>Request Consultation</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1907,7 +1680,6 @@
                 <a href="#mulank">Mulank</a>
                 <a href="#about">About</a>
                 <a href="#testimonials">Testimonials</a>
-                <a href="#blog">Blog</a>
                 <a href="mantras.html">Mantras</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -1960,7 +1732,7 @@
             mobileMenuBtn.addEventListener('click', openMobileMenu);
             closeMenu.addEventListener('click', closeMobileMenu);
             mobileNavOverlay.addEventListener('click', closeMobileMenu);
-            mobileNavLinks.forEach(link => { 
+            mobileNavLinks.forEach(link => {
                 if (!link.href.includes('mantras.html')) {
                     link.addEventListener('click', closeMobileMenu);
                 }
@@ -2028,7 +1800,7 @@
             animateElements.forEach(el => { animateObserver.observe(el); });
 
             // --- Active Nav Link on Scroll ---
-            const sections = document.querySelectorAll('section[id]');
+            const sections = document.querySelectorAll('main > .section');
             const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
             const navObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -2043,99 +1815,33 @@
                     }
                 });
             }, { root: null, rootMargin: '-40% 0px -60% 0px', threshold: 0 });
-            sections.forEach(section => { navObserver.observe(section); });
+            sections.forEach(section => { 
+                if(section.id) navObserver.observe(section); 
+            });
 
-
-            // --- Sacred Journey Interactive Chart ---
-            const journeyPoints = document.querySelectorAll('.journey-point');
-            const journeyContentPanel = document.getElementById('journey-content-panel');
-            const wheelBG = document.getElementById('journey-wheel-bg');
-            const wheelPointsContainer = document.getElementById('journey-wheel-points');
-
-            const journeyRotations = { 1: 0, 2: -90, 3: -180, 4: 90 };
-
-            const journeyData = {
-                1: {
-                    house: "The Ascendant: A Calling in Kashi",
-                    title: "The Awakening",
-                    text: "My path was illuminated in Varanasi, the eternal city. Amidst ancient chants by the Ganges, the cosmos first whispered its secrets to me, setting my soul's compass towards the science of light, Jyotish."
-                },
-                2: {
-                    house: "The Ninth House: The Guru's Grace",
-                    title: "The Study",
-                    text: "For fifteen years, I sat at the feet of my Gurus. This was no mere education, but a profound sadhana—an immersion into the ocean of Vedic texts, learning to map the heavens and translate the will of the grahas."
-                },
-                3: {
-                    house: "The Tenth House: The Karma of Counsel",
-                    title: "The Practice",
-                    text: "Knowledge finds its purpose in action. I began my practice to serve as a karmic guide, applying sacred principles to the real-world questions of career, purpose, and destiny that shape our modern lives."
-                },
-                4: {
-                    house: "The Eleventh House: A Service to the Collective",
-                    title: "The Mission",
-                    text: "Today, my work is a humble offering to the collective. To act as a clear channel for cosmic wisdom, helping others see their own light and navigate their life's journey with clarity, empowerment, and grace."
-                }
-            };
-
-            function updateJourneyContent(journeyId) {
-                const data = journeyData[journeyId];
-                if (!data || !wheelBG || !wheelPointsContainer) return;
-
-                const rotation = journeyRotations[journeyId] || 0;
-
-                wheelBG.style.transform = `rotate(${rotation}deg)`;
-                wheelPointsContainer.style.transform = `rotate(${rotation}deg)`;
-
-                journeyPoints.forEach(p => {
-                    const currentTransform = p.dataset.baseTransform || '';
-                    p.style.transform = `${currentTransform} rotate(${-rotation}deg)`;
-                });
-
-                journeyContentPanel.innerHTML = '';
-
-                const newContentHTML = `
-                <div class="journey-content" id="journey-content-${journeyId}">
-                    <div class="house-title">${data.house}</div>
-                    <h3>${data.title}</h3>
-                    <p>${data.text}</p>
-                </div>
-            `;
-
-                journeyContentPanel.innerHTML = newContentHTML;
-
-                setTimeout(() => {
-                    const newContent = document.getElementById(`journey-content-${journeyId}`);
-                    if (newContent) {
-                        newContent.classList.add('active');
-                    }
-                }, 50);
-            }
-
-            journeyPoints.forEach(point => {
-                // Set initial position based on data attribute and store it
-                let baseTransform = '';
-                if (point.dataset.journey === "1" || point.dataset.journey === "3") {
-                    baseTransform = 'translateX(-50%)';
-                } else {
-                    baseTransform = 'translateY(-50%)';
-                }
-                point.style.transform = baseTransform;
-                point.dataset.baseTransform = baseTransform;
-
-
-                point.addEventListener('click', () => {
-                    const journeyId = point.dataset.journey;
-                    journeyPoints.forEach(p => p.classList.remove('active'));
-                    point.classList.add('active');
-                    updateJourneyContent(journeyId);
+            // --- Innovated About Section Tabs ---
+            const journeyTabs = document.querySelectorAll('.journey-tab');
+            const journeyContents = document.querySelectorAll('.journey-content');
+            
+            journeyTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.dataset.tab;
+                    
+                    // Update tabs
+                    journeyTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Update content
+                    journeyContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tabId) {
+                            // Delay adding active class for fade-in effect
+                            setTimeout(() => content.classList.add('active'), 0);
+                        }
+                    });
                 });
             });
 
-            // Initialize the journey section
-            if (journeyPoints.length > 0) {
-                journeyPoints[0].classList.add('active');
-                updateJourneyContent(journeyPoints[0].dataset.journey);
-            }
 
             // --- Mulank & Bhagyank Calculator Script ---
             function reduceToSingleDigit(num) {
@@ -2164,7 +1870,7 @@
                 8: "<strong>Saturn:</strong> Ambitious and powerful, you have strong executive skills and the ability to achieve great material success through discipline and perseverance.",
                 9: "<strong>Mars:</strong> You are a compassionate humanitarian with a strong sense of justice. Your courage and selflessness drive you to fight for the greater good."
             };
-            
+
             const bhagyankDescriptions = {
                 1: "<strong>Leadership & Independence:</strong> Your life path is about pioneering, leading with confidence, and embracing your unique identity. You are here to innovate and be a trailblazer.",
                 2: "<strong>Cooperation & Harmony:</strong> Your destiny is to foster harmony, build bridges, and excel in partnerships. Your path is one of diplomacy, intuition, and collaboration.",
@@ -2209,7 +1915,7 @@
                     numerologySelector.classList.remove('hidden');
                     mulankResultCard.classList.remove('hidden');
                     bhagyankResultCard.classList.add('hidden');
-                    
+
                     document.querySelector('.selector-btn[data-type="mulank"]').classList.add('active');
                     document.querySelector('.selector-btn[data-type="bhagyank"]').classList.remove('active');
                 });
@@ -2219,7 +1925,7 @@
                 numerologySelector.addEventListener('click', (e) => {
                     if (e.target.classList.contains('selector-btn')) {
                         const type = e.target.dataset.type;
-                        
+
                         document.querySelectorAll('.selector-btn').forEach(btn => btn.classList.remove('active'));
                         e.target.classList.add('active');
 
