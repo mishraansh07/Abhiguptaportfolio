@@ -3,8 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>The Astronox | Vedic Astrologer & Cosmic Guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Astronox | Vedic Astrologer</title>
+    <meta name="description" content="Unlock the secrets of your destiny with The Astronox, your guide to Vedic Astrology. Offering natal chart readings, relationship synastry, numerology (Mulank/Bhagyank), and authentic cosmic wisdom.">
+    <meta name="keywords" content="Vedic Astrology, Jyotish, Astrologer, Numerology, Mulank Calculator, Bhagyank, Natal Chart, Horoscope, Relationship Synastry, Varshaphala, Cosmic Guidance, The Astronox, Abhishek">
+    <meta name="author" content="The Astronox">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Astronox | Vedic Astrologer & Cosmic Guide">
+    <meta property="og:description" content="Unlock the secrets of your destiny with The Astronox, your guide to Vedic Astrology. Offering natal chart readings, numerology, and authentic cosmic wisdom.">
+    <meta property="og:image" content="Prof_pic/prof_pic.jpeg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="The Astronox | Vedic Astrologer & Cosmic Guide">
+    <meta property="twitter:description" content="Unlock the secrets of your destiny with The Astronox, your guide to Vedic Astrology. Offering natal chart readings, numerology, and authentic cosmic wisdom.">
+    <meta property="twitter:image" content="Prof_pic/prof_pic.jpeg">
+    
     <link
         href="https://fonts.googleapis.com/css2?family=Samarkan:wght@400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
         rel="stylesheet">
@@ -1518,14 +1532,14 @@
                 <div class="hero-text">
                     <div class="profile-pic">
                         <img src="Prof_pic/prof_pic.jpeg"
-                            onerror="this.onerror=null;this.src='https://placehold.co/180x180/7b2c2c/fdf8f0?text=AG';">
+                            onerror="this.onerror=null;this.src='https://placehold.co/180x180/7b2c2c/fdf8f0?text=A';">
                     </div>
                     <h1>
                         Unlock the Secrets of Your Karma
                         <br>
                         – Here & Now with the Astronox –
                     </h1>
-                    <p class="byline">by Abhishek Gupta</p>
+                    <p class="byline">by Abhishek</p>
                     <a href="#services" class="ios-button">
                         <i class="fas fa-star-and-crescent icon"></i>
                         Discover Your Path
@@ -1625,9 +1639,9 @@
                 <div class="journey-grid-container animated-item">
                     <div class="journey-image-panel">
                         <div class="journey-image-frame">
-                            <img src="Prof_pic/prof_pic.jpeg" alt="Abhishek Gupta - The Astronox">
+                            <img src="Prof_pic/prof_pic.jpeg" alt="Abhishek - The Astronox">
                         </div>
-                        <h3>Abhishek Gupta</h3>
+                        <h3>Abhishek</h3>
                     </div>
                     <div class="journey-milestones-panel">
                         <div class="journey-milestone">
@@ -2122,11 +2136,21 @@
             // --- Mulank & Bhagyank Calculator Script ---
             function reduceToSingleDigit(num) {
                 let sum = num;
-                while (sum > 9 && sum !== 11 && sum !== 22) { // Keep master numbers 11, 22
+                while (sum > 9 && sum !== 11 && sum !== 22) { // Keep master numbers 11, 22 for Bhagyank
                     sum = String(sum).split('').reduce((acc, digit) => acc + Number(digit), 0);
                 }
                 return sum;
             }
+            
+            // --- CORRECTED Moolank Calculation function ---
+            function calculateMoolank(day) {
+                 let sum = String(day).split('').reduce((acc, digit) => acc + Number(digit), 0);
+                 while(sum > 9) {
+                    sum = String(sum).split('').reduce((acc, digit) => acc + Number(digit), 0);
+                 }
+                 return sum;
+            }
+
 
             const mulankCalculateBtn = document.getElementById('mulankCalculateBtn');
             const birthDateInput = document.getElementById('birthDateInput');
@@ -2173,12 +2197,14 @@
                     const month = date.getUTCMonth() + 1;
                     const year = date.getUTCFullYear();
                     
-                    const daySum = String(day).split('').reduce((acc, digit) => acc + Number(digit), 0);
+                    const daySumForBhagyank = String(day).split('').reduce((acc, digit) => acc + Number(digit), 0);
                     const monthSum = String(month).split('').reduce((acc, digit) => acc + Number(digit), 0);
                     const yearSum = String(year).split('').reduce((acc, digit) => acc + Number(digit), 0);
-
-                    const mulank = reduceToSingleDigit(daySum);
-                    const bhagyank = reduceToSingleDigit(daySum + monthSum + yearSum);
+                    
+                    // Using the new, correct function for Moolank
+                    const mulank = calculateMoolank(day);
+                    // Bhagyank calculation remains the same
+                    const bhagyank = reduceToSingleDigit(daySumForBhagyank + monthSum + yearSum);
 
                     mulankResultCard.innerHTML = `
                         <h4>Mulank (Root Number)</h4>
