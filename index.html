@@ -6,7 +6,7 @@
     <title>The Astronox | Vedic Astrologer & Cosmic Guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Unlock the secrets of your destiny with The Astronox, your guide to Vedic Astrology. Offering natal chart readings, relationship synastry, numerology (Mulank/Bhagyank), and authentic cosmic wisdom.">
-    <meta name="keywords" content="Vedic Astrology, Jyotish, Astrologer, Numerology, Mulank Calculator, Bhagyank, Natal Chart, Horoscope, Relationship Synastry, Varshaphala, Cosmic Guidance, The Astronox, Abhishek">
+    <meta name="keywords" content="Vedic Astrology, Jyotish, Astrologer, Numerology, Mulank Calculator, Bhagyank, Natal Chart, Horoscope, Relationship Synastry, Varshaphala, Cosmic Guidance, The Astronox, Abhishek Gupta">
     <meta name="author" content="The Astronox">
 
     <meta property="og:type" content="website">
@@ -24,6 +24,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
         /* CSS Custom Properties for easy theme management */
         :root {
@@ -46,6 +47,16 @@
             box-sizing: border-box;
         }
 
+        html.lenis {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden !important;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--ivory);
@@ -56,7 +67,6 @@
                 url('https://www.transparenttextures.com/patterns/old-paper.png');
             background-attachment: fixed;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         @font-face {
@@ -335,123 +345,226 @@
              opacity: 1;
              transform: translateY(0);
         }
-
-        /* Services Section with Tapestry Layout */
-        #services, #about, #why-us, #faq, #mantras-glimpse {
+        
+        /* Background for alternating sections */
+        #services-pricing, #about, #why-us, #faq, #mantras-glimpse {
             background: linear-gradient(to bottom, #fdf8f0 0%, #f7f0e6 50%, #fdf8f0 100%);
         }
 
-        .tapestry-container {
+        /* --- UPDATED Services & Pricing Section --- */
+        .service-filters {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 2px solid rgba(123, 44, 44, 0.2);
+            color: var(--maroon);
+            padding: 0.7rem 1.5rem;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .filter-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold);
+        }
+        .filter-btn.active {
+            background: var(--maroon);
+            color: white;
+            border-color: var(--maroon);
         }
 
-        .service-tapestry-item {
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
             background: var(--card-bg);
             border-radius: var(--radius);
-            padding: 3rem;
-            width: 100%;
-            max-width: 700px;
-            position: relative;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
             box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
-            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: scaleIn 0.5s forwards;
+            position: relative;
+            overflow: hidden;
+            /* --- ✨ NEW INTERACTIVE PROPERTIES --- */
+            transform-style: preserve-3d;
+            will-change: transform;
+            transition: box-shadow 0.4s ease, transform 0.2s ease-out;
         }
         
-        .service-tapestry-item:hover {
-            box-shadow: 0 12px 45px rgba(123, 44, 44, 0.2);
-            transform: translateY(-5px);
-        }
-
-        /* Desktop-only timeline styles */
-        @media (min-width: 769px) {
-            .tapestry-container {
-                 gap: 8rem;
-            }
-            .service-tapestry-item::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: -80px;
-                transform: translateY(-50%);
-                width: 60px;
-                height: 60px;
-                font-family: "Font Awesome 6 Free";
-                font-weight: 900;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 2rem;
-                color: var(--gold);
-                background: white;
-                border-radius: 50%;
-                box-shadow: var(--shadow);
-            }
-
-            .service-tapestry-item:nth-child(1)::before { content: '\f77c'; }
-            .service-tapestry-item:nth-child(2)::before { content: '\f004'; }
-            .service-tapestry-item:nth-child(3)::before { content: '\f133'; }
-            .service-tapestry-item:nth-child(4)::before { content: '\f0b1'; }
-
-            .service-tapestry-item::after {
-                content: '';
-                position: absolute;
-                top: -4rem;
-                left: -50px;
-                width: 2px;
-                height: calc(100% + 8rem);
-                background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-            }
-
-            .tapestry-container>div:first-child::after {
-                background: linear-gradient(to bottom, var(--gold), var(--gold), transparent);
-            }
-
-            .tapestry-container>div:last-child::after {
-                height: calc(50% + 4rem);
-                background: linear-gradient(to bottom, transparent, var(--gold));
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
             }
         }
-
-
-        .tapestry-content {
-            text-align: center;
+        
+        /* --- ✨ NEW GLARE EFFECT --- */
+        .service-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                circle at var(--x, 50%) var(--y, 50%),
+                rgba(212, 175, 55, 0.25),
+                transparent 40%
+            );
+            border-radius: var(--radius);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 0;
         }
 
-        .tapestry-content h3 {
-            font-size: 2.5rem;
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card.hidden {
+            display: none;
+        }
+
+        /* --- ✨ ENHANCED HOVER SHADOW --- */
+        .service-card:hover {
+            box-shadow: 0 15px 45px rgba(123, 44, 44, 0.25);
+        }
+        
+        /* NEW: Most Popular Badge */
+        .badge {
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            background: var(--gold);
+            color: var(--henna);
+            padding: 0.6rem 2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-top-right-radius: var(--radius);
+            border-bottom-left-radius: var(--radius);
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        .service-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             color: var(--maroon);
+            margin-bottom: 0.8rem;
+            min-height: 58px;
+        }
+        .service-card-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .service-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--henna);
+            margin-bottom: 1.8rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .book-now-btn {
+             background: var(--maroon);
+             border-color: var(--maroon);
+             color: white;
+             width: 100%;
+             max-width: 220px;
+             padding: 0.8rem 1.8rem;
+             border-radius: 100px;
+             font-weight: 600;
+             text-decoration: none;
+             transition: var(--transition);
+             border: 2px solid var(--maroon);
+             cursor: pointer;
+             /* --- ✨ FIX: Centering the button --- */
+             align-self: center;
+        }
+         .book-now-btn:hover {
+             background: var(--gold);
+             border-color: var(--gold);
+             color: white;
+             transform: scale(1.05);
+        }
+        
+        .student-offer-card {
+            background: linear-gradient(135deg, var(--maroon), var(--henna));
+            color: var(--ivory);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 4rem;
+            box-shadow: 0 10px 40px rgba(123, 44, 44, 0.3);
+            grid-column: 1 / -1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* NEW: Shooting Star Animation */
+        .shooting-star {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(253, 248, 240, 0.8), transparent);
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px rgba(253, 248, 240, 0.5));
+            animation: tail 3s ease-in-out infinite, shooting 3s ease-in-out infinite;
+        }
+        @keyframes tail {
+            0% { width: 0; } 30% { width: 100px; } 100% { width: 0; }
+        }
+        @keyframes shooting {
+            0% { transform: translateX(0); } 100% { transform: translateX(400px); }
+        }
+        .shooting-star:nth-child(1) { top: 20%; left: -100px; animation-delay: 1.3s; }
+        .shooting-star:nth-child(2) { top: 50%; left: -100px; animation-delay: 0.6s; }
+        .shooting-star:nth-child(3) { top: 80%; left: -100px; animation-delay: 2.1s; }
+
+
+        .student-offer-card i {
+            font-size: 3rem;
+            color: var(--gold);
             margin-bottom: 1rem;
         }
-
-        .tapestry-content p {
-            color: var(--text);
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
+        .student-offer-card h3 {
+            font-size: 2.2rem;
             font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        .student-offer-card p {
+            color: rgba(253, 248, 240, 0.9);
             font-size: 1.1rem;
         }
 
-        .service-button {
-            display: inline-block;
-            background: transparent;
-            color: var(--henna);
-            padding: 0.8rem 1.8rem;
-            border-radius: 100px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            border: 2px solid var(--gold);
-        }
-
-        .service-button:hover {
-            background: var(--gold);
-            color: white;
-            transform: scale(1.05);
-        }
 
         /* Mulank Calculator Section */
         .mulank-container {
@@ -1346,7 +1459,349 @@
             font-size: 1.1rem;
             color: var(--text);
             line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
+        
+        .custom-alert-box .ios-button {
+             padding: 0.8rem 1.8rem; font-size: 1rem;
+        }
+
+        /* --- NEW ENHANCED BOOKING MODAL --- */
+        .booking-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s, visibility 0.4s;
+        }
+
+        .booking-modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .booking-modal {
+            background: var(--ivory);
+            border-radius: var(--radius);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            max-width: 95%;
+            width: 800px;
+            max-height: 90vh;
+            overflow: hidden; /* Prevent modal itself from scrolling */
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.95) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .booking-modal-overlay.visible .booking-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            background: var(--maroon);
+            padding: 1.5rem;
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .modal-header h3 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            text-align: center;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .close-booking {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .close-booking:hover {
+            opacity: 1;
+            transform: translateY(-50%) rotate(90deg);
+        }
+
+        .modal-content {
+            padding: 2rem 2.5rem;
+            overflow-y: auto; /* Make content scrollable */
+        }
+
+        .booking-step {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .booking-step.active {
+            display: block;
+        }
+
+        .step-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--maroon);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .step-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .form-col {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .checkbox-container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin: 1rem 0;
+            cursor: pointer;
+            font-size: 1rem;
+            -webkit-user-select: none;
+            user-select: none;
+            color: var(--maroon);
+            font-weight: 500;
+        }
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(123, 44, 44, 0.2);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        .checkbox-container:hover input ~ .checkmark {
+            background-color: #fcefe2;
+        }
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: var(--gold);
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+        #partnerDetails {
+            background: rgba(123, 44, 44, 0.03);
+            border-radius: var(--radius);
+            padding: 0.5rem 1.5rem 0;
+            margin-top: 1rem;
+            border: 1px dashed rgba(123, 44, 44, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .service-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(123, 44, 44, 0.05);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .service-info .name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--maroon);
+        }
+        .service-info .price {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--henna);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .time-slot {
+            background: white;
+            border: 1px solid rgba(123, 44, 44, 0.2);
+            border-radius: 8px;
+            padding: 0.8rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .time-slot:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .time-slot.selected {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+            transform: scale(1.05);
+        }
+
+        .booking-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2.5rem;
+            border-top: 1px solid rgba(123, 44, 44, 0.1);
+            padding-top: 1.5rem;
+        }
+        .nav-button {
+            background: var(--maroon);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 100px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        .nav-button:hover {
+            background: var(--saffron);
+            transform: translateY(-2px);
+        }
+        .nav-button.back {
+            background: rgba(123, 44, 44, 0.1);
+            color: var(--maroon);
+        }
+        .nav-button.back:hover {
+            background: rgba(123, 44, 44, 0.2);
+        }
+
+        #summaryWrapper {
+            background: rgba(123, 44, 44, 0.02);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(123, 44, 44, 0.08);
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(123, 44, 44, 0.1);
+        }
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        .summary-label {
+            font-weight: 500;
+            color: var(--henna);
+        }
+        .summary-item.total {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--gold);
+            border-bottom: none;
+        }
+        .summary-item.total .price-tag {
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--maroon);
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .payment-option {
+            border: 2px solid rgba(123, 44, 44, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        .payment-option:hover {
+            border-color: var(--gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        .payment-option.selected {
+            border-color: var(--maroon);
+            background: rgba(123, 44, 44, 0.05);
+        }
+        .payment-option.selected::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: var(--maroon);
+        }
+        .payment-option i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .payment-option h4 {
+            color: var(--maroon);
+            margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+        .payment-option p {
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
 
         /* Animation Keyframes */
         @keyframes float {
@@ -1386,6 +1841,9 @@
             .mantras-container {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
         }
         
         /* Mobile Devices (up to 767px) */
@@ -1424,10 +1882,6 @@
             .hero-text .byline {
                 font-size: 1.3rem;
             }
-
-            .tapestry-content h3 {
-                font-size: 2rem;
-            }
             
             .mulank-input-panel, .mulank-result-panel {
                 padding: 2rem;
@@ -1446,6 +1900,27 @@
             }
             .mantra-card .mantra-sanskrit {
                 font-size: 2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .booking-modal {
+                width: 95%;
+                max-height: 85vh;
+            }
+             .modal-content {
+                padding: 1.5rem;
+            }
+            .time-slots {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            .payment-options {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1469,15 +1944,24 @@
                 font-size: 1rem;
             }
 
-            .service-tapestry-item, .contact-form, .why-us-card, .faq-item, .mantra-card {
+            .contact-form, .why-us-card, .faq-item, .mantra-card, .service-card {
                 padding: 1.5rem;
             }
             .mantra-card {
                 padding: 2rem;
             }
-            
+            .service-card h4 {
+                min-height: auto; /* Remove min-height on mobile */
+            }
             .footer-links {
                 gap: 1rem 1.5rem;
+            }
+            
+            .modal-header h3 {
+                font-size: 1.5rem;
+            }
+            .step-header {
+                font-size: 1.3rem;
             }
         }
 
@@ -1496,7 +1980,7 @@
         </div>
         <nav class="desktop-nav">
             <a href="#home" class="active">Home</a>
-            <a href="#services">Services</a>
+            <a href="#services-pricing">Services</a>
             <a href="#mulank">Mulank</a>
             <a href="#about">About</a>
             <a href="#why-us">Why Us</a>
@@ -1516,7 +2000,7 @@
             <i class="fas fa-times"></i>
         </button>
         <a href="#home" class="nav-link">Home</a>
-        <a href="#services" class="nav-link">Services</a>
+        <a href="#services-pricing" class="nav-link">Services</a>
         <a href="#mulank" class="nav-link">Mulank</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#why-us" class="nav-link">Why Us</a>
@@ -1531,7 +2015,7 @@
             <div class="section-wrapper">
                 <div class="hero-text">
                     <div class="profile-pic">
-                        <img src="Prof_pic/prof_pic.jpeg"
+                        <img src="Prof_pic/prof1.jpg"
                             onerror="this.onerror=null;this.src='https://placehold.co/180x180/7b2c2c/fdf8f0?text=A';">
                     </div>
                     <h1>
@@ -1539,8 +2023,8 @@
                         <br>
                         – Here & Now with the Astronox –
                     </h1>
-                    <p class="byline">by Abhishek</p>
-                    <a href="#services" class="ios-button">
+                    <p class="byline">by Abhishek Gupta</p>
+                    <a href="#services-pricing" class="ios-button">
                         <i class="fas fa-star-and-crescent icon"></i>
                         Discover Your Path
                     </a>
@@ -1548,44 +2032,141 @@
             </div>
         </section>
 
-        <section class="section" id="services">
+        <section class="section" id="services-pricing">
             <div class="section-wrapper">
                 <div class="section-header animated-item">
-                    <h2>The Tapestry of Fate</h2>
-                    <p>Unveiling the sacred services woven into the cosmic design of your life.</p>
+                    <h2>Our Cosmic Offerings</h2>
+                    <p>Transparent pricing for authentic cosmic guidance. Choose the consultation that best suits your journey.</p>
                 </div>
-                <div class="tapestry-container">
-                    <div class="service-tapestry-item animated-item">
-                        <div class="tapestry-content">
-                            <h3>Natal Chart Reading</h3>
-                            <p>A comprehensive analysis of your birth chart to reveal your life's purpose, strengths, and
-                                challenges, as inscribed by the cosmos at your birth.</p>
-                            <a href="#contact" class="service-button">Book Now</a>
-                        </div>
+                
+                <div class="service-filters animated-item">
+                    <button class="filter-btn active" data-filter="all">All Services</button>
+                    <button class="filter-btn" data-filter="astrology">Vedic Astrology</button>
+                    <button class="filter-btn" data-filter="numerology">Numerology</button>
+                    <button class="filter-btn" data-filter="qa">Written Q&A</button>
+                    <button class="filter-btn" data-filter="call">Audio Calls</button>
+                    <button class="filter-btn" data-filter="package">Packages</button>
+                </div>
+
+                <div class="services-grid animated-item">
+                    <div class="service-card" data-category="astrology">
+                        <div class="badge">Most Popular</div>
+                        <i class="fas fa-star-of-life service-icon"></i>
+                        <h4>Natal Chart Reading</h4>
+                        <p class="service-card-desc">A foundational reading of your cosmic blueprint for overall life guidance.</p>
+                        <div class="service-price">₹499</div>
+                        <button class="book-now-btn book-service" data-service="Natal Chart Reading" data-price="499">Book Now</button>
                     </div>
-                    <div class="service-tapestry-item animated-item" style="transition-delay: 0.1s;">
-                        <div class="tapestry-content">
-                            <h3>Relationship Synastry</h3>
-                            <p>Unveil the karmic threads and cosmic dynamics in your relationships through the sacred art of
-                                synastry and composite chart analysis.</p>
-                            <a href="#contact" class="service-button">Book Now</a>
-                        </div>
+                    <div class="service-card" data-category="astrology">
+                        <i class="fas fa-chart-line service-icon"></i>
+                        <h4>Career and Growth</h4>
+                        <p class="service-card-desc">Astrological insights for your professional path, dharma, and success.</p>
+                        <div class="service-price">₹899</div>
+                        <button class="book-now-btn book-service" data-service="Career and Growth" data-price="899">Book Now</button>
                     </div>
-                    <div class="service-tapestry-item animated-item" style="transition-delay: 0.2s;">
-                        <div class="tapestry-content">
-                            <h3>Varshaphala Forecast</h3>
-                            <p>Receive detailed predictions and divine guidance for the year ahead, based on your personal
-                                transits and planetary cycles (Varshaphala).</p>
-                            <a href="#contact" class="service-button">Book Now</a>
-                        </div>
+                    <div class="service-card" data-category="astrology">
+                        <i class="fas fa-link service-icon"></i>
+                        <h4>Relationship Synastry</h4>
+                        <p class="service-card-desc">Synastry-based analysis to understand the karmic ties in your relationships.</p>
+                        <div class="service-price">₹1299</div>
+                        <button class="book-now-btn book-service" data-service="Relationship Synastry" data-price="1299">Book Now</button>
                     </div>
-                    <div class="service-tapestry-item animated-item" style="transition-delay: 0.3s;">
-                        <div class="tapestry-content">
-                            <h3>Career & Dharma Path</h3>
-                            <p>Identify your professional strengths, optimal career paths aligned with your Dharma, and
-                                auspicious timing for pivotal decisions.</p>
-                            <a href="#contact" class="service-button">Book Now</a>
-                        </div>
+                    <div class="service-card" data-category="astrology">
+                        <i class="fas fa-calendar-alt service-icon"></i>
+                        <h4>Varshaphala Forecast</h4>
+                        <p class="service-card-desc">Detailed predictions and divine guidance for the year ahead based on your personal solar return chart.</p>
+                        <div class="service-price">₹899</div>
+                        <button class="book-now-btn book-service" data-service="Varshaphala Forecast" data-price="899">Book Now</button>
+                    </div>
+                    
+                    <div class="service-card" data-category="numerology">
+                        <i class="fas fa-signature service-icon"></i>
+                        <h4>Name Correction</h4>
+                        <p class="service-card-desc">Align your name's vibration with your karmic path for growth and clarity.</p>
+                        <div class="service-price">₹499</div>
+                        <button class="book-now-btn book-service" data-service="Name Correction" data-price="499">Book Now</button>
+                    </div>
+                    <div class="service-card" data-category="numerology">
+                        <i class="fas fa-store service-icon"></i>
+                        <h4>Business Name Correction</h4>
+                        <p class="service-card-desc">Align your brand's name with the energy of its industry for success.</p>
+                        <div class="service-price">₹899</div>
+                        <button class="book-now-btn book-service" data-service="Business Name Correction" data-price="899">Book Now</button>
+                    </div>
+                    <div class="service-card" data-category="numerology">
+                        <i class="fas fa-mobile-alt service-icon"></i>
+                        <h4>Mobile Numerology</h4>
+                        <p class="service-card-desc">Check and align your mobile number's frequency with your personal goals.</p>
+                        <div class="service-price">₹999</div>
+                        <button class="book-now-btn book-service" data-service="Mobile Numerology" data-price="999">Book Now</button>
+                    </div>
+                     <div class="service-card" data-category="numerology">
+                        <i class="fas fa-car service-icon"></i>
+                        <h4>Right Vehicle Number</h4>
+                        <p class="service-card-desc">Choose a vehicle number that attracts safety, success, and positive journeys.</p>
+                        <div class="service-price">₹499</div>
+                        <button class="book-now-btn book-service" data-service="Right Vehicle Number" data-price="499">Book Now</button>
+                    </div>
+                    
+                    <div class="service-card" data-category="qa">
+                        <i class="fas fa-question service-icon"></i>
+                        <h4>Single Question Q&A</h4>
+                        <p class="service-card-desc">Get a detailed, written answer to your most pressing single question.</p>
+                        <div class="service-price">₹399</div>
+                        <button class="book-now-btn book-service" data-service="Single Question Q&A" data-price="399">Book Now</button>
+                    </div>
+                    <div class="service-card" data-category="qa">
+                        <i class="fas fa-comments service-icon"></i>
+                        <h4>3 Questions Q&A</h4>
+                        <p class="service-card-desc">In-depth written guidance on three specific areas or questions of your life.</p>
+                        <div class="service-price">₹899</div>
+                        <button class="book-now-btn book-service" data-service="3 Questions Q&A" data-price="899">Book Now</button>
+                    </div>
+                    <div class="service-card" data-category="qa">
+                        <i class="fas fa-heart service-icon"></i>
+                        <h4>Love Compatibility Q&A</h4>
+                        <p class="service-card-desc">Focused answers on relationship dynamics, compatibility, and harmony (3 Questions).</p>
+                        <div class="service-price">₹599</div>
+                        <button class="book-now-btn book-service" data-service="Love Compatibility Q&A" data-price="599">Book Now</button>
+                    </div>
+                    
+                    <div class="service-card" data-category="call">
+                        <i class="fas fa-phone-volume service-icon"></i>
+                        <h4>15-Minute Audio Call</h4>
+                        <p class="service-card-desc">A brief, focused session for quick guidance or follow-up questions.</p>
+                        <div class="service-price">₹799</div>
+                        <button class="book-now-btn book-service" data-service="15-Minute Audio Call" data-price="799">Book Now</button>
+                    </div>
+                    <div class="service-card" data-category="call">
+                        <i class="fas fa-headset service-icon"></i>
+                        <h4>30-Minute Audio Call</h4>
+                        <p class="service-card-desc">A detailed discussion covering one or two key areas of your life.</p>
+                        <div class="service-price">₹899</div>
+                        <button class="book-now-btn book-service" data-service="30-Minute Audio Call" data-price="899">Book Now</button>
+                    </div>
+                    <div class="service-card" data-category="call">
+                        <i class="fas fa-microphone-alt service-icon"></i>
+                        <h4>45-Minute Audio Call</h4>
+                        <p class="service-card-desc">A comprehensive consultation for an in-depth exploration of your chart.</p>
+                        <div class="service-price">₹999</div>
+                        <button class="book-now-btn book-service" data-service="45-Minute Audio Call" data-price="999">Book Now</button>
+                    </div>
+                    
+                    <div class="service-card" data-category="package">
+                        <i class="fas fa-gifts service-icon"></i>
+                        <h4>Combo Package</h4>
+                        <p class="service-card-desc">A powerful combination of a 5 Question Q&A report plus a 15-minute follow-up call.</p>
+                        <div class="service-price">₹1299</div>
+                        <button class="book-now-btn book-service" data-service="Combo Package" data-price="1299">Book Now</button>
+                    </div>
+                    
+                    <div class="student-offer-card animated-item">
+                        <div class="shooting-star"></div>
+                        <div class="shooting-star"></div>
+                        <div class="shooting-star"></div>
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>Student Special Offer</h3>
+                        <p>We support the journey of learning. Get <strong>25% off</strong> on every consultation with a valid student ID.</p>
                     </div>
                 </div>
             </div>
@@ -1639,9 +2220,9 @@
                 <div class="journey-grid-container animated-item">
                     <div class="journey-image-panel">
                         <div class="journey-image-frame">
-                            <img src="Prof_pic/prof_pic.jpeg" alt="Abhishek - The Astronox">
+                            <img src="Prof_pic/prof_pic.jpeg" alt="Abhishek Gupta - The Astronox" onerror="this.onerror=null;this.src='https://placehold.co/250x250/7b2c2c/fdf8f0?text=A';">
                         </div>
-                        <h3>Abhishek</h3>
+                        <h3>Abhishek Gupta</h3>
                     </div>
                     <div class="journey-milestones-panel">
                         <div class="journey-milestone">
@@ -1738,7 +2319,7 @@
                 <div class="testimonials-container">
                     <div class="testimonial-card animated-item">
                         <div class="testimonial-content">
-                            <p class="testimonial-text">"Abhishek's reading was incredibly insightful. He didn't just
+                            <p class="testimonial-text">"Abhishek Gupta's reading was incredibly insightful. He didn't just
                                 tell
                                 me what my chart said, he helped me understand how to work with my planetary energies.
                                 His
@@ -1754,7 +2335,7 @@
                     </div>
                     <div class="testimonial-card animated-item" style="transition-delay: 0.15s;">
                         <div class="testimonial-content">
-                            <p class="testimonial-text">"The relationship analysis was spot on. Abhishek explained the
+                            <p class="testimonial-text">"The relationship analysis was spot on. Abhishek Gupta explained the
                                 dynamics between me and my partner with such clarity. We've implemented his suggestions
                                 and
                                 our relationship has improved dramatically."</p>
@@ -1769,7 +2350,7 @@
                     </div>
                     <div class="testimonial-card animated-item" style="transition-delay: 0.3s;">
                         <div class="testimonial-content">
-                            <p class="testimonial-text">"Abhishek's yearly forecast helped me navigate a challenging
+                            <p class="testimonial-text">"Abhishek Gupta's yearly forecast helped me navigate a challenging
                                 period
                                 with confidence. His predictions were accurate and his practical advice was invaluable.
                                 I
@@ -1946,7 +2527,7 @@
             <div class="footer-logo">theastronox</div>
             <div class="footer-links">
                 <a href="#home">Home</a>
-                <a href="#services">Services</a>
+                <a href="#services-pricing">Services</a>
                 <a href="#mulank">Mulank</a>
                 <a href="#about">About</a>
                 <a href="#why-us">Why Us</a>
@@ -1961,11 +2542,177 @@
         </div>
     </footer>
 
+    <div class="booking-modal-overlay" id="bookingModal">
+        <div class="booking-modal">
+            <div class="modal-header">
+                <h3>Book Your Cosmic Consultation</h3>
+                <button class="close-booking" id="closeBooking">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="booking-step active" id="step1">
+                    <h4 class="step-header">Your Personal &amp; Birth Details</h4>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="clientName">Full Name</label>
+                                <input type="text" id="clientName" class="form-control" placeholder="Enter your full name" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="clientEmail">Email Address</label>
+                                <input type="email" id="clientEmail" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="clientDOB">Date of Birth</label>
+                                <input type="date" id="clientDOB" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="clientTOB">Time of Birth</label>
+                                <input type="time" id="clientTOB" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientPOB">Place of Birth (City, Country)</label>
+                        <input type="text" id="clientPOB" class="form-control" placeholder="e.g., Lucknow, India" required>
+                    </div>
+
+                    <div class="form-group hidden" id="coupleToggleContainer">
+                        <label class="checkbox-container">
+                            Is this for a couple?
+                            <input type="checkbox" id="isCoupleCheckbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div id="partnerDetails" class="hidden">
+                        <h4 class="step-header" style="font-size: 1.3rem; margin-top: 2rem; margin-bottom: 1.5rem;">Partner's Details</h4>
+                        <div class="form-row">
+                            <div class="form-col">
+                                 <div class="form-group">
+                                    <label for="partnerName">Partner's Full Name</label>
+                                    <input type="text" id="partnerName" class="form-control" placeholder="Enter partner's name">
+                                </div>
+                            </div>
+                             <div class="form-col">
+                                <div class="form-group">
+                                    <label for="partnerDOB">Partner's Date of Birth</label>
+                                    <input type="date" id="partnerDOB" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                         <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="partnerTOB">Partner's Time of Birth</label>
+                                    <input type="time" id="partnerTOB" class="form-control">
+                                </div>
+                            </div>
+                             <div class="form-col">
+                                <div class="form-group">
+                                    <label for="partnerPOB">Partner's Place of Birth</label>
+                                    <input type="text" id="partnerPOB" class="form-control" placeholder="e.g., Delhi, India">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-nav">
+                        <button class="nav-button next-step" data-step="2">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="booking-step" id="step2">
+                    <h4 class="step-header">Schedule Your Consultation</h4>
+                    <div class="service-info">
+                        <div class="name">Service: <span id="selectedService">Natal Chart Reading</span></div>
+                        <div class="price">Price: <span id="selectedPrice">₹499</span></div>
+                    </div>
+                    <div class="form-group date-picker">
+                        <label for="appointmentDate">Select Date</label>
+                        <input type="date" id="appointmentDate" class="form-control" min="">
+                    </div>
+                    <div class="form-group">
+                        <label>Available Time Slots (IST)</label>
+                        <div class="time-slots" id="timeSlots">
+                            </div>
+                    </div>
+                    <div class="booking-nav">
+                        <button class="nav-button back" data-step="1">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button class="nav-button next-step" data-step="3">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="booking-step" id="step3">
+                    <h4 class="step-header">Confirm &amp; Pay</h4>
+                    <div id="summaryWrapper">
+                        <div class="summary-item">
+                            <span class="summary-label">Service:</span>
+                            <span id="summaryService"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Appointment:</span>
+                            <span id="summaryDateTime"></span>
+                        </div>
+                         <div class="summary-item">
+                            <span class="summary-label">Name:</span>
+                            <span id="summaryName"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Email:</span>
+                            <span id="summaryEmail"></span>
+                        </div>
+                        </div>
+                    <div class="summary-item total">
+                        <span class="summary-label">Total Amount:</span>
+                        <span id="summaryTotal" class="price-tag"></span>
+                    </div>
+                    <div class="form-group" style="margin-top: 2rem;">
+                        <label>Select Payment Method</label>
+                        <div class="payment-options">
+                            <div class="payment-option selected" data-method="upi">
+                                <i class="fab fa-google-pay"></i>
+                                <h4>UPI / QR Code</h4>
+                                <p>Pay with any UPI app</p>
+                            </div>
+                            <div class="payment-option" data-method="card">
+                                <i class="fas fa-credit-card"></i>
+                                <h4>Credit/Debit Card</h4>
+                                <p>Razorpay Secure Checkout</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booking-nav">
+                        <button class="nav-button back" data-step="2">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button class="nav-button" id="confirmBooking">
+                            Proceed to Payment <i class="fas fa-shield-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="customAlert" class="custom-alert-overlay">
         <div class="custom-alert-box">
             <p id="customAlertMessage"></p>
-            <button id="customAlertClose" class="ios-button"
-                style="padding: 0.8rem 1.8rem; font-size: 1rem; margin-top: 1.5rem;">OK</button>
+            <button id="customAlertClose" class="ios-button">OK</button>
         </div>
     </div>
 
@@ -1982,21 +2729,20 @@
             const customAlertClose = document.getElementById('customAlertClose');
 
             function showCustomAlert(message) {
-                if (!customAlert || !customAlertMessage) return;
+                if (!customAlert || !customAlertMessage) {
+                    alert(message); // Fallback for safety
+                    return;
+                }
                 customAlertMessage.textContent = message;
                 customAlert.classList.add('visible');
             }
 
             if (customAlertClose) {
-                customAlertClose.addEventListener('click', () => {
-                    customAlert.classList.remove('visible');
-                });
+                customAlertClose.addEventListener('click', () => customAlert.classList.remove('visible'));
             }
              if (customAlert) {
                 customAlert.addEventListener('click', (e) => {
-                    if(e.target === customAlert) {
-                        customAlert.classList.remove('visible');
-                    }
+                    if(e.target === customAlert) customAlert.classList.remove('visible');
                 });
             }
 
@@ -2006,27 +2752,20 @@
             const closeMenu = document.getElementById('closeMenu');
             const mobileNavOverlay = document.getElementById('mobileNavOverlay');
             const mobileNavLinks = document.querySelectorAll('.mobile-nav a.nav-link');
-            const openMobileMenu = () => { mobileNav.classList.add('active'); mobileNavOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; };
-            const closeMobileMenu = () => { mobileNav.classList.remove('active'); mobileNavOverlay.classList.remove('active'); document.body.style.overflow = ''; };
+            const openMobileMenu = () => { mobileNav.classList.add('active'); mobileNavOverlay.classList.add('active'); lenis.stop(); };
+            const closeMobileMenu = () => { mobileNav.classList.remove('active'); mobileNavOverlay.classList.remove('active'); lenis.start(); };
             mobileMenuBtn.addEventListener('click', openMobileMenu);
             closeMenu.addEventListener('click', closeMobileMenu);
             mobileNavOverlay.addEventListener('click', closeMobileMenu);
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', closeMobileMenu);
-            });
+            mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
 
             // --- Page Load Effects ---
             const loader = document.getElementById('loader');
             window.addEventListener('load', () => {
                 setTimeout(() => {
                     if(loader) loader.classList.add('loader-hidden');
-                    document.body.style.overflow = '';
                 }, 500);
             });
-            if(loader) {
-                 document.body.style.overflow = 'hidden';
-            }
-
 
             // --- Anchor Scroll with Lenis ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2044,7 +2783,7 @@
 
             // --- Header Scroll Styling ---
             const header = document.getElementById('header');
-            window.addEventListener('scroll', () => { header.classList.toggle('scrolled-header', window.scrollY > 50); });
+            window.addEventListener('scroll', () => header.classList.toggle('scrolled-header', window.scrollY > 50));
 
             // --- Form Submission ---
             const consultationForm = document.getElementById('consultationForm');
@@ -2075,10 +2814,7 @@
                     }
                 });
             }, { root: null, rootMargin: '0px', threshold: 0.1 });
-
-            animatedItems.forEach(item => {
-                animateObserver.observe(item);
-            });
+            animatedItems.forEach(item => animateObserver.observe(item));
 
             // --- Active Nav Link on Scroll ---
             const sections = document.querySelectorAll('main > .section');
@@ -2101,23 +2837,16 @@
                 if(section.id) navObserver.observe(section); 
             });
 
-            // --- NEW: Journey Milestone Accordion ---
+            // --- Journey Milestone Accordion ---
             const milestones = document.querySelectorAll('.journey-milestone');
             milestones.forEach(milestone => {
                 const header = milestone.querySelector('.milestone-header');
                 header.addEventListener('click', () => {
                     const isActive = milestone.classList.contains('active');
-                    
-                    // Close all other milestones
                     milestones.forEach(m => m.classList.remove('active'));
-
-                    // If the clicked one wasn't active, open it
-                    if (!isActive) {
-                        milestone.classList.add('active');
-                    }
+                    if (!isActive) milestone.classList.add('active');
                 });
             });
-
 
             // --- FAQ Accordion ---
             const faqItems = document.querySelectorAll('.faq-item');
@@ -2126,126 +2855,316 @@
                 question.addEventListener('click', () => {
                     const isActive = item.classList.contains('active');
                     faqItems.forEach(i => i.classList.remove('active'));
-                    if (!isActive) {
-                        item.classList.add('active');
-                    }
+                    if (!isActive) item.classList.add('active');
                 });
             });
 
-
-            // --- Mulank & Bhagyank Calculator Script ---
+            // --- Mulank & Bhagyank Calculator ---
             function reduceToSingleDigit(num) {
                 let sum = num;
-                while (sum > 9 && sum !== 11 && sum !== 22) { // Keep master numbers 11, 22 for Bhagyank
+                while (sum > 9 && sum !== 11 && sum !== 22) {
                     sum = String(sum).split('').reduce((acc, digit) => acc + Number(digit), 0);
                 }
                 return sum;
             }
-            
-            // --- CORRECTED Moolank Calculation function ---
             function calculateMoolank(day) {
                  let sum = String(day).split('').reduce((acc, digit) => acc + Number(digit), 0);
-                 while(sum > 9) {
-                    sum = String(sum).split('').reduce((acc, digit) => acc + Number(digit), 0);
-                 }
+                 while(sum > 9) sum = String(sum).split('').reduce((acc, digit) => acc + Number(digit), 0);
                  return sum;
             }
-
-
             const mulankCalculateBtn = document.getElementById('mulankCalculateBtn');
-            const birthDateInput = document.getElementById('birthDateInput');
-            const numerologySelector = document.getElementById('numerologySelector');
-            const mulankPlaceholder = document.getElementById('mulankPlaceholder');
-            const mulankResultCard = document.getElementById('mulankResultCard');
-            const bhagyankResultCard = document.getElementById('bhagyankResultCard');
-
-            const mulankDescriptions = {
-                1: "<strong>The Sun:</strong> A natural leader, you are ambitious, courageous, and independent. You are destined to carve your own path and inspire others.",
-                2: "<strong>The Moon:</strong> You are intuitive, diplomatic, and gentle. Your strength lies in cooperation, partnership, and your deep emotional sensitivity.",
-                3: "<strong>Jupiter:</strong> Creative, optimistic, and expressive, you have a gift for communication and a joyful approach to life. You inspire and uplift those around you.",
-                4: "<strong>Rahu:</strong> You are practical, hard-working, and disciplined. Your determination allows you to build lasting structures and achieve stability.",
-                5: "<strong>Mercury:</strong> Adaptable, resourceful, and a lover of freedom. You are a quick-thinker who thrives on change, communication, and new experiences.",
-                6: "<strong>Venus:</strong> You are harmonious, responsible, and a beacon of love and compassion. You find fulfillment in nurturing your family and community.",
-                7: "<strong>Ketu:</strong> A spiritual seeker and analyst, you possess a deep, introspective mind. You are drawn to uncovering the hidden truths of the universe.",
-                8: "<strong>Saturn:</strong> Ambitious and powerful, you have strong executive skills and the ability to achieve great material success through discipline and perseverance.",
-                9: "<strong>Mars:</strong> You are a compassionate humanitarian with a strong sense of justice. Your courage and selflessness drive you to fight for the greater good."
-            };
-
-            const bhagyankDescriptions = {
-                1: "<strong>Leadership & Independence:</strong> Your life path is about pioneering, leading with confidence, and embracing your unique identity. You are here to innovate and be a trailblazer.",
-                2: "<strong>Cooperation & Harmony:</strong> Your destiny is to foster harmony, build bridges, and excel in partnerships. Your path is one of diplomacy, intuition, and collaboration.",
-                3: "<strong>Creativity & Expression:</strong> Your life's journey revolves around self-expression, communication, and creativity. You are meant to inspire and bring joy to the world.",
-                4: "<strong>Stability & Discipline:</strong> Your purpose is to build lasting foundations through hard work, discipline, and practicality. You are the master builder, creating order and security.",
-                5: "<strong>Freedom & Adventure:</strong> Your path is one of change, adventure, and freedom. You are here to experience life in all its variety, adapt, and be a catalyst for progress.",
-                6: "<strong>Nurturing & Responsibility:</strong> Your destiny involves nurturing, compassion, and taking on responsibility for others. You are a natural caregiver, bringing love and healing.",
-                7: "<strong>Analysis & Spirituality:</strong> Your life is a quest for knowledge, truth, and spiritual understanding. You are here to look beneath the surface and share your deep wisdom.",
-                8: "<strong>Ambition & Power:</strong> Your path is one of ambition, authority, and material mastery. You are destined to achieve great things and wield power with integrity and balance.",
-                9: "<strong>Humanitarianism & Compassion:</strong> Your journey is about selfless service, compassion, and universal love. You are here to make the world a better place and inspire others with your idealism."
-            };
-
-
             if (mulankCalculateBtn) {
                 mulankCalculateBtn.addEventListener('click', () => {
+                    const birthDateInput = document.getElementById('birthDateInput');
                     const dateValue = birthDateInput.value;
                     if (!dateValue) {
                         showCustomAlert("Please select your birth date.");
                         return;
                     }
-
                     const date = new Date(dateValue);
                     const day = date.getUTCDate();
                     const month = date.getUTCMonth() + 1;
                     const year = date.getUTCFullYear();
-                    
                     const daySumForBhagyank = String(day).split('').reduce((acc, digit) => acc + Number(digit), 0);
                     const monthSum = String(month).split('').reduce((acc, digit) => acc + Number(digit), 0);
                     const yearSum = String(year).split('').reduce((acc, digit) => acc + Number(digit), 0);
-                    
-                    // Using the new, correct function for Moolank
                     const mulank = calculateMoolank(day);
-                    // Bhagyank calculation remains the same
                     const bhagyank = reduceToSingleDigit(daySumForBhagyank + monthSum + yearSum);
-
-                    mulankResultCard.innerHTML = `
-                        <h4>Mulank (Root Number)</h4>
-                        <div class="number-display">${mulank}</div>
-                        <div class="description">${mulankDescriptions[mulank]}</div>
-                    `;
-                    bhagyankResultCard.innerHTML = `
-                        <h4>Bhagyank (Life Path)</h4>
-                        <div class="number-display">${bhagyank}</div>
-                        <div class="description">${bhagyankDescriptions[bhagyank]}</div>
-                    `;
-
-                    mulankPlaceholder.classList.add('hidden');
-                    numerologySelector.classList.remove('hidden');
+                    const mulankResultCard = document.getElementById('mulankResultCard');
+                    const bhagyankResultCard = document.getElementById('bhagyankResultCard');
+                    const mulankDescriptions = { 1: "<strong>The Sun:</strong> A natural leader...", 2: "<strong>The Moon:</strong> You are intuitive...", 3: "<strong>Jupiter:</strong> Creative, optimistic...", 4: "<strong>Rahu:</strong> You are practical...", 5: "<strong>Mercury:</strong> Adaptable, resourceful...", 6: "<strong>Venus:</strong> You are harmonious...", 7: "<strong>Ketu:</strong> A spiritual seeker...", 8: "<strong>Saturn:</strong> Ambitious and powerful...", 9: "<strong>Mars:</strong> You are a compassionate..." };
+                    const bhagyankDescriptions = { 1: "<strong>Leadership & Independence:</strong>...", 2: "<strong>Cooperation & Harmony:</strong>...", 3: "<strong>Creativity & Expression:</strong>...", 4: "<strong>Stability & Discipline:</strong>...", 5: "<strong>Freedom & Adventure:</strong>...", 6: "<strong>Nurturing & Responsibility:</strong>...", 7: "<strong>Analysis & Spirituality:</strong>...", 8: "<strong>Ambition & Power:</strong>...", 9: "<strong>Humanitarianism & Compassion:</strong>..." };
+                    mulankResultCard.innerHTML = `<h4...>${mulank}</h4><div...>${mulankDescriptions[mulank]}</div>`;
+                    bhagyankResultCard.innerHTML = `<h4...>${bhagyank}</h4><div...>${bhagyankDescriptions[bhagyank]}</div>`;
+                    document.getElementById('mulankPlaceholder').classList.add('hidden');
+                    document.getElementById('numerologySelector').classList.remove('hidden');
                     mulankResultCard.classList.remove('hidden');
                     bhagyankResultCard.classList.add('hidden');
-
                     document.querySelector('.selector-btn[data-type="mulank"]').classList.add('active');
                     document.querySelector('.selector-btn[data-type="bhagyank"]').classList.remove('active');
                 });
             }
-
+            const numerologySelector = document.getElementById('numerologySelector');
             if (numerologySelector) {
                 numerologySelector.addEventListener('click', (e) => {
                     if (e.target.classList.contains('selector-btn')) {
                         const type = e.target.dataset.type;
-
                         document.querySelectorAll('.selector-btn').forEach(btn => btn.classList.remove('active'));
                         e.target.classList.add('active');
-
-                        if (type === 'mulank') {
-                            mulankResultCard.classList.remove('hidden');
-                            bhagyankResultCard.classList.add('hidden');
-                        } else {
-                            mulankResultCard.classList.add('hidden');
-                            bhagyankResultCard.classList.remove('hidden');
-                        }
+                        document.getElementById('mulankResultCard').classList.toggle('hidden', type !== 'mulank');
+                        document.getElementById('bhagyankResultCard').classList.toggle('hidden', type !== 'bhagyank');
                     }
                 });
             }
 
+            // --- Service Filter Logic ---
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const serviceCards = document.querySelectorAll('.service-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.dataset.filter;
+                    
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    serviceCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // --- ✨ NEW: Interactive 3D Service Card Effect ---
+            const interactiveCards = document.querySelectorAll('.service-card');
+            interactiveCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    // Adjust divisor for sensitivity (higher number = less sensitive)
+                    const rotateX = (y - centerY) / 20; 
+                    const rotateY = (centerX - x) / 20;
+
+                    // Apply 3D tilt and glare position
+                    card.style.setProperty('--x', `${x}px`);
+                    card.style.setProperty('--y', `${y}px`);
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.03)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    // Reset card to its original state
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+                });
+            });
+
+
+            // --- ENHANCED Booking Modal Functionality ---
+            const bookingModal = document.getElementById('bookingModal');
+            if (!bookingModal) return;
+
+            const closeBookingBtn = document.getElementById('closeBooking');
+            const bookServiceButtons = document.querySelectorAll('.book-service');
+            
+            const bookingSteps = bookingModal.querySelectorAll('.booking-step');
+            const nextStepButtons = bookingModal.querySelectorAll('.next-step');
+            const backButtons = bookingModal.querySelectorAll('.back');
+            const confirmBookingBtn = document.getElementById('confirmBooking');
+
+            const selectedServiceEl = document.getElementById('selectedService');
+            const selectedPriceEl = document.getElementById('selectedPrice');
+            const summaryServiceEl = document.getElementById('summaryService');
+            const summaryTotalEl = document.getElementById('summaryTotal');
+
+            const clientNameEl = document.getElementById('clientName');
+            const clientEmailEl = document.getElementById('clientEmail');
+            const clientDOBEl = document.getElementById('clientDOB');
+            const clientTOBEl = document.getElementById('clientTOB');
+            const clientPOBEl = document.getElementById('clientPOB');
+            const appointmentDateEl = document.getElementById('appointmentDate');
+            const timeSlotsEl = document.getElementById('timeSlots');
+
+            const coupleToggleContainer = document.getElementById('coupleToggleContainer');
+            const isCoupleCheckbox = document.getElementById('isCoupleCheckbox');
+            const partnerDetailsContainer = document.getElementById('partnerDetails');
+            const partnerNameEl = document.getElementById('partnerName');
+            const partnerDOBEl = document.getElementById('partnerDOB');
+            const partnerTOBEl = document.getElementById('partnerTOB');
+            const partnerPOBEl = document.getElementById('partnerPOB');
+
+            const summaryWrapper = document.getElementById('summaryWrapper');
+            const summaryDateTimeEl = document.getElementById('summaryDateTime');
+            const summaryNameEl = document.getElementById('summaryName');
+            const summaryEmailEl = document.getElementById('summaryEmail');
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            
+            const todayISO = new Date().toISOString().split('T')[0];
+            appointmentDateEl.min = todayISO;
+            clientDOBEl.max = todayISO;
+            partnerDOBEl.max = todayISO;
+
+            const modalState = { serviceName: '', servicePrice: 0, isCoupleService: false };
+
+            function openModal() {
+                bookingModal.classList.add('visible');
+                lenis.stop(); // Stop Lenis scroll on modal open
+            }
+            function closeModal() {
+                bookingModal.classList.remove('visible');
+                lenis.start(); // Restart Lenis scroll on modal close
+            }
+
+            bookServiceButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    resetModal();
+                    
+                    modalState.serviceName = button.dataset.service;
+                    modalState.servicePrice = button.dataset.price;
+                    
+                    const relationshipServices = ["relationship", "love", "synastry"];
+                    modalState.isCoupleService = relationshipServices.some(term => modalState.serviceName.toLowerCase().includes(term));
+
+                    coupleToggleContainer.classList.toggle('hidden', !modalState.isCoupleService);
+
+                    selectedServiceEl.textContent = modalState.serviceName;
+                    selectedPriceEl.textContent = `₹${modalState.servicePrice}`;
+                    summaryServiceEl.textContent = modalState.serviceName;
+                    summaryTotalEl.textContent = `₹${modalState.servicePrice}`;
+
+                    openModal();
+                });
+            });
+            
+            closeBookingBtn.addEventListener('click', closeModal);
+            bookingModal.addEventListener('click', (e) => { if(e.target === bookingModal) closeModal(); });
+
+            isCoupleCheckbox.addEventListener('change', () => {
+                partnerDetailsContainer.classList.toggle('hidden', !isCoupleCheckbox.checked);
+            });
+
+            appointmentDateEl.addEventListener('change', function() { generateTimeSlots(new Date(this.value)); });
+
+            function generateTimeSlots(selectedDate) {
+                timeSlotsEl.innerHTML = '<p style="text-align: center; color: var(--text-light);">Select a date to see available slots.</p>';
+                if (!selectedDate || isNaN(selectedDate)) return;
+
+                if (selectedDate.getUTCDay() === 0) {
+                    timeSlotsEl.innerHTML = '<p style="text-align: center; color: var(--maroon);">Sorry, consultations are not available on Sundays.</p>';
+                    return;
+                }
+
+                timeSlotsEl.innerHTML = '';
+                for(let hour = 11; hour <= 22; hour++) {
+                    for(let minute = 0; minute < 60; minute += 30) {
+                        const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+                        const slotElement = document.createElement('div');
+                        slotElement.className = 'time-slot';
+                        slotElement.textContent = new Date(`1970-01-01T${timeString}:00`).toLocaleTimeString('en-IN', {hour: '2-digit', minute:'2-digit', hour12: true});
+                        slotElement.dataset.time = timeString;
+                        slotElement.addEventListener('click', function() {
+                            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+                            this.classList.add('selected');
+                        });
+                        timeSlotsEl.appendChild(slotElement);
+                    }
+                }
+            }
+            
+            nextStepButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = this.closest('.booking-step');
+                    const nextStepId = `step${this.dataset.step}`;
+                    if (validateStep(currentStep.id)) {
+                        if (nextStepId === 'step3') updateSummary();
+                        goToStep(nextStepId);
+                    }
+                });
+            });
+
+            backButtons.forEach(button => {
+                button.addEventListener('click', () => goToStep(`step${button.dataset.step}`));
+            });
+            
+            function goToStep(stepId) {
+                bookingSteps.forEach(step => step.classList.remove('active'));
+                document.getElementById(stepId).classList.add('active');
+            }
+
+            function validateStep(stepId) {
+                if (stepId === 'step1') {
+                    if (!clientNameEl.value || !clientEmailEl.value || !clientDOBEl.value || !clientTOBEl.value || !clientPOBEl.value) {
+                        showCustomAlert('Please fill in all your personal and birth details.');
+                        return false;
+                    }
+                    if (isCoupleCheckbox.checked && (!partnerNameEl.value || !partnerDOBEl.value || !partnerTOBEl.value || !partnerPOBEl.value)) {
+                         showCustomAlert("Please fill in all of your partner's details.");
+                         return false;
+                    }
+                }
+                if (stepId === 'step2') {
+                    if (!appointmentDateEl.value) {
+                        showCustomAlert('Please select a date for your consultation.');
+                        return false;
+                    }
+                    if (!document.querySelector('.time-slot.selected')) {
+                        showCustomAlert('Please select an available time slot.');
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            function updateSummary() {
+                const date = new Date(appointmentDateEl.value).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+                const time = document.querySelector('.time-slot.selected').textContent;
+                summaryDateTimeEl.textContent = `${date} at ${time}`;
+                summaryNameEl.textContent = clientNameEl.value;
+                summaryEmailEl.textContent = clientEmailEl.value;
+
+                const existingPartnerSummary = summaryWrapper.querySelector('#partnerSummary');
+                if (existingPartnerSummary) existingPartnerSummary.remove();
+                
+                if (isCoupleCheckbox.checked) {
+                    const partnerSummaryHTML = `
+                        <div id="partnerSummary">
+                            <div class="summary-item"><span class="summary-label">Partner's Name:</span><span>${partnerNameEl.value}</span></div>
+                             <div class="summary-item"><span class="summary-label">Partner's Birth Details:</span><span>${new Date(partnerDOBEl.value).toLocaleDateString('en-GB')}, ${partnerTOBEl.value}, ${partnerPOBEl.value}</span></div>
+                        </div>`;
+                    summaryWrapper.insertAdjacentHTML('beforeend', partnerSummaryHTML);
+                }
+            }
+            
+            function resetModal() {
+                goToStep('step1');
+                bookingModal.querySelectorAll('input, textarea').forEach(input => {
+                    if (input.type === 'checkbox') input.checked = false;
+                    else input.value = '';
+                });
+                partnerDetailsContainer.classList.add('hidden');
+                timeSlotsEl.innerHTML = '<p style="text-align: center; color: var(--text);">Select a date to see available slots.</p>';
+            }
+
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            confirmBookingBtn.addEventListener('click', function() {
+                showCustomAlert('You will now be redirected to the secure payment page. This is a demo.');
+                setTimeout(() => {
+                    closeModal();
+                    showCustomAlert('Thank you! Your consultation is booked. A confirmation email has been sent.');
+                }, 2500);
+            });
         });
     </script>
 
