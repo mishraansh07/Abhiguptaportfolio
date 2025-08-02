@@ -4,38 +4,40 @@ const Razorpay = require('razorpay');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+// FIX: Load environment variables from .env file for local development
+require('dotenv').config();
+
 const app = express();
 app.use(bodyParser.json());
-app.use(cors()); // Use this to allow requests from your frontend
+app.use(cors());
 
-// Initialize Razorpay instance
+// FIX: Initialize Razorpay instance from secure environment variables
 const razorpay = new Razorpay({
-    key_id: 'rzp_live_Li41DPoYeGyRPm',
-    key_secret: 'cDYWtxeQvARhEfedhTzjczfA'
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET
 });
 
 // Create an endpoint for creating orders
 app.post('/create-order', async (req, res) => {
     const { amount, currency, receipt } = req.body;
-
     const options = {
-        amount: amount, // amount in the smallest currency unit
-        currency: currency,
-        receipt: receipt
+        amount, // amount in the smallest currency unit
+        currency,
+        receipt
     };
 
     try {
         const order = await razorpay.orders.create(options);
-        res.json(order); // Send the created order back to the client
+        res.json(order);
     } catch (error) {
-        // Add more detailed error logging
         console.error("Error creating Razorpay order:", error);
         res.status(500).send(error.message || 'Error creating order');
     }
 });
 
-// Change the port number here
-const PORT = 3000;
+// FIX: Use the port from the environment file or deployment service, defaulting to 3000
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-    console.log(`✅ Server is running on http://localhost:${PORT}`);
+    console.log(`✅ Server is running on port ${PORT}`);
 });
