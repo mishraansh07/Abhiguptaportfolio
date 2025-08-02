@@ -23,10 +23,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;600&family=Samarkan&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;600&family=Samarkan&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -112,7 +114,7 @@
                 </div>
 
                 <div class="services-grid animated-item">
-                    </div>
+                </div>
             </div>
         </section>
 
@@ -695,10 +697,10 @@
             <button id="customAlertClose" class="ios-button">OK</button>
         </div>
     </div>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- UI & ANIMATION LOGIC ---
@@ -711,7 +713,7 @@
             const servicesGrid = document.querySelector('.services-grid');
             const bookingModal = document.getElementById('bookingModal');
             const modalState = { serviceName: '', servicePrice: 0 };
-
+            
             const servicesData = [
                 { "id": "natal-chart", "name": "Natal Chart Reading", "description": "A foundational reading of your cosmic blueprint.", "price": 499, "category": "astrology", "icon": "fas fa-star-of-life" },
                 { "id": "career-growth", "name": "Career and Growth", "description": "Astrological insights for your professional path.", "price": 899, "category": "astrology", "icon": "fas fa-chart-line" },
@@ -737,26 +739,26 @@
             renderServices();
 
             function openModal() {
-                if (bookingModal) bookingModal.classList.add('visible');
+                if(bookingModal) bookingModal.classList.add('visible');
                 lenis.stop();
             }
 
             function closeModal() {
-                if (bookingModal) bookingModal.classList.remove('visible');
+                if(bookingModal) bookingModal.classList.remove('visible');
                 lenis.start();
             }
 
-            document.body.addEventListener('click', function (e) {
+            document.body.addEventListener('click', function(e) {
                 const bookButton = e.target.closest('.book-now-btn');
                 if (bookButton) {
                     modalState.serviceName = bookButton.dataset.service;
                     modalState.servicePrice = parseFloat(bookButton.dataset.price);
-
+                    
                     document.getElementById('selectedService').textContent = modalState.serviceName;
                     document.getElementById('selectedPrice').textContent = `₹${modalState.servicePrice}`;
                     document.getElementById('summaryService').textContent = modalState.serviceName;
                     document.getElementById('summaryTotal').textContent = `₹${modalState.servicePrice}`;
-
+                    
                     openModal();
                 }
             });
@@ -766,7 +768,7 @@
             if (confirmBookingBtn) {
                 confirmBookingBtn.addEventListener('click', async function (e) {
                     e.preventDefault();
-
+                    
                     if (!modalState.servicePrice || modalState.servicePrice <= 0) {
                         alert('Error: No service selected or price is invalid.');
                         return;
@@ -790,16 +792,16 @@
                         if (!serverResponse.ok) throw new Error('Could not create order on the server.');
 
                         const order = await serverResponse.json();
-
+                        
                         const options = {
-                            key: 'rzp_live_Li41DPoYeGyRPm', // IMPORTANT: Replace with your Razorpay Test Key ID
+                            key: 'rzp_test_Li41DPoYeGyRPm', // IMPORTANT: Replace with your Razorpay Test Key ID
                             amount: order.amount,
                             currency: order.currency,
                             name: "The Astronox",
                             description: `Consultation: ${modalState.serviceName}`,
                             order_id: order.id,
                             handler: function (response) {
-                                alert(`Payment Successful! ID: ${response.razorpay_payment_id}`);
+                                alert(`Payment Successful! ID: ${response.razoray_payment_id}`);
                                 closeModal();
                             },
                             prefill: {
@@ -833,4 +835,3 @@
 
 </html>
 }
-Final check, fix any mistakes, update the file, and make it fully functional.
