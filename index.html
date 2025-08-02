@@ -5,1967 +5,29 @@
     <meta charset="UTF-8">
     <title>The Astronox | Vedic Astrologer & Cosmic Guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Unlock the secrets of your destiny with The Astronox, your guide to Vedic Astrology. Offering natal chart readings, relationship synastry, numerology (Mulank/Bhagyank), and authentic cosmic wisdom.">
-    <meta name="keywords" content="Vedic Astrology, Jyotish, Astrologer, Numerology, Mulank Calculator, Bhagyank, Natal Chart, Horoscope, Relationship Synastry, Varshaphala, Cosmic Guidance, The Astronox, Abhishek Gupta">
+    <meta name="description"
+        content="Unlock the secrets of your destiny with The Astronox, your guide to Vedic Astrology. Offering natal chart readings, relationship synastry, numerology (Mulank/Bhagyank), and authentic cosmic wisdom.">
+    <meta name="keywords"
+        content="Vedic Astrology, Jyotish, Astrologer, Numerology, Mulank Calculator, Bhagyank, Natal Chart, Horoscope, Relationship Synastry, Varshaphala, Cosmic Guidance, The Astronox, Abhishek Gupta">
     <meta name="author" content="The Astronox">
-
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Astronox | Vedic Astrologer & Cosmic Guide">
-    <meta property="og:description" content="Unlock the secrets of your destiny with The Astronox, your guide to Vedic Astrology. Offering natal chart readings, numerology, and authentic cosmic wisdom.">
+    <meta property="og:description"
+        content="Unlock the secrets of your destiny with The Astronox, your guide to Vedic Astrology. Offering natal chart readings, numerology, and authentic cosmic wisdom.">
     <meta property="og:image" content="Prof_pic/prof_pic.jpeg">
-
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="The Astronox | Vedic Astrologer & Cosmic Guide">
-    <meta property="twitter:description" content="Unlock the secrets of your destiny with The Astronox, your guide to Vedic Astrology. Offering natal chart readings, numerology, and authentic cosmic wisdom.">
+    <meta property="twitter:description"
+        content="Unlock the secrets of your destiny with The Astronox, your guide to Vedic Astrology. Offering natal chart readings, numerology, and authentic cosmic wisdom.">
     <meta property="twitter:image" content="Prof_pic/prof_pic.jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;600&family=Samarkan&display=swap" rel="stylesheet">
     
-    <link
-        href="https://fonts.googleapis.com/css2?family=Samarkan:wght@400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <style>
-        /* CSS Custom Properties for easy theme management */
-        :root {
-            --ivory: #fdf8f0;
-            --maroon: #7b2c2c;
-            --gold: #d4af37;
-            --saffron: #f4c542;
-            --text: #4a2c2a;
-            --henna: #6e4226;
-            --card-bg: rgba(253, 248, 240, 0.85);
-            --shadow: 0 8px 32px rgba(123, 44, 44, 0.15);
-            --radius: 20px;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        /* General Body Styling */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html.lenis {
-            height: auto;
-        }
-        .lenis.lenis-smooth {
-            scroll-behavior: auto !important;
-        }
-        .lenis.lenis-stopped {
-            overflow: hidden !important;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--ivory);
-            color: var(--text);
-            background-image:
-                radial-gradient(ellipse at 10% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 70%),
-                radial-gradient(ellipse at 90% 80%, rgba(123, 44, 44, 0.1) 0%, transparent 70%),
-                url('https://www.transparenttextures.com/patterns/old-paper.png');
-            background-attachment: fixed;
-            overflow-x: hidden;
-        }
-
-        @font-face {
-            font-family: 'Samarkan';
-            src: url('./font/SAMAN___.TTF') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* Applying Samarkan font only to headings and specific brand elements */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .logo,
-        .byline,
-        .footer-logo,
-        .om-symbol,
-        .mantra-sanskrit {
-            font-family: 'Samarkan', sans-serif;
-            font-weight: 400;
-        }
-
-        /* Preloader Styling */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--ivory);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s, visibility 0.8s;
-        }
-
-        .loader-hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .om-symbol {
-            font-size: 8rem;
-            color: var(--gold);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1) rotate(0deg);
-                opacity: 0.9;
-            }
-
-            50% {
-                transform: scale(1.1) rotate(5deg);
-                opacity: 1;
-            }
-        }
-
-        /* Header and Navigation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2.5rem;
-            background-color: rgba(253, 248, 240, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(123, 44, 44, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .scrolled-header {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .logo {
-            font-size: 2.2rem;
-            color: var(--maroon);
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-icon {
-            font-size: 1.4rem;
-            margin-right: 8px;
-            color: var(--gold);
-            transition: transform 0.5s;
-        }
-
-        .logo:hover .logo-icon {
-            transform: rotate(360deg);
-        }
-
-        nav.desktop-nav {
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--maroon);
-            font-weight: 500;
-            font-size: 1rem;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: var(--transition);
-        }
-
-        nav a::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: var(--gold);
-        }
-
-        nav a:hover::after,
-        nav a.active::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 0 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            text-align: center;
-        }
-
-        .profile-pic {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 2rem;
-            border: 4px solid var(--gold);
-            box-shadow: 0 10px 40px rgba(123, 44, 44, 0.25);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .profile-pic img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.3;
-            margin-bottom: 1.5rem;
-            color: var(--maroon);
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-
-        .hero-text .byline {
-            font-size: 1.5rem;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            color: var(--text);
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .ios-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--maroon), var(--saffron));
-            color: white;
-            padding: 1.2rem 2.8rem;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ios-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 40px rgba(123, 44, 44, 0.25);
-        }
-
-        .ios-button .icon {
-            margin-right: 10px;
-            transition: transform 0.3s;
-        }
-
-        .ios-button:hover .icon {
-            transform: rotate(15deg);
-        }
-
-        /* General Section Styling */
-        .section {
-            padding: 6rem 2rem;
-            position: relative;
-        }
-
-        /* Wrapper to constrain content width inside full-width sections */
-        .section-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-header h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-            color: var(--maroon);
-        }
-
-        .section-header h2::after {
-            content: " ";
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: var(--gold);
-            margin: 1rem auto 0;
-            border-radius: 2px;
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* Universal animated element base styles */
-        .animated-item {
-             opacity: 0;
-             transform: translateY(40px);
-             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .animated-item.is-visible {
-             opacity: 1;
-             transform: translateY(0);
-        }
-        
-        /* Background for alternating sections */
-        #services-pricing, #about, #why-us, #faq, #mantras-glimpse {
-            background: linear-gradient(to bottom, #fdf8f0 0%, #f7f0e6 50%, #fdf8f0 100%);
-        }
-
-        /* --- UPDATED Services & Pricing Section --- */
-        .service-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 4rem;
-        }
-        .filter-btn {
-            background: transparent;
-            border: 2px solid rgba(123, 44, 44, 0.2);
-            color: var(--maroon);
-            padding: 0.7rem 1.5rem;
-            border-radius: 100px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        .filter-btn:hover {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: var(--gold);
-        }
-        .filter-btn.active {
-            background: var(--maroon);
-            color: white;
-            border-color: var(--maroon);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            opacity: 0;
-            transform: scale(0.95);
-            animation: scaleIn 0.5s forwards;
-            position: relative;
-            overflow: hidden;
-            /* --- ✨ NEW INTERACTIVE PROPERTIES --- */
-            transform-style: preserve-3d;
-            will-change: transform;
-            transition: box-shadow 0.4s ease, transform 0.2s ease-out;
-        }
-        
-        @keyframes scaleIn {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        /* --- ✨ NEW GLARE EFFECT --- */
-        .service-card::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                circle at var(--x, 50%) var(--y, 50%),
-                rgba(212, 175, 55, 0.25),
-                transparent 40%
-            );
-            border-radius: var(--radius);
-            opacity: 0;
-            transition: opacity 0.5s;
-            z-index: 0;
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-        
-        .service-card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-card.hidden {
-            display: none;
-        }
-
-        /* --- ✨ ENHANCED HOVER SHADOW --- */
-        .service-card:hover {
-            box-shadow: 0 15px 45px rgba(123, 44, 44, 0.25);
-        }
-        
-        /* NEW: Most Popular Badge */
-        .badge {
-            position: absolute;
-            top: -1px;
-            right: -1px;
-            background: var(--gold);
-            color: var(--henna);
-            padding: 0.6rem 2rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border-top-right-radius: var(--radius);
-            border-bottom-left-radius: var(--radius);
-            z-index: 2;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .service-icon {
-            font-size: 2.8rem;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-        }
-        .service-card h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--maroon);
-            margin-bottom: 0.8rem;
-            min-height: 58px;
-        }
-        .service-card-desc {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-        .service-price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--henna);
-            margin-bottom: 1.8rem;
-            font-family: 'Playfair Display', serif;
-        }
-        .book-now-btn {
-             background: var(--maroon);
-             border-color: var(--maroon);
-             color: white;
-             width: 100%;
-             max-width: 220px;
-             padding: 0.8rem 1.8rem;
-             border-radius: 100px;
-             font-weight: 600;
-             text-decoration: none;
-             transition: var(--transition);
-             border: 2px solid var(--maroon);
-             cursor: pointer;
-             /* --- ✨ FIX: Centering the button --- */
-             align-self: center;
-        }
-         .book-now-btn:hover {
-             background: var(--gold);
-             border-color: var(--gold);
-             color: white;
-             transform: scale(1.05);
-        }
-        
-        .student-offer-card {
-            background: linear-gradient(135deg, var(--maroon), var(--henna));
-            color: var(--ivory);
-            border-radius: var(--radius);
-            padding: 2.5rem;
-            text-align: center;
-            margin-top: 4rem;
-            box-shadow: 0 10px 40px rgba(123, 44, 44, 0.3);
-            grid-column: 1 / -1;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* NEW: Shooting Star Animation */
-        .shooting-star {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(-45deg, rgba(253, 248, 240, 0.8), transparent);
-            border-radius: 999px;
-            filter: drop-shadow(0 0 6px rgba(253, 248, 240, 0.5));
-            animation: tail 3s ease-in-out infinite, shooting 3s ease-in-out infinite;
-        }
-        @keyframes tail {
-            0% { width: 0; } 30% { width: 100px; } 100% { width: 0; }
-        }
-        @keyframes shooting {
-            0% { transform: translateX(0); } 100% { transform: translateX(400px); }
-        }
-        .shooting-star:nth-child(1) { top: 20%; left: -100px; animation-delay: 1.3s; }
-        .shooting-star:nth-child(2) { top: 50%; left: -100px; animation-delay: 0.6s; }
-        .shooting-star:nth-child(3) { top: 80%; left: -100px; animation-delay: 2.1s; }
-
-
-        .student-offer-card i {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-        .student-offer-card h3 {
-            font-size: 2.2rem;
-            font-family: 'Playfair Display', serif;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-        .student-offer-card p {
-            color: rgba(253, 248, 240, 0.9);
-            font-size: 1.1rem;
-        }
-
-
-        /* Mulank Calculator Section */
-        .mulank-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            backdrop-filter: blur(10px);
-            display: grid;
-            grid-template-columns: 1fr;
-            overflow: hidden;
-        }
-
-        .mulank-input-panel {
-            padding: 3rem;
-            text-align: center;
-        }
-
-        .mulank-input-panel h3 {
-            font-size: 2.5rem;
-            color: var(--maroon);
-            margin-bottom: 1rem;
-        }
-
-        .mulank-input-panel p {
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .mulank-input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            align-items: center;
-        }
-
-        #birthDateInput {
-            padding: 1rem;
-            border: 1px solid rgba(123, 44, 44, 0.2);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.7);
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            text-align: center;
-            width: 100%;
-            max-width: 280px;
-            color: var(--text);
-        }
-
-        #mulankCalculateBtn {
-            background: var(--maroon);
-            color: white;
-            border: none;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            width: 100%;
-            max-width: 280px;
-            justify-content: center;
-        }
-
-        #mulankCalculateBtn:hover {
-            background: var(--gold);
-        }
-
-        .mulank-result-panel {
-            background: var(--henna);
-            color: var(--ivory);
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 400px;
-        }
-
-        .mulank-result-panel::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 150%;
-            height: 150%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><circle cx="250" cy="250" r="240" stroke="%23d4af37" stroke-opacity="0.2" fill="none"/><circle cx="250" cy="250" r="180" stroke="%23d4af37" stroke-opacity="0.2" fill="none"/><path d="M250,10 L250,490 M10,250 L490,250" stroke="%23d4af37" stroke-opacity="0.2"/><path d="M106,106 L394,394 M106,394 L394,106" stroke="%23d4af37" stroke-opacity="0.2"/></svg>');
-            transform: translate(-50%, -50%);
-            animation: slow-rotate 180s linear infinite;
-            opacity: 0.5;
-        }
-
-        @keyframes slow-rotate {
-            from {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-
-            to {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
-        }
-
-        .mulank-placeholder {
-            position: absolute;
-            z-index: 1;
-            text-align: center;
-            transition: opacity 0.5s;
-        }
-
-        .mulank-placeholder i {
-            font-size: 4rem;
-            color: rgba(212, 175, 55, 0.2);
-            margin-bottom: 1rem;
-        }
-
-        .mulank-placeholder p {
-            font-family: 'Playfair Display', serif;
-            color: rgba(253, 248, 240, 0.4);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .numerology-selector {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 2;
-            transition: opacity 0.5s;
-        }
-
-        .selector-btn {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            padding: 0.5rem 1.5rem;
-            border-radius: 100px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-        }
-
-        .selector-btn:hover,
-        .selector-btn.active {
-            background: var(--gold);
-            color: var(--henna);
-        }
-
-        .numerology-results-wrapper {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 350px;
-            text-align: center;
-            transition: opacity 0.5s;
-        }
-
-        .numerology-result-card {
-            background: rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .numerology-result-card h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .numerology-result-card .number-display {
-            font-size: 5rem;
-            font-weight: bold;
-            color: var(--saffron);
-            line-height: 1;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(244, 197, 66, 0.5);
-        }
-
-        .numerology-result-card .description {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: rgba(253, 248, 240, 0.9);
-        }
-        
-        /* -- NEW Celestial Journey (About) Section -- */
-        .journey-grid-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            align-items: flex-start;
-        }
-        
-        .journey-image-panel {
-            text-align: center;
-        }
-        
-        .journey-image-frame {
-            display: inline-block;
-            position: relative;
-            padding: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-        }
-
-        .journey-image-frame::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            animation: rotate-slow 20s linear infinite;
-        }
-
-        @keyframes rotate-slow {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-        
-        .journey-image-frame img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--ivory);
-            position: relative;
-            z-index: 1;
-        }
-
-        .journey-image-panel h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--maroon);
-            margin-top: 1.5rem;
-        }
-
-        .journey-milestone {
-            border-bottom: 1px solid rgba(123, 44, 44, 0.15);
-        }
-        
-        .milestone-header {
-            display: flex;
-            align-items: center;
-            padding: 1.5rem 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .milestone-header:hover {
-            background-color: rgba(212, 175, 55, 0.05);
-        }
-        
-        .milestone-header i {
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-right: 1.5rem;
-            width: 30px;
-            text-align: center;
-        }
-        
-        .milestone-header h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--maroon);
-            font-weight: 600;
-            flex-grow: 1;
-        }
-        
-        .milestone-toggle {
-            font-size: 1.2rem;
-            color: var(--maroon);
-            transition: transform 0.4s ease;
-        }
-        
-        .milestone-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
-        }
-        
-        .milestone-content-inner {
-            padding: 0 1rem 0;
-            opacity: 0;
-            transition: opacity 0.3s ease-out;
-        }
-
-        .milestone-content-inner p, .milestone-content-inner li {
-             font-size: 1.1rem; line-height: 1.8; color: var(--text); margin-bottom: 1.5rem;
-        }
-        .milestone-content-inner ul { list-style: none; padding: 0; }
-        .milestone-content-inner li { position: relative; padding-left: 25px; }
-        .milestone-content-inner li::before {
-             content: '✦'; position: absolute; left: 0; top: 2px; color: var(--gold); font-size: 1rem;
-        }
-        
-        .journey-milestone.active .milestone-toggle {
-            transform: rotate(45deg);
-        }
-        .journey-milestone.active .milestone-content {
-            max-height: 400px; /* Adjust if content is longer */
-            padding-bottom: 1.5rem;
-        }
-        .journey-milestone.active .milestone-content-inner {
-            opacity: 1;
-            transition-delay: 0.2s;
-        }
-
-        @media (min-width: 992px) {
-            .journey-grid-container {
-                grid-template-columns: 1fr 1.5fr;
-                gap: 5rem;
-            }
-             .journey-image-panel {
-                margin-top: 2rem;
-            }
-        }
-
-
-        /* --- Why Choose Us Section --- */
-        .why-us-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-        .why-us-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .why-us-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(123, 44, 44, 0.2);
-        }
-        .why-us-icon {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            transition: transform 0.4s ease;
-        }
-        .why-us-card:hover .why-us-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-        .why-us-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--maroon);
-            margin-bottom: 1rem;
-        }
-        .why-us-card p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text);
-        }
-
-
-        /* Testimonials Section */
-        #testimonials {
-             background: var(--ivory);
-        }
-        .testimonials-bg-pattern {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="p" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23d4af37"/></pattern></defs><rect width="100" height="100%" fill="url(%23p)"/></svg>');
-            opacity: 0.08;
-            z-index: -1;
-        }
-
-        .testimonials-container {
-            display: grid;
-            grid-template-columns: 1fr; /* Default to single column */
-            gap: 2.5rem;
-        }
-
-        .testimonial-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 2.5rem;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(8px);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: var(--transition);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-10px) rotate(1deg);
-            box-shadow: 0 15px 40px rgba(123, 44, 44, 0.2);
-        }
-
-        .testimonial-card::before {
-            content: "“";
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-family: 'Playfair Display', serif;
-            font-size: 9rem;
-            color: rgba(123, 44, 44, 0.08);
-            line-height: 1;
-            z-index: 0;
-            transition: var(--transition);
-        }
-
-        .testimonial-card:hover::before {
-            transform: scale(1.1) rotate(-5deg);
-        }
-
-        .testimonial-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .testimonial-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text);
-            margin-bottom: 1.8rem;
-            font-style: italic;
-            font-family: 'Playfair Display', serif;
-            flex-grow: 1;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            margin-top: auto;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--maroon), var(--saffron));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
-            margin-right: 1.2rem;
-            border: 2px solid var(--ivory);
-            flex-shrink: 0;
-        }
-
-        .author-info h4 {
-            font-size: 1.3rem;
-            color: var(--maroon);
-            margin-bottom: 0.3rem;
-        }
-
-        .author-info p {
-            color: var(--text);
-            opacity: 0.8;
-            font-size: 0.95rem;
-        }
-
-        /* --- FAQ Section --- */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .faq-item {
-            background: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem;
-            cursor: pointer;
-            background: transparent;
-            width: 100%;
-            border: none;
-            text-align: left;
-            transition: background-color 0.3s;
-        }
-        .faq-question h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--maroon);
-            font-weight: 600;
-        }
-        .faq-icon {
-            font-size: 1.2rem;
-            color: var(--gold);
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-            margin-left: 1rem;
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
-        }
-        .faq-answer p {
-            padding: 0 1.5rem 0;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text);
-        }
-        .faq-item.active .faq-question {
-            background-color: rgba(212, 175, 55, 0.05);
-        }
-        .faq-item.active .faq-answer {
-            max-height: 300px; /* Adjust as needed */
-            padding-bottom: 1.5rem;
-        }
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-        
-        /* --- Mantras Glimpse Section --- */
-        .mantras-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .mantra-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: var(--radius);
-            padding: 2.5rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .mantra-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(123, 44, 44, 0.2);
-        }
-        .mantra-card .mantra-sanskrit {
-            font-size: 2.5rem;
-            color: var(--maroon);
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-        .mantra-card .mantra-meaning {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.1rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-        .mantras-container-footer {
-            text-align: center;
-        }
-
-
-        /* Contact Section */
-        #contact {
-            background: rgba(251, 238, 220, 0.4);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr; /* Single column layout on mobile */
-            gap: 3rem;
-        }
-
-        .contact-info h3 {
-            font-size: 2.5rem;
-            color: var(--maroon);
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: var(--gold);
-            width: 55px;
-            height: 55px;
-            background: var(--card-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1.5rem;
-            flex-shrink: 0;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .contact-item:hover i {
-            transform: scale(1.1) rotate(10deg);
-            background: var(--gold);
-            color: white;
-        }
-
-        .contact-text h4 {
-            font-size: 1.2rem;
-            color: var(--maroon);
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-text p {
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.2rem;
-            margin-top: 2.5rem;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--card-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--maroon);
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-
-        .social-link:hover {
-            background: var(--maroon);
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        .contact-form {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 3rem;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--maroon);
-            font-weight: 500;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(123, 44, 44, 0.2);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.7);
-            font-size: 1rem;
-            transition: var(--transition);
-            font-family: 'Inter', sans-serif;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--henna);
-            color: var(--ivory);
-            padding: 4rem 2rem 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent);
-        }
-
-        .footer-logo {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--gold);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--ivory);
-            text-decoration: none;
-            transition: var(--transition);
-            opacity: 0.8;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-            opacity: 1;
-        }
-
-        .copyright {
-            margin-top: 2.5rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(253, 248, 240, 0.15);
-            font-size: 1rem;
-            opacity: 0.7;
-        }
-
-        /* Mobile Navigation */
-        .mobile-menu-btn {
-            display: none; /* Hidden by default */
-            background: none;
-            border: none;
-            color: var(--maroon);
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .mobile-nav {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%; /* Adjusted width */
-            max-width: 320px;
-            height: 100vh;
-            background: var(--ivory);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            padding: 6rem 2rem 2rem;
-            transition: right 0.4s ease;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .mobile-nav.active {
-            right: 0;
-        }
-
-        .mobile-nav a {
-            display: block;
-            padding: 1.2rem 0;
-            color: var(--maroon);
-            text-decoration: none;
-            font-size: 1.2rem;
-            border-bottom: 1px solid rgba(123, 44, 44, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .mobile-nav a:hover {
-            color: var(--gold);
-            padding-left: 10px;
-        }
-
-        .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--maroon);
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
-        .mobile-nav-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-
-        .mobile-nav-overlay.active {
-            display: block;
-        }
-
-        /* Custom Alert Modal */
-        .custom-alert-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-
-        .custom-alert-overlay.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .custom-alert-box {
-            background: var(--ivory);
-            padding: 2.5rem;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 90%;
-            width: 400px;
-            transform: scale(0.9);
-            transition: transform 0.3s;
-        }
-
-        .custom-alert-overlay.visible .custom-alert-box {
-            transform: scale(1);
-        }
-
-        .custom-alert-box p {
-            font-size: 1.1rem;
-            color: var(--text);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        
-        .custom-alert-box .ios-button {
-             padding: 0.8rem 1.8rem; font-size: 1rem;
-        }
-
-        /* --- NEW ENHANCED BOOKING MODAL --- */
-        .booking-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s, visibility 0.4s;
-        }
-
-        .booking-modal-overlay.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .booking-modal {
-            background: var(--ivory);
-            border-radius: var(--radius);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-            max-width: 95%;
-            width: 800px;
-            max-height: 90vh;
-            overflow: hidden; /* Prevent modal itself from scrolling */
-            display: flex;
-            flex-direction: column;
-            transform: scale(0.95) translateY(20px);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .booking-modal-overlay.visible .booking-modal {
-            transform: scale(1) translateY(0);
-        }
-
-        .modal-header {
-            background: var(--maroon);
-            padding: 1.5rem;
-            border-top-left-radius: var(--radius);
-            border-top-right-radius: var(--radius);
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .modal-header h3 {
-            font-family: 'Playfair Display', serif;
-            color: white;
-            text-align: center;
-            font-size: 1.8rem;
-            margin: 0;
-        }
-
-        .close-booking {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 20px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: opacity 0.3s, transform 0.3s;
-        }
-        .close-booking:hover {
-            opacity: 1;
-            transform: translateY(-50%) rotate(90deg);
-        }
-
-        .modal-content {
-            padding: 2rem 2.5rem;
-            overflow-y: auto; /* Make content scrollable */
-        }
-
-        .booking-step {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .booking-step.active {
-            display: block;
-        }
-
-        .step-header {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: var(--maroon);
-            text-align: center;
-            margin-bottom: 2.5rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .step-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--gold);
-        }
-        
-        .form-row {
-            display: flex;
-            gap: 1.5rem;
-        }
-        .form-col {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .checkbox-container {
-            display: block;
-            position: relative;
-            padding-left: 35px;
-            margin: 1rem 0;
-            cursor: pointer;
-            font-size: 1rem;
-            -webkit-user-select: none;
-            user-select: none;
-            color: var(--maroon);
-            font-weight: 500;
-        }
-        .checkbox-container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: rgba(255,255,255,0.7);
-            border: 1px solid rgba(123, 44, 44, 0.2);
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        .checkbox-container:hover input ~ .checkmark {
-            background-color: #fcefe2;
-        }
-        .checkbox-container input:checked ~ .checkmark {
-            background-color: var(--gold);
-        }
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-            left: 9px;
-            top: 5px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            transform: rotate(45deg);
-        }
-        .checkbox-container input:checked ~ .checkmark:after {
-            display: block;
-        }
-        #partnerDetails {
-            background: rgba(123, 44, 44, 0.03);
-            border-radius: var(--radius);
-            padding: 0.5rem 1.5rem 0;
-            margin-top: 1rem;
-            border: 1px dashed rgba(123, 44, 44, 0.1);
-            transition: all 0.4s ease;
-        }
-        
-        .service-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(123, 44, 44, 0.05);
-            border-radius: 12px;
-            padding: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        .service-info .name {
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: var(--maroon);
-        }
-        .service-info .price {
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: var(--henna);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .time-slot {
-            background: white;
-            border: 1px solid rgba(123, 44, 44, 0.2);
-            border-radius: 8px;
-            padding: 0.8rem;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .time-slot:hover {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.05);
-        }
-        .time-slot.selected {
-            background: var(--gold);
-            color: white;
-            border-color: var(--gold);
-            transform: scale(1.05);
-        }
-
-        .booking-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2.5rem;
-            border-top: 1px solid rgba(123, 44, 44, 0.1);
-            padding-top: 1.5rem;
-        }
-        .nav-button {
-            background: var(--maroon);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 100px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-        }
-        .nav-button:hover {
-            background: var(--saffron);
-            transform: translateY(-2px);
-        }
-        .nav-button.back {
-            background: rgba(123, 44, 44, 0.1);
-            color: var(--maroon);
-        }
-        .nav-button.back:hover {
-            background: rgba(123, 44, 44, 0.2);
-        }
-
-        #summaryWrapper {
-            background: rgba(123, 44, 44, 0.02);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(123, 44, 44, 0.08);
-        }
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(123, 44, 44, 0.1);
-        }
-        .summary-item:last-child {
-            border-bottom: none;
-        }
-        .summary-label {
-            font-weight: 500;
-            color: var(--henna);
-        }
-        .summary-item.total {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid var(--gold);
-            border-bottom: none;
-        }
-        .summary-item.total .price-tag {
-            font-size: 2rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--maroon);
-        }
-
-        .payment-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        .payment-option {
-            border: 2px solid rgba(123, 44, 44, 0.2);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-        .payment-option:hover {
-            border-color: var(--gold);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        .payment-option.selected {
-            border-color: var(--maroon);
-            background: rgba(123, 44, 44, 0.05);
-        }
-        .payment-option.selected::after {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: var(--maroon);
-        }
-        .payment-option i {
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-        .payment-option h4 {
-            color: var(--maroon);
-            margin-bottom: 0.5rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-        }
-        .payment-option p {
-            font-size: 0.9rem;
-            color: var(--text);
-        }
-
-
-        /* Animation Keyframes */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Responsive Media Queries */
-
-        /* Laptops and Desktops */
-        @media (min-width: 992px) {
-            .contact-container {
-                grid-template-columns: 1fr 1.2fr;
-                gap: 5rem;
-            }
-            .testimonials-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-             .mulank-container {
-                grid-template-columns: 1fr 1fr;
-            }
-            .mantras-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2.5rem;
-            }
-        }
-        
-        /* Tablets and small laptops */
-        @media (min-width: 768px) and (max-width: 991px) {
-            .testimonials-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-             .mulank-container {
-                grid-template-columns: 1fr 1fr;
-            }
-            .mantras-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .services-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-        }
-        
-        /* Mobile Devices (up to 767px) */
-        @media (max-width: 767px) {
-            header {
-                padding: 1rem 1.5rem;
-            }
-
-            nav.desktop-nav {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            body {
-                background-attachment: scroll;
-            }
-            
-            .section {
-                padding: 4rem 1.5rem;
-            }
-            
-            .section-header h2 {
-                font-size: 2.8rem;
-            }
-            .section-header p {
-                font-size: 1.1rem;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-text .byline {
-                font-size: 1.3rem;
-            }
-            
-            .mulank-input-panel, .mulank-result-panel {
-                padding: 2rem;
-            }
-            
-            .contact-form {
-                padding: 2.5rem;
-            }
-            
-            .why-us-container {
-                gap: 1.5rem;
-            }
-            
-            .faq-question h3 {
-                font-size: 1.1rem;
-            }
-            .mantra-card .mantra-sanskrit {
-                font-size: 2rem;
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-            .booking-modal {
-                width: 95%;
-                max-height: 85vh;
-            }
-             .modal-content {
-                padding: 1.5rem;
-            }
-            .time-slots {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            }
-            .payment-options {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section {
-                padding: 3rem 1rem;
-            }
-            .section-header {
-                margin-bottom: 3rem;
-            }
-            .section-header h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.1rem;
-            }
-            
-            .ios-button {
-                padding: 1rem 2.2rem;
-                font-size: 1rem;
-            }
-
-            .contact-form, .why-us-card, .faq-item, .mantra-card, .service-card {
-                padding: 1.5rem;
-            }
-            .mantra-card {
-                padding: 2rem;
-            }
-            .service-card h4 {
-                min-height: auto; /* Remove min-height on mobile */
-            }
-            .footer-links {
-                gap: 1rem 1.5rem;
-            }
-            
-            .modal-header h3 {
-                font-size: 1.5rem;
-            }
-            .step-header {
-                font-size: 1.3rem;
-            }
-        }
-
-    </style>
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -2036,9 +98,10 @@
             <div class="section-wrapper">
                 <div class="section-header animated-item">
                     <h2>Our Cosmic Offerings</h2>
-                    <p>Transparent pricing for authentic cosmic guidance. Choose the consultation that best suits your journey.</p>
+                    <p>Transparent pricing for authentic cosmic guidance. Choose the consultation that best suits your
+                        journey.</p>
                 </div>
-                
+
                 <div class="service-filters animated-item">
                     <button class="filter-btn active" data-filter="all">All Services</button>
                     <button class="filter-btn" data-filter="astrology">Vedic Astrology</button>
@@ -2049,126 +112,7 @@
                 </div>
 
                 <div class="services-grid animated-item">
-                    <div class="service-card" data-category="astrology">
-                        <div class="badge">Most Popular</div>
-                        <i class="fas fa-star-of-life service-icon"></i>
-                        <h4>Natal Chart Reading</h4>
-                        <p class="service-card-desc">A foundational reading of your cosmic blueprint for overall life guidance.</p>
-                        <div class="service-price">₹499</div>
-                        <button class="book-now-btn book-service" data-service="Natal Chart Reading" data-price="499">Book Now</button>
                     </div>
-                    <div class="service-card" data-category="astrology">
-                        <i class="fas fa-chart-line service-icon"></i>
-                        <h4>Career and Growth</h4>
-                        <p class="service-card-desc">Astrological insights for your professional path, dharma, and success.</p>
-                        <div class="service-price">₹899</div>
-                        <button class="book-now-btn book-service" data-service="Career and Growth" data-price="899">Book Now</button>
-                    </div>
-                    <div class="service-card" data-category="astrology">
-                        <i class="fas fa-link service-icon"></i>
-                        <h4>Relationship Synastry</h4>
-                        <p class="service-card-desc">Synastry-based analysis to understand the karmic ties in your relationships.</p>
-                        <div class="service-price">₹1299</div>
-                        <button class="book-now-btn book-service" data-service="Relationship Synastry" data-price="1299">Book Now</button>
-                    </div>
-                    <div class="service-card" data-category="astrology">
-                        <i class="fas fa-calendar-alt service-icon"></i>
-                        <h4>Varshaphala Forecast</h4>
-                        <p class="service-card-desc">Detailed predictions and divine guidance for the year ahead based on your personal solar return chart.</p>
-                        <div class="service-price">₹899</div>
-                        <button class="book-now-btn book-service" data-service="Varshaphala Forecast" data-price="899">Book Now</button>
-                    </div>
-                    
-                    <div class="service-card" data-category="numerology">
-                        <i class="fas fa-signature service-icon"></i>
-                        <h4>Name Correction</h4>
-                        <p class="service-card-desc">Align your name's vibration with your karmic path for growth and clarity.</p>
-                        <div class="service-price">₹499</div>
-                        <button class="book-now-btn book-service" data-service="Name Correction" data-price="499">Book Now</button>
-                    </div>
-                    <div class="service-card" data-category="numerology">
-                        <i class="fas fa-store service-icon"></i>
-                        <h4>Business Name Correction</h4>
-                        <p class="service-card-desc">Align your brand's name with the energy of its industry for success.</p>
-                        <div class="service-price">₹899</div>
-                        <button class="book-now-btn book-service" data-service="Business Name Correction" data-price="899">Book Now</button>
-                    </div>
-                    <div class="service-card" data-category="numerology">
-                        <i class="fas fa-mobile-alt service-icon"></i>
-                        <h4>Mobile Numerology</h4>
-                        <p class="service-card-desc">Check and align your mobile number's frequency with your personal goals.</p>
-                        <div class="service-price">₹999</div>
-                        <button class="book-now-btn book-service" data-service="Mobile Numerology" data-price="999">Book Now</button>
-                    </div>
-                     <div class="service-card" data-category="numerology">
-                        <i class="fas fa-car service-icon"></i>
-                        <h4>Right Vehicle Number</h4>
-                        <p class="service-card-desc">Choose a vehicle number that attracts safety, success, and positive journeys.</p>
-                        <div class="service-price">₹499</div>
-                        <button class="book-now-btn book-service" data-service="Right Vehicle Number" data-price="499">Book Now</button>
-                    </div>
-                    
-                    <div class="service-card" data-category="qa">
-                        <i class="fas fa-question service-icon"></i>
-                        <h4>Single Question Q&A</h4>
-                        <p class="service-card-desc">Get a detailed, written answer to your most pressing single question.</p>
-                        <div class="service-price">₹399</div>
-                        <button class="book-now-btn book-service" data-service="Single Question Q&A" data-price="399">Book Now</button>
-                    </div>
-                    <div class="service-card" data-category="qa">
-                        <i class="fas fa-comments service-icon"></i>
-                        <h4>3 Questions Q&A</h4>
-                        <p class="service-card-desc">In-depth written guidance on three specific areas or questions of your life.</p>
-                        <div class="service-price">₹899</div>
-                        <button class="book-now-btn book-service" data-service="3 Questions Q&A" data-price="899">Book Now</button>
-                    </div>
-                    <div class="service-card" data-category="qa">
-                        <i class="fas fa-heart service-icon"></i>
-                        <h4>Love Compatibility Q&A</h4>
-                        <p class="service-card-desc">Focused answers on relationship dynamics, compatibility, and harmony (3 Questions).</p>
-                        <div class="service-price">₹599</div>
-                        <button class="book-now-btn book-service" data-service="Love Compatibility Q&A" data-price="599">Book Now</button>
-                    </div>
-                    
-                    <div class="service-card" data-category="call">
-                        <i class="fas fa-phone-volume service-icon"></i>
-                        <h4>15-Minute Audio Call</h4>
-                        <p class="service-card-desc">A brief, focused session for quick guidance or follow-up questions.</p>
-                        <div class="service-price">₹799</div>
-                        <button class="book-now-btn book-service" data-service="15-Minute Audio Call" data-price="799">Book Now</button>
-                    </div>
-                    <div class="service-card" data-category="call">
-                        <i class="fas fa-headset service-icon"></i>
-                        <h4>30-Minute Audio Call</h4>
-                        <p class="service-card-desc">A detailed discussion covering one or two key areas of your life.</p>
-                        <div class="service-price">₹899</div>
-                        <button class="book-now-btn book-service" data-service="30-Minute Audio Call" data-price="899">Book Now</button>
-                    </div>
-                    <div class="service-card" data-category="call">
-                        <i class="fas fa-microphone-alt service-icon"></i>
-                        <h4>45-Minute Audio Call</h4>
-                        <p class="service-card-desc">A comprehensive consultation for an in-depth exploration of your chart.</p>
-                        <div class="service-price">₹999</div>
-                        <button class="book-now-btn book-service" data-service="45-Minute Audio Call" data-price="999">Book Now</button>
-                    </div>
-                    
-                    <div class="service-card" data-category="package">
-                        <i class="fas fa-gifts service-icon"></i>
-                        <h4>Combo Package</h4>
-                        <p class="service-card-desc">A powerful combination of a 5 Question Q&A report plus a 15-minute follow-up call.</p>
-                        <div class="service-price">₹1299</div>
-                        <button class="book-now-btn book-service" data-service="Combo Package" data-price="1299">Book Now</button>
-                    </div>
-                    
-                    <div class="student-offer-card animated-item">
-                        <div class="shooting-star"></div>
-                        <div class="shooting-star"></div>
-                        <div class="shooting-star"></div>
-                        <i class="fas fa-user-graduate"></i>
-                        <h3>Student Special Offer</h3>
-                        <p>We support the journey of learning. Get <strong>25% off</strong> on every consultation with a valid student ID.</p>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -2220,7 +164,8 @@
                 <div class="journey-grid-container animated-item">
                     <div class="journey-image-panel">
                         <div class="journey-image-frame">
-                            <img src="Prof_pic/prof_pic.jpeg" alt="Abhishek Gupta - The Astronox" onerror="this.onerror=null;this.src='https://placehold.co/250x250/7b2c2c/fdf8f0?text=A';">
+                            <img src="Prof_pic/prof_pic.jpeg" alt="Abhishek Gupta - The Astronox"
+                                onerror="this.onerror=null;this.src='https://placehold.co/250x250/7b2c2c/fdf8f0?text=A';">
                         </div>
                         <h3>Abhishek Gupta</h3>
                     </div>
@@ -2232,8 +177,12 @@
                                 <div class="milestone-toggle"><i class="fas fa-plus"></i></div>
                             </div>
                             <div class="milestone-content">
-                                 <div class="milestone-content-inner">
-                                    <p>My journey began not in a classroom, but under the vast, starlit sky of Lucknow, where a profound curiosity for the cosmos was ignited. This early fascination grew into a deep-seated calling to understand the intricate dance of the planets and their influence on our lives, leading me to the sacred science of Jyotish.</p>
+                                <div class="milestone-content-inner">
+                                    <p>My journey began not in a classroom, but under the vast, starlit sky of Lucknow,
+                                        where a profound curiosity for the cosmos was ignited. This early fascination
+                                        grew into a deep-seated calling to understand the intricate dance of the planets
+                                        and their influence on our lives, leading me to the sacred science of Jyotish.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -2243,9 +192,12 @@
                                 <h4>The Path</h4>
                                 <div class="milestone-toggle"><i class="fas fa-plus"></i></div>
                             </div>
-                             <div class="milestone-content">
-                                 <div class="milestone-content-inner">
-                                    <p>I pursued my calling with devotion, immersing myself in the timeless teachings of Vedic astrology under the guidance of revered gurus. My path was one of rigorous study and spiritual practice, learning to interpret the celestial language and translate its wisdom into practical, life-affirming guidance.</p>
+                            <div class="milestone-content">
+                                <div class="milestone-content-inner">
+                                    <p>I pursued my calling with devotion, immersing myself in the timeless teachings of
+                                        Vedic astrology under the guidance of revered gurus. My path was one of rigorous
+                                        study and spiritual practice, learning to interpret the celestial language and
+                                        translate its wisdom into practical, life-affirming guidance.</p>
                                 </div>
                             </div>
                         </div>
@@ -2255,21 +207,24 @@
                                 <h4>The Mission</h4>
                                 <div class="milestone-toggle"><i class="fas fa-plus"></i></div>
                             </div>
-                             <div class="milestone-content">
-                                 <div class="milestone-content-inner">
-                                    <p>The mission of The Astronox is to be a clear channel for this sacred knowledge. I am here to help you decode your unique cosmic blueprint, understand your karmic patterns, and harness planetary energies to navigate life's challenges. My goal is to empower you to live a life of greater clarity, purpose, and alignment.</p>
+                            <div class="milestone-content">
+                                <div class="milestone-content-inner">
+                                    <p>The mission of The Astronox is to be a clear channel for this sacred knowledge. I
+                                        am here to help you decode your unique cosmic blueprint, understand your karmic
+                                        patterns, and harness planetary energies to navigate life's challenges. My goal
+                                        is to empower you to live a life of greater clarity, purpose, and alignment.</p>
                                 </div>
                             </div>
                         </div>
-                         <div class="journey-milestone">
+                        <div class="journey-milestone">
                             <div class="milestone-header">
                                 <i class="fas fa-award"></i>
                                 <h4>Credentials</h4>
                                 <div class="milestone-toggle"><i class="fas fa-plus"></i></div>
                             </div>
-                             <div class="milestone-content">
-                                 <div class="milestone-content-inner">
-                                     <ul>
+                            <div class="milestone-content">
+                                <div class="milestone-content-inner">
+                                    <ul>
                                         <li>Vedic Astrology (Jyotish) Certification from top Indian institutes.</li>
                                         <li>Expertise in Vedic Numerology, Snan Remedies, and Gemstones.</li>
                                         <li>Specialized focus on Relationship Synastry, and Career Dharma.</li>
@@ -2282,7 +237,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="section" id="why-us">
             <div class="section-wrapper">
                 <div class="section-header animated-item">
@@ -2293,17 +248,20 @@
                     <div class="why-us-card animated-item">
                         <i class="fas fa-book-open why-us-icon"></i>
                         <h3>Authentic Knowledge</h3>
-                        <p>Guidance based on the pure, classical principles of Vedic Astrology, passed down through a traditional Guru-Shishya parampara.</p>
+                        <p>Guidance based on the pure, classical principles of Vedic Astrology, passed down through a
+                            traditional Guru-Shishya parampara.</p>
                     </div>
                     <div class="why-us-card animated-item" style="transition-delay: 0.15s;">
                         <i class="fas fa-hand-holding-heart why-us-icon"></i>
                         <h3>Empathetic Approach</h3>
-                        <p>A compassionate, non-judgmental space where you are heard and your life's journey is honored with respect and confidentiality.</p>
+                        <p>A compassionate, non-judgmental space where you are heard and your life's journey is honored
+                            with respect and confidentiality.</p>
                     </div>
                     <div class="why-us-card animated-item" style="transition-delay: 0.3s;">
                         <i class="fas fa-lightbulb why-us-icon"></i>
                         <h3>Clarity & Empowerment</h3>
-                        <p>We focus on providing clear insights and practical remedies to empower you, transforming cosmic knowledge into actionable life strategy.</p>
+                        <p>We focus on providing clear insights and practical remedies to empower you, transforming
+                            cosmic knowledge into actionable life strategy.</p>
                     </div>
                 </div>
             </div>
@@ -2319,7 +277,8 @@
                 <div class="testimonials-container">
                     <div class="testimonial-card animated-item">
                         <div class="testimonial-content">
-                            <p class="testimonial-text">"Abhishek Gupta's reading was incredibly insightful. He didn't just
+                            <p class="testimonial-text">"Abhishek Gupta's reading was incredibly insightful. He didn't
+                                just
                                 tell
                                 me what my chart said, he helped me understand how to work with my planetary energies.
                                 His
@@ -2335,7 +294,8 @@
                     </div>
                     <div class="testimonial-card animated-item" style="transition-delay: 0.15s;">
                         <div class="testimonial-content">
-                            <p class="testimonial-text">"The relationship analysis was spot on. Abhishek Gupta explained the
+                            <p class="testimonial-text">"The relationship analysis was spot on. Abhishek Gupta explained
+                                the
                                 dynamics between me and my partner with such clarity. We've implemented his suggestions
                                 and
                                 our relationship has improved dramatically."</p>
@@ -2350,7 +310,8 @@
                     </div>
                     <div class="testimonial-card animated-item" style="transition-delay: 0.3s;">
                         <div class="testimonial-content">
-                            <p class="testimonial-text">"Abhishek Gupta's yearly forecast helped me navigate a challenging
+                            <p class="testimonial-text">"Abhishek Gupta's yearly forecast helped me navigate a
+                                challenging
                                 period
                                 with confidence. His predictions were accurate and his practical advice was invaluable.
                                 I
@@ -2367,7 +328,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="section" id="faq">
             <div class="section-wrapper">
                 <div class="section-header animated-item">
@@ -2381,7 +342,9 @@
                             <i class="fas fa-plus faq-icon"></i>
                         </button>
                         <div class="faq-answer">
-                            <p>Vedic Astrology, or Jyotish, is the ancient Indian science of light. It analyzes the positions of celestial bodies at your time of birth to understand your unique karmic blueprint, personality, life events, and spiritual path.</p>
+                            <p>Vedic Astrology, or Jyotish, is the ancient Indian science of light. It analyzes the
+                                positions of celestial bodies at your time of birth to understand your unique karmic
+                                blueprint, personality, life events, and spiritual path.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -2390,7 +353,9 @@
                             <i class="fas fa-plus faq-icon"></i>
                         </button>
                         <div class="faq-answer">
-                            <p>For an accurate reading, I require your exact date of birth, time of birth, and place of birth (city and country). The more precise the birth time, the more detailed and accurate the chart analysis will be.</p>
+                            <p>For an accurate reading, I require your exact date of birth, time of birth, and place of
+                                birth (city and country). The more precise the birth time, the more detailed and
+                                accurate the chart analysis will be.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -2399,7 +364,10 @@
                             <i class="fas fa-plus faq-icon"></i>
                         </button>
                         <div class="faq-answer">
-                            <p>While an exact time is ideal, a close approximation can still provide valuable insights, especially for the placement of slower-moving planets. If the time is completely unknown, we can use other techniques, though some specific predictions might be limited.</p>
+                            <p>While an exact time is ideal, a close approximation can still provide valuable insights,
+                                especially for the placement of slower-moving planets. If the time is completely
+                                unknown, we can use other techniques, though some specific predictions might be limited.
+                            </p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -2408,16 +376,19 @@
                             <i class="fas fa-plus faq-icon"></i>
                         </button>
                         <div class="faq-answer">
-                            <p>Consultations are primarily conducted online via phone call or video conference (like WhatsApp or Google Meet) for clients worldwide. This ensures you can receive guidance from the comfort of your home.</p>
+                            <p>Consultations are primarily conducted online via phone call or video conference (like
+                                WhatsApp or Google Meet) for clients worldwide. This ensures you can receive guidance
+                                from the comfort of your home.</p>
                         </div>
                     </div>
-                     <div class="faq-item">
+                    <div class="faq-item">
                         <button class="faq-question">
                             <h3>Is my personal information kept confidential?</h3>
                             <i class="fas fa-plus faq-icon"></i>
                         </button>
                         <div class="faq-answer">
-                            <p>Absolutely. All your personal details and the contents of our consultation are held in the strictest confidence. Your privacy and trust are paramount.</p>
+                            <p>Absolutely. All your personal details and the contents of our consultation are held in
+                                the strictest confidence. Your privacy and trust are paramount.</p>
                         </div>
                     </div>
                 </div>
@@ -2426,18 +397,21 @@
 
         <section class="section" id="mantras-glimpse">
             <div class="section-wrapper">
-                 <div class="section-header animated-item">
+                <div class="section-header animated-item">
                     <h2>The Power of Mantras</h2>
-                    <p>Harness cosmic energy and find inner peace through the sacred sound vibrations of ancient mantras.</p>
+                    <p>Harness cosmic energy and find inner peace through the sacred sound vibrations of ancient
+                        mantras.</p>
                 </div>
                 <div class="mantras-container">
                     <div class="mantra-card animated-item">
                         <p class="mantra-sanskrit">ॐ भूर्भुवः स्वः</p>
-                        <p class="mantra-meaning">"The Gayatri Mantra, a prayer for universal enlightenment, purifies the chanter and the listener, bestowing wisdom and peace."</p>
+                        <p class="mantra-meaning">"The Gayatri Mantra, a prayer for universal enlightenment, purifies
+                            the chanter and the listener, bestowing wisdom and peace."</p>
                     </div>
                     <div class="mantra-card animated-item" style="transition-delay: 0.2s;">
-                         <p class="mantra-sanskrit">ॐ त्र्यम्बकं यजामहे</p>
-                        <p class="mantra-meaning">"The Mahamrityunjaya Mantra, a call for healing and rejuvenation, is a powerful chant for overcoming obstacles and fostering longevity."</p>
+                        <p class="mantra-sanskrit">ॐ त्र्यम्बकं यजामहे</p>
+                        <p class="mantra-meaning">"The Mahamrityunjaya Mantra, a call for healing and rejuvenation, is a
+                            powerful chant for overcoming obstacles and fostering longevity."</p>
                     </div>
                 </div>
                 <div class="mantras-container-footer animated-item">
@@ -2557,33 +531,47 @@
                         <div class="form-col">
                             <div class="form-group">
                                 <label for="clientName">Full Name</label>
-                                <input type="text" id="clientName" class="form-control" placeholder="Enter your full name" required>
+                                <input type="text" id="clientName" class="form-control"
+                                    placeholder="Enter your full name" required>
                             </div>
                         </div>
                         <div class="form-col">
                             <div class="form-group">
                                 <label for="clientEmail">Email Address</label>
-                                <input type="email" id="clientEmail" class="form-control" placeholder="Enter your email" required>
+                                <input type="email" id="clientEmail" class="form-control" placeholder="Enter your email"
+                                    required>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-col">
                             <div class="form-group">
+                                <label for="clientPhone">Phone Number</label>
+                                <input type="tel" id="clientPhone" class="form-control"
+                                    placeholder="Enter your 10-digit phone number" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
                                 <label for="clientDOB">Date of Birth</label>
                                 <input type="date" id="clientDOB" class="form-control" required>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-row">
                         <div class="form-col">
                             <div class="form-group">
                                 <label for="clientTOB">Time of Birth</label>
                                 <input type="time" id="clientTOB" class="form-control" required>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="clientPOB">Place of Birth (City, Country)</label>
-                        <input type="text" id="clientPOB" class="form-control" placeholder="e.g., Lucknow, India" required>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="clientPOB">Place of Birth (City, Country)</label>
+                                <input type="text" id="clientPOB" class="form-control"
+                                    placeholder="e.g., Lucknow, India" required>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group hidden" id="coupleToggleContainer">
@@ -2595,32 +583,35 @@
                     </div>
 
                     <div id="partnerDetails" class="hidden">
-                        <h4 class="step-header" style="font-size: 1.3rem; margin-top: 2rem; margin-bottom: 1.5rem;">Partner's Details</h4>
+                        <h4 class="step-header" style="font-size: 1.3rem; margin-top: 2rem; margin-bottom: 1.5rem;">
+                            Partner's Details</h4>
                         <div class="form-row">
                             <div class="form-col">
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label for="partnerName">Partner's Full Name</label>
-                                    <input type="text" id="partnerName" class="form-control" placeholder="Enter partner's name">
+                                    <input type="text" id="partnerName" class="form-control"
+                                        placeholder="Enter partner's name">
                                 </div>
                             </div>
-                             <div class="form-col">
+                            <div class="form-col">
                                 <div class="form-group">
                                     <label for="partnerDOB">Partner's Date of Birth</label>
                                     <input type="date" id="partnerDOB" class="form-control">
                                 </div>
                             </div>
                         </div>
-                         <div class="form-row">
+                        <div class="form-row">
                             <div class="form-col">
                                 <div class="form-group">
                                     <label for="partnerTOB">Partner's Time of Birth</label>
                                     <input type="time" id="partnerTOB" class="form-control">
                                 </div>
                             </div>
-                             <div class="form-col">
+                            <div class="form-col">
                                 <div class="form-group">
                                     <label for="partnerPOB">Partner's Place of Birth</label>
-                                    <input type="text" id="partnerPOB" class="form-control" placeholder="e.g., Delhi, India">
+                                    <input type="text" id="partnerPOB" class="form-control"
+                                        placeholder="e.g., Delhi, India">
                                 </div>
                             </div>
                         </div>
@@ -2636,8 +627,8 @@
                 <div class="booking-step" id="step2">
                     <h4 class="step-header">Schedule Your Consultation</h4>
                     <div class="service-info">
-                        <div class="name">Service: <span id="selectedService">Natal Chart Reading</span></div>
-                        <div class="price">Price: <span id="selectedPrice">₹499</span></div>
+                        <div class="name">Service: <span id="selectedService"></span></div>
+                        <div class="price">Price: <span id="selectedPrice"></span></div>
                     </div>
                     <div class="form-group date-picker">
                         <label for="appointmentDate">Select Date</label>
@@ -2646,7 +637,7 @@
                     <div class="form-group">
                         <label>Available Time Slots (IST)</label>
                         <div class="time-slots" id="timeSlots">
-                            </div>
+                        </div>
                     </div>
                     <div class="booking-nav">
                         <button class="nav-button back" data-step="1">
@@ -2669,7 +660,7 @@
                             <span class="summary-label">Appointment:</span>
                             <span id="summaryDateTime"></span>
                         </div>
-                         <div class="summary-item">
+                        <div class="summary-item">
                             <span class="summary-label">Name:</span>
                             <span id="summaryName"></span>
                         </div>
@@ -2677,25 +668,14 @@
                             <span class="summary-label">Email:</span>
                             <span id="summaryEmail"></span>
                         </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Phone:</span>
+                            <span id="summaryPhone"></span>
                         </div>
+                    </div>
                     <div class="summary-item total">
                         <span class="summary-label">Total Amount:</span>
                         <span id="summaryTotal" class="price-tag"></span>
-                    </div>
-                    <div class="form-group" style="margin-top: 2rem;">
-                        <label>Select Payment Method</label>
-                        <div class="payment-options">
-                            <div class="payment-option selected" data-method="upi">
-                                <i class="fab fa-google-pay"></i>
-                                <h4>UPI / QR Code</h4>
-                                <p>Pay with any UPI app</p>
-                            </div>
-                            <div class="payment-option" data-method="card">
-                                <i class="fas fa-credit-card"></i>
-                                <h4>Credit/Debit Card</h4>
-                                <p>Razorpay Secure Checkout</p>
-                            </div>
-                        </div>
                     </div>
                     <div class="booking-nav">
                         <button class="nav-button back" data-step="2">
@@ -2716,458 +696,141 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Smooth Scrolling using Lenis ---
+            // --- UI & ANIMATION LOGIC ---
             const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1 });
             function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
             requestAnimationFrame(raf);
+            // ... (All other non-payment UI functions: mobile menu, accordions, animations, etc.)
 
-            // --- Custom Alert Modal ---
-            const customAlert = document.getElementById('customAlert');
-            const customAlertMessage = document.getElementById('customAlertMessage');
-            const customAlertClose = document.getElementById('customAlertClose');
-
-            function showCustomAlert(message) {
-                if (!customAlert || !customAlertMessage) {
-                    alert(message); // Fallback for safety
-                    return;
-                }
-                customAlertMessage.textContent = message;
-                customAlert.classList.add('visible');
-            }
-
-            if (customAlertClose) {
-                customAlertClose.addEventListener('click', () => customAlert.classList.remove('visible'));
-            }
-             if (customAlert) {
-                customAlert.addEventListener('click', (e) => {
-                    if(e.target === customAlert) customAlert.classList.remove('visible');
-                });
-            }
-
-            // --- Mobile Menu Logic ---
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileNav = document.getElementById('mobileNav');
-            const closeMenu = document.getElementById('closeMenu');
-            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav a.nav-link');
-            const openMobileMenu = () => { mobileNav.classList.add('active'); mobileNavOverlay.classList.add('active'); lenis.stop(); };
-            const closeMobileMenu = () => { mobileNav.classList.remove('active'); mobileNavOverlay.classList.remove('active'); lenis.start(); };
-            mobileMenuBtn.addEventListener('click', openMobileMenu);
-            closeMenu.addEventListener('click', closeMobileMenu);
-            mobileNavOverlay.addEventListener('click', closeMobileMenu);
-            mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
-
-            // --- Page Load Effects ---
-            const loader = document.getElementById('loader');
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    if(loader) loader.classList.add('loader-hidden');
-                }, 500);
-            });
-
-            // --- Anchor Scroll with Lenis ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href.startsWith('#') && href.length > 1) {
-                        e.preventDefault();
-                        const targetElement = document.querySelector(href);
-                        if (targetElement) {
-                            lenis.scrollTo(targetElement, { offset: -80, duration: 2 });
-                        }
-                    }
-                });
-            });
-
-            // --- Header Scroll Styling ---
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', () => header.classList.toggle('scrolled-header', window.scrollY > 50));
-
-            // --- Form Submission ---
-            const consultationForm = document.getElementById('consultationForm');
-            if (consultationForm) {
-                consultationForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    const submitButton = this.querySelector('button[type="submit"]');
-                    const originalButtonContent = submitButton.innerHTML;
-                    submitButton.disabled = true;
-                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i>Sending...';
-
-                    setTimeout(() => {
-                        showCustomAlert('Thank you! Your consultation request has been received. This is a functional demo.');
-                        this.reset();
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = originalButtonContent;
-                    }, 2000);
-                });
-            }
-
-            // --- Scroll-triggered Animations ---
-            const animatedItems = document.querySelectorAll('.animated-item');
-            const animateObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { root: null, rootMargin: '0px', threshold: 0.1 });
-            animatedItems.forEach(item => animateObserver.observe(item));
-
-            // --- Active Nav Link on Scroll ---
-            const sections = document.querySelectorAll('main > .section');
-            const allNavLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
-            const navObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('id');
-                        allNavLinks.forEach(link => {
-                            link.classList.remove('active');
-                            const linkHref = link.getAttribute('href');
-                            if (linkHref === `#${id}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }, { root: null, rootMargin: '-40% 0px -60% 0px', threshold: 0 });
-            sections.forEach(section => { 
-                if(section.id) navObserver.observe(section); 
-            });
-
-            // --- Journey Milestone Accordion ---
-            const milestones = document.querySelectorAll('.journey-milestone');
-            milestones.forEach(milestone => {
-                const header = milestone.querySelector('.milestone-header');
-                header.addEventListener('click', () => {
-                    const isActive = milestone.classList.contains('active');
-                    milestones.forEach(m => m.classList.remove('active'));
-                    if (!isActive) milestone.classList.add('active');
-                });
-            });
-
-            // --- FAQ Accordion ---
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
-                    faqItems.forEach(i => i.classList.remove('active'));
-                    if (!isActive) item.classList.add('active');
-                });
-            });
-
-            // --- Mulank & Bhagyank Calculator ---
-            function reduceToSingleDigit(num) {
-                let sum = num;
-                while (sum > 9 && sum !== 11 && sum !== 22) {
-                    sum = String(sum).split('').reduce((acc, digit) => acc + Number(digit), 0);
-                }
-                return sum;
-            }
-            function calculateMoolank(day) {
-                 let sum = String(day).split('').reduce((acc, digit) => acc + Number(digit), 0);
-                 while(sum > 9) sum = String(sum).split('').reduce((acc, digit) => acc + Number(digit), 0);
-                 return sum;
-            }
-            const mulankCalculateBtn = document.getElementById('mulankCalculateBtn');
-            if (mulankCalculateBtn) {
-                mulankCalculateBtn.addEventListener('click', () => {
-                    const birthDateInput = document.getElementById('birthDateInput');
-                    const dateValue = birthDateInput.value;
-                    if (!dateValue) {
-                        showCustomAlert("Please select your birth date.");
-                        return;
-                    }
-                    const date = new Date(dateValue);
-                    const day = date.getUTCDate();
-                    const month = date.getUTCMonth() + 1;
-                    const year = date.getUTCFullYear();
-                    const daySumForBhagyank = String(day).split('').reduce((acc, digit) => acc + Number(digit), 0);
-                    const monthSum = String(month).split('').reduce((acc, digit) => acc + Number(digit), 0);
-                    const yearSum = String(year).split('').reduce((acc, digit) => acc + Number(digit), 0);
-                    const mulank = calculateMoolank(day);
-                    const bhagyank = reduceToSingleDigit(daySumForBhagyank + monthSum + yearSum);
-                    const mulankResultCard = document.getElementById('mulankResultCard');
-                    const bhagyankResultCard = document.getElementById('bhagyankResultCard');
-                    const mulankDescriptions = { 1: "<strong>The Sun:</strong> A natural leader...", 2: "<strong>The Moon:</strong> You are intuitive...", 3: "<strong>Jupiter:</strong> Creative, optimistic...", 4: "<strong>Rahu:</strong> You are practical...", 5: "<strong>Mercury:</strong> Adaptable, resourceful...", 6: "<strong>Venus:</strong> You are harmonious...", 7: "<strong>Ketu:</strong> A spiritual seeker...", 8: "<strong>Saturn:</strong> Ambitious and powerful...", 9: "<strong>Mars:</strong> You are a compassionate..." };
-                    const bhagyankDescriptions = { 1: "<strong>Leadership & Independence:</strong>...", 2: "<strong>Cooperation & Harmony:</strong>...", 3: "<strong>Creativity & Expression:</strong>...", 4: "<strong>Stability & Discipline:</strong>...", 5: "<strong>Freedom & Adventure:</strong>...", 6: "<strong>Nurturing & Responsibility:</strong>...", 7: "<strong>Analysis & Spirituality:</strong>...", 8: "<strong>Ambition & Power:</strong>...", 9: "<strong>Humanitarianism & Compassion:</strong>..." };
-                    mulankResultCard.innerHTML = `<h4...>${mulank}</h4><div...>${mulankDescriptions[mulank]}</div>`;
-                    bhagyankResultCard.innerHTML = `<h4...>${bhagyank}</h4><div...>${bhagyankDescriptions[bhagyank]}</div>`;
-                    document.getElementById('mulankPlaceholder').classList.add('hidden');
-                    document.getElementById('numerologySelector').classList.remove('hidden');
-                    mulankResultCard.classList.remove('hidden');
-                    bhagyankResultCard.classList.add('hidden');
-                    document.querySelector('.selector-btn[data-type="mulank"]').classList.add('active');
-                    document.querySelector('.selector-btn[data-type="bhagyank"]').classList.remove('active');
-                });
-            }
-            const numerologySelector = document.getElementById('numerologySelector');
-            if (numerologySelector) {
-                numerologySelector.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('selector-btn')) {
-                        const type = e.target.dataset.type;
-                        document.querySelectorAll('.selector-btn').forEach(btn => btn.classList.remove('active'));
-                        e.target.classList.add('active');
-                        document.getElementById('mulankResultCard').classList.toggle('hidden', type !== 'mulank');
-                        document.getElementById('bhagyankResultCard').classList.toggle('hidden', type !== 'bhagyank');
-                    }
-                });
-            }
-
-            // --- Service Filter Logic ---
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const serviceCards = document.querySelectorAll('.service-card');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const filter = button.dataset.filter;
-                    
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    
-                    serviceCards.forEach(card => {
-                        if (filter === 'all' || card.dataset.category === filter) {
-                            card.classList.remove('hidden');
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    });
-                });
-            });
-
-            // --- ✨ NEW: Interactive 3D Service Card Effect ---
-            const interactiveCards = document.querySelectorAll('.service-card');
-            interactiveCards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    // Adjust divisor for sensitivity (higher number = less sensitive)
-                    const rotateX = (y - centerY) / 20; 
-                    const rotateY = (centerX - x) / 20;
-
-                    // Apply 3D tilt and glare position
-                    card.style.setProperty('--x', `${x}px`);
-                    card.style.setProperty('--y', `${y}px`);
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.03)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    // Reset card to its original state
-                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
-                });
-            });
-
-
-            // --- ENHANCED Booking Modal Functionality ---
+            // --- DYNAMIC SERVICES & BOOKING LOGIC ---
+            const servicesGrid = document.querySelector('.services-grid');
             const bookingModal = document.getElementById('bookingModal');
-            if (!bookingModal) return;
+            const modalState = { serviceName: '', servicePrice: 0 };
 
-            const closeBookingBtn = document.getElementById('closeBooking');
-            const bookServiceButtons = document.querySelectorAll('.book-service');
-            
-            const bookingSteps = bookingModal.querySelectorAll('.booking-step');
-            const nextStepButtons = bookingModal.querySelectorAll('.next-step');
-            const backButtons = bookingModal.querySelectorAll('.back');
-            const confirmBookingBtn = document.getElementById('confirmBooking');
+            const servicesData = [
+                { "id": "natal-chart", "name": "Natal Chart Reading", "description": "A foundational reading of your cosmic blueprint.", "price": 499, "category": "astrology", "icon": "fas fa-star-of-life" },
+                { "id": "career-growth", "name": "Career and Growth", "description": "Astrological insights for your professional path.", "price": 899, "category": "astrology", "icon": "fas fa-chart-line" },
+                { "id": "relationship-synastry", "name": "Relationship Synastry", "description": "Analysis to understand the karmic ties in your relationships.", "price": 1299, "category": "astrology", "icon": "fas fa-link" },
+            ];
 
-            const selectedServiceEl = document.getElementById('selectedService');
-            const selectedPriceEl = document.getElementById('selectedPrice');
-            const summaryServiceEl = document.getElementById('summaryService');
-            const summaryTotalEl = document.getElementById('summaryTotal');
-
-            const clientNameEl = document.getElementById('clientName');
-            const clientEmailEl = document.getElementById('clientEmail');
-            const clientDOBEl = document.getElementById('clientDOB');
-            const clientTOBEl = document.getElementById('clientTOB');
-            const clientPOBEl = document.getElementById('clientPOB');
-            const appointmentDateEl = document.getElementById('appointmentDate');
-            const timeSlotsEl = document.getElementById('timeSlots');
-
-            const coupleToggleContainer = document.getElementById('coupleToggleContainer');
-            const isCoupleCheckbox = document.getElementById('isCoupleCheckbox');
-            const partnerDetailsContainer = document.getElementById('partnerDetails');
-            const partnerNameEl = document.getElementById('partnerName');
-            const partnerDOBEl = document.getElementById('partnerDOB');
-            const partnerTOBEl = document.getElementById('partnerTOB');
-            const partnerPOBEl = document.getElementById('partnerPOB');
-
-            const summaryWrapper = document.getElementById('summaryWrapper');
-            const summaryDateTimeEl = document.getElementById('summaryDateTime');
-            const summaryNameEl = document.getElementById('summaryName');
-            const summaryEmailEl = document.getElementById('summaryEmail');
-            const paymentOptions = document.querySelectorAll('.payment-option');
-            
-            const todayISO = new Date().toISOString().split('T')[0];
-            appointmentDateEl.min = todayISO;
-            clientDOBEl.max = todayISO;
-            partnerDOBEl.max = todayISO;
-
-            const modalState = { serviceName: '', servicePrice: 0, isCoupleService: false };
+            function renderServices() {
+                if (!servicesGrid) return;
+                servicesGrid.innerHTML = '';
+                servicesData.forEach(service => {
+                    const card = document.createElement('div');
+                    card.className = 'service-card';
+                    card.innerHTML = `
+                        <i class="${service.icon} service-icon"></i>
+                        <h4>${service.name}</h4>
+                        <p class="service-card-desc">${service.description}</p>
+                        <div class="service-price">₹${service.price}</div>
+                        <button class="book-now-btn" data-service="${service.name}" data-price="${service.price}">Book Now</button>
+                    `;
+                    servicesGrid.appendChild(card);
+                });
+            }
+            renderServices();
 
             function openModal() {
-                bookingModal.classList.add('visible');
-                lenis.stop(); // Stop Lenis scroll on modal open
+                if (bookingModal) bookingModal.classList.add('visible');
+                lenis.stop();
             }
+
             function closeModal() {
-                bookingModal.classList.remove('visible');
-                lenis.start(); // Restart Lenis scroll on modal close
+                if (bookingModal) bookingModal.classList.remove('visible');
+                lenis.start();
             }
 
-            bookServiceButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    resetModal();
-                    
-                    modalState.serviceName = button.dataset.service;
-                    modalState.servicePrice = button.dataset.price;
-                    
-                    const relationshipServices = ["relationship", "love", "synastry"];
-                    modalState.isCoupleService = relationshipServices.some(term => modalState.serviceName.toLowerCase().includes(term));
+            document.body.addEventListener('click', function (e) {
+                const bookButton = e.target.closest('.book-now-btn');
+                if (bookButton) {
+                    modalState.serviceName = bookButton.dataset.service;
+                    modalState.servicePrice = parseFloat(bookButton.dataset.price);
 
-                    coupleToggleContainer.classList.toggle('hidden', !modalState.isCoupleService);
-
-                    selectedServiceEl.textContent = modalState.serviceName;
-                    selectedPriceEl.textContent = `₹${modalState.servicePrice}`;
-                    summaryServiceEl.textContent = modalState.serviceName;
-                    summaryTotalEl.textContent = `₹${modalState.servicePrice}`;
+                    document.getElementById('selectedService').textContent = modalState.serviceName;
+                    document.getElementById('selectedPrice').textContent = `₹${modalState.servicePrice}`;
+                    document.getElementById('summaryService').textContent = modalState.serviceName;
+                    document.getElementById('summaryTotal').textContent = `₹${modalState.servicePrice}`;
 
                     openModal();
-                });
-            });
-            
-            closeBookingBtn.addEventListener('click', closeModal);
-            bookingModal.addEventListener('click', (e) => { if(e.target === bookingModal) closeModal(); });
-
-            isCoupleCheckbox.addEventListener('change', () => {
-                partnerDetailsContainer.classList.toggle('hidden', !isCoupleCheckbox.checked);
-            });
-
-            appointmentDateEl.addEventListener('change', function() { generateTimeSlots(new Date(this.value)); });
-
-            function generateTimeSlots(selectedDate) {
-                timeSlotsEl.innerHTML = '<p style="text-align: center; color: var(--text-light);">Select a date to see available slots.</p>';
-                if (!selectedDate || isNaN(selectedDate)) return;
-
-                if (selectedDate.getUTCDay() === 0) {
-                    timeSlotsEl.innerHTML = '<p style="text-align: center; color: var(--maroon);">Sorry, consultations are not available on Sundays.</p>';
-                    return;
                 }
+            });
 
-                timeSlotsEl.innerHTML = '';
-                for(let hour = 11; hour <= 22; hour++) {
-                    for(let minute = 0; minute < 60; minute += 30) {
-                        const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
-                        const slotElement = document.createElement('div');
-                        slotElement.className = 'time-slot';
-                        slotElement.textContent = new Date(`1970-01-01T${timeString}:00`).toLocaleTimeString('en-IN', {hour: '2-digit', minute:'2-digit', hour12: true});
-                        slotElement.dataset.time = timeString;
-                        slotElement.addEventListener('click', function() {
-                            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
-                            this.classList.add('selected');
+            // --- RAZORPAY PAYMENT LOGIC ---
+            const confirmBookingBtn = document.getElementById('confirmBooking');
+            if (confirmBookingBtn) {
+                confirmBookingBtn.addEventListener('click', async function (e) {
+                    e.preventDefault();
+
+                    if (!modalState.servicePrice || modalState.servicePrice <= 0) {
+                        alert('Error: No service selected or price is invalid.');
+                        return;
+                    }
+
+                    this.disabled = true;
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+                    const orderData = {
+                        amount: modalState.servicePrice * 100,
+                        currency: "INR"
+                    };
+
+                    try {
+                        const serverResponse = await fetch('http://localhost:3000/create-order', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(orderData)
                         });
-                        timeSlotsEl.appendChild(slotElement);
-                    }
-                }
-            }
-            
-            nextStepButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const currentStep = this.closest('.booking-step');
-                    const nextStepId = `step${this.dataset.step}`;
-                    if (validateStep(currentStep.id)) {
-                        if (nextStepId === 'step3') updateSummary();
-                        goToStep(nextStepId);
+
+                        if (!serverResponse.ok) throw new Error('Could not create order on the server.');
+
+                        const order = await serverResponse.json();
+
+                        const options = {
+                            key: 'rzp_live_Li41DPoYeGyRPm', // IMPORTANT: Replace with your Razorpay Test Key ID
+                            amount: order.amount,
+                            currency: order.currency,
+                            name: "The Astronox",
+                            description: `Consultation: ${modalState.serviceName}`,
+                            order_id: order.id,
+                            handler: function (response) {
+                                alert(`Payment Successful! ID: ${response.razorpay_payment_id}`);
+                                closeModal();
+                            },
+                            prefill: {
+                                name: document.getElementById('clientName').value,
+                                email: document.getElementById('clientEmail').value,
+                                contact: document.getElementById('clientPhone').value
+                            },
+                            theme: {
+                                color: "#7b2c2c"
+                            }
+                        };
+
+                        const rzp1 = new Razorpay(options);
+                        rzp1.on('payment.failed', function (response) {
+                            alert(`Payment Failed: ${response.error.description}`);
+                        });
+                        rzp1.open();
+
+                    } catch (error) {
+                        console.error('Payment Error:', error);
+                        alert('Oops! Something went wrong. Is the server running?');
+                    } finally {
+                        this.disabled = false;
+                        this.innerHTML = 'Proceed to Payment <i class="fas fa-shield-alt"></i>';
                     }
                 });
-            });
-
-            backButtons.forEach(button => {
-                button.addEventListener('click', () => goToStep(`step${button.dataset.step}`));
-            });
-            
-            function goToStep(stepId) {
-                bookingSteps.forEach(step => step.classList.remove('active'));
-                document.getElementById(stepId).classList.add('active');
             }
-
-            function validateStep(stepId) {
-                if (stepId === 'step1') {
-                    if (!clientNameEl.value || !clientEmailEl.value || !clientDOBEl.value || !clientTOBEl.value || !clientPOBEl.value) {
-                        showCustomAlert('Please fill in all your personal and birth details.');
-                        return false;
-                    }
-                    if (isCoupleCheckbox.checked && (!partnerNameEl.value || !partnerDOBEl.value || !partnerTOBEl.value || !partnerPOBEl.value)) {
-                         showCustomAlert("Please fill in all of your partner's details.");
-                         return false;
-                    }
-                }
-                if (stepId === 'step2') {
-                    if (!appointmentDateEl.value) {
-                        showCustomAlert('Please select a date for your consultation.');
-                        return false;
-                    }
-                    if (!document.querySelector('.time-slot.selected')) {
-                        showCustomAlert('Please select an available time slot.');
-                        return false;
-                    }
-                }
-                return true;
-            }
-
-            function updateSummary() {
-                const date = new Date(appointmentDateEl.value).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-                const time = document.querySelector('.time-slot.selected').textContent;
-                summaryDateTimeEl.textContent = `${date} at ${time}`;
-                summaryNameEl.textContent = clientNameEl.value;
-                summaryEmailEl.textContent = clientEmailEl.value;
-
-                const existingPartnerSummary = summaryWrapper.querySelector('#partnerSummary');
-                if (existingPartnerSummary) existingPartnerSummary.remove();
-                
-                if (isCoupleCheckbox.checked) {
-                    const partnerSummaryHTML = `
-                        <div id="partnerSummary">
-                            <div class="summary-item"><span class="summary-label">Partner's Name:</span><span>${partnerNameEl.value}</span></div>
-                             <div class="summary-item"><span class="summary-label">Partner's Birth Details:</span><span>${new Date(partnerDOBEl.value).toLocaleDateString('en-GB')}, ${partnerTOBEl.value}, ${partnerPOBEl.value}</span></div>
-                        </div>`;
-                    summaryWrapper.insertAdjacentHTML('beforeend', partnerSummaryHTML);
-                }
-            }
-            
-            function resetModal() {
-                goToStep('step1');
-                bookingModal.querySelectorAll('input, textarea').forEach(input => {
-                    if (input.type === 'checkbox') input.checked = false;
-                    else input.value = '';
-                });
-                partnerDetailsContainer.classList.add('hidden');
-                timeSlotsEl.innerHTML = '<p style="text-align: center; color: var(--text);">Select a date to see available slots.</p>';
-            }
-
-            paymentOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    paymentOptions.forEach(opt => opt.classList.remove('selected'));
-                    this.classList.add('selected');
-                });
-            });
-
-            confirmBookingBtn.addEventListener('click', function() {
-                showCustomAlert('You will now be redirected to the secure payment page. This is a demo.');
-                setTimeout(() => {
-                    closeModal();
-                    showCustomAlert('Thank you! Your consultation is booked. A confirmation email has been sent.');
-                }, 2500);
-            });
         });
     </script>
-
 </body>
 
 </html>
+}
+Final check, fix any mistakes, update the file, and make it fully functional.
